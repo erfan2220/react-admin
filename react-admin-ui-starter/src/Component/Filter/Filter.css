@@ -1,0 +1,35 @@
+
+
+.Filter
+{
+    position: absolute;
+    width: 550px;
+    top: 200px;
+     display: flex;
+    flex-direction: column;
+    z-index:200;
+    background-color: white;
+    border: 1px solid #384256;
+    border-radius: 3px;
+    box-shadow: 2px 2px #384256, -4px 0 .4em #222b3c;
+
+}
+
+.image-close img
+{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    cursor: pointer;
+
+}
+
+
+
+.newRules-button
+{
+    margin: 20px;
+    width: 80px;
+}

@@ -1,0 +1,39 @@
+@import './variable.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.main
+{
+  font-family: "inter", sans-serif;
+  background-color: var(--main-bg);
+  color: var(--main-color);
+
+}
+
+.container
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.Content-container
+{
+  width: 100%;
+  padding:10px;
+}
+.menu-container
+{
+  width: 250px;
+  padding: 10px;
+}

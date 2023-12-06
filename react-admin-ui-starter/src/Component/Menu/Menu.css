@@ -1,0 +1,49 @@
+@import "../../styles/variable.css";
+
+.menu
+{
+
+}
+
+.item
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.item .title
+{
+    font-size: 12px;
+    font-weight: 200;
+    color: var(--soft-color);
+}
+
+.List-item
+{
+    display: flex;
+    align-items: center;
+   gap:10px;
+    padding: 10px;
+}
+.List-item:hover
+{
+    background-color: var(--soft-bg);
+}
+
+.List-item span
+{
+
+    font-size: 16px;
+    color: var(--soft-color);
+}
+.List-item img
+{
+
+}
+
+.title{
+    text-transform: uppercase;
+}
