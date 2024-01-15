@@ -20,13 +20,14 @@
 .icons-container {
     display: flex;
     flex-direction: row;
-    gap:16px;
+    gap:21px;
 }
 .notification
 {
     display: flex;
     flex-direction: row;
     position: relative;
+    height: 31px;
 }
 .notification span
 {
@@ -53,4 +54,13 @@
     width: 40px;
     border-radius: 50%;
     object-fit: contain;
+}
+
+
+@media only screen and (max-width: 768px)
+{
+    .icon
+    {
+        display: none;
+    }
 }

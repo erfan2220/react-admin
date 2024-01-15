@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 
-const Products = () =>
+const Navbar = () =>
     (
         <div className="Navbar">
             <div className="logo">
@@ -9,9 +9,9 @@ const Products = () =>
                 <p>Admin-page</p>
             </div>
             <div className="icons-container">
-                <img src="search.svg"></img>
-                <img src="app.svg"></img>
-                <img src="expand.svg"></img>
+                <img src="search.svg" className="icon"></img>
+                <img src="app.svg" className="icon"></img>
+                <img src="expand.svg" className="icon"></img>
 
                 <div className="notification">
                     <img src="notifications.svg"></img>
@@ -26,4 +26,4 @@ const Products = () =>
         </div>
     );
 
-export default Products;
+export default Navbar;

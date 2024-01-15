@@ -1,4 +1,14 @@
+
 @import './variable.css';
+@import './responsive.css';
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
 
 * {
   margin: 0;
@@ -21,11 +31,13 @@ a
 
 }
 
-.container
-{
+.container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
+
+
+
 
 .Content-container
 {
@@ -36,4 +48,12 @@ a
 {
   width: 250px;
   padding: 10px;
+}
+
+@media screen and(max-width: 1024px)
+{
+  .menu-container
+  {
+    width: max-content;
+  }
 }
