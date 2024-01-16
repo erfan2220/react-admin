@@ -74,7 +74,7 @@ const Filter  = (props) => {
     return (
         <div className="Filter">
             <div className="image-close">
-                <img src="close.svg" alt="Close" onClick={() => props.setFilter(false)} />
+                <img src="/close.svg" alt="Close" onClick={() => props.setFilter(false)} />
             </div>
             {
                 ruleList.map((rule)=>

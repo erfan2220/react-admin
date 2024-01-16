@@ -1,9 +1,8 @@
 
-import Box from '@mui/material/Box';
 import './DataTable.css';
 import {Link} from "react-router-dom";
-import { DataGrid, GridColDef,GridToolbar, GridValueGetterParams } from '@mui/x-data-grid';
-import Filter from "../../Component/Filter/Filter.jsx"
+import { DataGrid, GridColDef,GridToolbar } from '@mui/x-data-grid';
+
 
 
 
@@ -56,12 +55,11 @@ const DataTable = (props:Props) =>
                                 },
                             },
                         }}
-                        slots={{toolbar:GridToolbar,}}
+                        slots={{toolbar:GridToolbar}}
                         slotProps={{
                             toolbar:{
                                 showQuickFilter:true,
                                 quickFilterProps:{debounceMs:500},
-
                             }
                         }}
                         pageSizeOptions={[5]}

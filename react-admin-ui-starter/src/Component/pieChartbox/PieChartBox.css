@@ -2,6 +2,7 @@
 {
     height: 100%;
     display: flex;
+    direction: ltr;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -18,23 +19,31 @@
 {
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 37%;
+    left: 6%;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width: 143px;
+    height: 143px;
 }
 
 .options
 {
     display: flex;
-    justify-content: space-between;
+    position: absolute;
+    top: 47%;
+    right: 7%;
+    color: black;
     gap: 10px;
-    font-size:14px;
+    font-size: 14px;
+    flex-direction: column;
 }
 
 .option
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    direction: ltr;
     gap: 10px;
     align-items: center;
 }
@@ -46,9 +55,8 @@
     gap: 10px;
     align-items: center;
 }
-.dot
+.rectangle
 {
     width: 10px;
     height: 10px;
-    border-radius: 50%;
 }

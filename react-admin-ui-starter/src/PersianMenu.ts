@@ -1,11 +1,10 @@
-
 interface MenuItem {
     id: number;
     title: string;
     listItems: Array<{
         id: number;
         title: string;
-        url?: string; // Optional URL property, adjust as needed
+        url?: string;
         listItem?: Array<{
             id: number;
             title: string;
@@ -70,6 +69,67 @@ export const menu:Array<MenuItem> =[
                 title: "کرمان",
                 url: "/users/1",
             },
+            {
+                id: 10,
+                title: "همدان",
+                url: "/users/1",
+            },
+            {
+                id: 11,
+                title: "لرستان",
+                url: "/",
+            },
+            {
+                id: 12,
+                title: "خراسان جنوبی",
+                url: "/users/1",
+            },
+            {
+                id: 13,
+                title: "گیلان",
+                url: "/users/1",
+            },
+            {
+                id: 14,
+                title: "مازندران",
+                url: "/",
+            },
+            {
+                id: 15,
+                title: "همدان",
+                url: "/users/1",
+            },
+            {
+                id: 16,
+                title: "همدان",
+                url: "/users/1",
+            },
+            {
+                id: 17,
+                title: "لرستان",
+                url: "/",
+            },
+            {
+                id: 18,
+                title: "خراسان جنوبی",
+                url: "/users/1",
+            },
+            {
+                id: 19,
+                title: "گیلان",
+                url: "/users/1",
+            },
+            {
+                id: 20,
+                title: "مازندران",
+                url: "/",
+            },
+            {
+                id: 21,
+                title: "همدان",
+                url: "/users/1",
+            },
+
         ],
     },
     {
@@ -131,27 +191,27 @@ export const menu:Array<MenuItem> =[
         ],
     },
     {
-        id: 4 ,
-        title:"سایت",
+        id: 4,
+        title: "سایت",
         listItems: [
             {
                 id: 1,
-                title: "سایت 1",
-                url: "/site/1",
-            },
-            {
-                id: 2,
-                title: "سایت 2",
-                url: "/site/2",
-            },
-            {
-                id: 3,
-                title: "سایت 3",
-                url: "/site/3",
+                title: "تهران",
+                listItem: [
+                    {
+                        id: 1,
+                        title: "سایت 1",
+                    },
+                    {
+                        id: 2,
+                        title: "سایت 2",
+                    },
+                    {
+                        id: 3,
+                        title: "سایت 3",
+                    },
+                ],
             },
         ],
     },
-
-
-
-]
+];

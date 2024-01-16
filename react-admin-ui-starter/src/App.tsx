@@ -1,52 +1,62 @@
-import Home from "./Pages/Home/Home";
-import  {BrowserRouter, Routes,Outlet, Route} from "react-router-dom";
-import Users from "./Pages/Users/users";
-import Products from "./Pages/Products/products";
-import Navbar from "./Component/Navbar/Navbar";
-import Footer from "./Component/Footer/Footer";
-import Menu from "./Component/Menu/Menu"
-import Login from "./Pages/Login/Login";
+// App.js
+import React from 'react';
+import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
+import Home from './Pages/Home/Home';
+import Navbar from './Component/Navbar/Navbar';
+import Footer from './Component/Footer/Footer';
+import Menu from './Component/Menu/Menu';
+import Login from './Pages/Login/Login';
 import './styles/global.css';
-import Site from "./Component/Site/Site.tsx";
+import Site from './Component/Site/Site.tsx';
+import { AuthProvider, useAuth } from './Pages/Login/AuthContext.tsx';
+import Dashboard from './Pages/Dashboard/dashboard.tsx';
 
+const windows_hight = () => {
+    console.log(window.innerWidth, window.innerHeight);
+};
 
-function App()
-{
-    const Layout =()=>
-    {
-        return (
-            <div className="main">
-                <Navbar/>
+const Layout = () => {
+    const { login, setLogin } = useAuth();
+
+    return (
+        <div>
+            {login ? (
+                <div className="main">
+                    <Navbar/>
                     <div className="container">
                         <div className="menu-container">
-                            <Menu />
+                            <Menu/>
                         </div>
                         <div className="Content-container">
                             <Outlet/>
                         </div>
                     </div>
 
+                    <Footer/>
+                </div>
+            ) : (
+                <Login login={login} setLogin={() => setLogin(!login)}/>
+            )}
+        </div>
+    );
+};
 
-                <Footer/>
-            </div>
-        )
-    }
-
-  return (
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Layout/>}>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/users" element={<Users/>}/>
-                <Route path="/site" element={<Site/>}/>
-                <Route path="/Products" element={<Products/>}/>
-            </Route>
-            <Route>
-                <Route path="/login" element={<Login/>}/>
-            </Route>
-        </Routes>
-    </BrowserRouter>
-  )
+function App() {
+    return (
+        <AuthProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Layout/>}>
+                        <Route index element={<Home/>}/>
+                        <Route path="/sites/:cellname" element={<Site/>}/>
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/asset" element={<Home />} />
+                    </Route>
+                    <Route path="/login" element={<Login />} />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
+    );
 }
 
-export default App
+export default App;

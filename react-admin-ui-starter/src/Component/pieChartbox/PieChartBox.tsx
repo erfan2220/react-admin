@@ -4,18 +4,17 @@ import {PieChart, ResponsiveContainer, BarChart, Tooltip, Pie, Cell} from "recha
 
 const data =
     [
-        {name:"Mobile",value:400,color:"#0088FE"},
-        {name:"Desktop",value:300,color:"#00C49F"},
-        {name:"Laptop",value:300,color:"#FFBB2B"},
-        {name:"Tablet",value:200,color:"#FF8042"},
+        {name:"2G devices",value:400,color:"#007BFF"},
+        {name:"3G devices",value:300,color:"#99CAFF"},
+        {name:"4G devices",value:300,color:"#18D3CC"}
 
     ]
-const PieChartBox =()=>
+const PieChartBox =(props)=>
 {
         return (
 
                 <div className="pieChartBox">
-                        <h1>Leads by Source</h1>
+                        <h1>{props.title}</h1>
                     <div className="chart">
                         <ResponsiveContainer width="99%" height={300}>
                             <PieChart>
@@ -27,7 +26,7 @@ const PieChartBox =()=>
 
                                     innerRadius={"70%"}
                                     outerRadius={"90%"}
-                                    paddingAngle={5}
+
                                     dataKey="value" >
 
                                     {data.map((item) => (
@@ -43,13 +42,10 @@ const PieChartBox =()=>
                         {
                             data.map((item)=>
                                     (
-                                         <div className="option" key={item.name}>
-                                            <div className="title">
-                                                <div className="dot" style={{backgroundColor:item.color}}></div>
-                                                    <span>{item.name}</span>
-                                            </div>
-                                             <span>{item.value}</span>
-                                         </div>
+                                        <div className="option" key={item.name}>
+                                            <div className="rectangle" style={{backgroundColor: item.color}}></div>
+                                            <span>{item.name}</span>
+                                        </div>
                                     )
                             )
                         }

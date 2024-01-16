@@ -26,7 +26,7 @@ const Rules = (props) => {
     return (
 
                 <div className="rules" >
-                    <img src="close.svg" alt="Close" onClick={() => props.deleteRow(props.rule.id)} />
+                    <img src="/close.svg" alt="Close" onClick={() => props.deleteRow(props.rule.id)} />
                     <div className="item">
                         <label htmlFor={`filter-${props.rule.id}`}>Columns</label>
 
@@ -43,8 +43,8 @@ const Rules = (props) => {
                             {props.columns
                                 .filter((item) => item.field !== 'img')
                                 .map((column) => (
-                                    <option value={column.field} key={column.field}>
-                                        {column.field}
+                                    <option value={column.headerName} key={column.headerName}>
+                                        {column.headerName}
                                     </option>
                                 ))}
 
@@ -62,7 +62,7 @@ const Rules = (props) => {
                             setSelectedOperator(e.target.value)
                             }}
                         >
-                            { selectedHeader === 'id' ? (
+                            { (selectedHeader != 'siteName') ? (
                                 <>
                                     <option value="equal">{'='}</option>
                                     <option value="smaller">{'<'}</option>

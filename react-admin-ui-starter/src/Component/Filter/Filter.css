@@ -4,16 +4,21 @@
 {
     position: absolute;
     width: 550px;
-    top: 200px;
-     display: flex;
+    top: 27%;
+    right: 39%;
+    display: flex;
     flex-direction: column;
-    z-index:200;
+    z-index: 200;
     background-color: white;
     border: 1px solid #384256;
     border-radius: 3px;
     box-shadow: 2px 2px #384256, -4px 0 .4em #222b3c;
 }
 
+.item
+{
+    overflow: hidden;
+}
 
 .image-close img
 {
@@ -30,6 +35,7 @@
 
 .newRules-button
 {
+    padding: 0;
     margin: 20px;
     width: 80px;
 }

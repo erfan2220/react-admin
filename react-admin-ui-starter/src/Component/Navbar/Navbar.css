@@ -1,66 +1,75 @@
-.Navbar
+.Navbar_container
 {
+
+    width: 100%;
+    background-color: #14141A;
+}
+.Navbar_wrapper
+{
+    max-width: 1140px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
+    padding: 24px 0;
+    gap: 45px;
+    margin: auto;
 }
-.logo
+.setting_navbar_container
 {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    direction: ltr;
+    justify-content: space-between;
+}
+.search_box_container
+{
+    display: flex;
+    width: 360px;
+    gap: 12px;
+    height: 48px;
     align-items: center;
-
+    justify-content: flex-start;
+    border-radius: 16px;
+    background: #313140;
+    padding: 5px;
+    flex-direction: row-reverse;
 }
-.logo p
+.search_box_container p
 {
-    font-weight: bold;
+    direction: ltr;
 }
-.icons-container {
-    display: flex;
-    flex-direction: row;
-    gap:21px;
-}
-.notification
-{
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    height: 31px;
-}
-.notification span
-{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    background-color: red;
-    color: white;
-    width: 20px;
-    border-radius: 50%;
-    top: -10px;
-    right:-10px ;
-
-}
-.user-icon
+.logo_seacrh_container
 {
     display: flex;
     flex-direction: row;
+    direction: ltr;
+    gap: 48px;
+}
+.menu_navbar
+{
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    gap: 3%;
+}
+.langauge_content_box {
+    display: flex;
     align-items: center;
-    gap:6px;
-}
-.user-icon img
-{
-    width: 40px;
-    border-radius: 50%;
-    object-fit: contain;
+    justify-content: center;
+    direction: ltr;
+    height: 100%;
+    border-radius: 16px;
+    background: #313140;
 }
 
-
-@media only screen and (max-width: 768px)
+.profile_langauge_box
 {
-    .icon
-    {
-        display: none;
-    }
+    display: flex;
+    width: 200px;
+    height: 48px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+
+    flex-direction: row-reverse;
 }
