@@ -1,10 +1,16 @@
 @import "../../styles/variable.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .menu
 {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 20px;
+    padding-right: 10px;
 }
 
 .item
@@ -24,53 +30,192 @@
 }
 .dropdown
 {
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
-.dropdown-content
-{
-    display: none;
-    position: absolute;
-    color: #080808;
-    width: 94px;
-    right: 40px;
-    outline: none;
-    border-radius: 5px;
-    padding: 5px;
-    top: 0;
-}
+
 .dropdown img
 {
     width: 20px;
     color: white;
 }
-.open .dropdown-content {
-    display: block;
+.menu-container
+{
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+
 }
+
+ .dropdown-content{
+     display: flex;
+     flex-direction: column;
+     position: absolute;
+     right: 0;
+     left: 14px;
+     top: 11px;
+     align-items: center;
+     background-color: #394161;
+     border: none;
+     outline: none;
+     max-height: 100vh;
+     overflow: auto;
+     border-radius: 10px 0 0 10px;
+}
+ .dropdown-content h2,.dropdown-content-container h2
+ {
+     border-bottom: 4px solid rgba(101, 107, 128, 0.47);
+     box-shadow: 0 0 0 0 rgba(247, 247, 248, 0.29);
+     color: white;
+     text-align: center;
+     padding: 12px;
+     width: 100%;
+     font-size: 16px;
+     font-weight: bold;
+ }
+ .dropdown-content-container
+ {
+     display: flex;
+     flex-direction: column;
+     position: absolute;
+     right: 0;
+     left: 14px;
+     top: 11px;
+     align-items: center;
+     background-color: #394161;
+     border: none;
+     outline: none;
+     max-height: 100vh;
+     overflow: auto;
+     border-radius: 10px 0 0 10px;
+ }
+
+ .List-item
+ {
+     color: white;
+     font-size: 14px;
+     text-align: center;
+     width: 100%;
+     font-weight: bold;
+     border-bottom: 2px solid #b2b2ff4a;
+     padding: 15px;
+ }
+
+ .dropdown-content-header
+ {
+     width: 100%;
+     display: flex;
+     align-items: center;
+     gap: 2px;
+     position: relative;
+ }
+ .dropdown-content-container svg
+ {
+     position: absolute;
+     top: 11px;
+ }
+
+.dropdown-content::-webkit-scrollbar
+{
+    width: 20px;
+}
+
+/* Track */
+.dropdown-content::-webkit-scrollbar-track {
+    border-radius: 15px;
+
+}
+
+/* Handle */
+.dropdown-content::-webkit-scrollbar-thumb {
+    background: #0087fc;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: #00c29e;
+    border-radius: 10px;
+}
+.dropdown-content::-webkit-scrollbar-button {
+    width: 10px;
+
+}
+.dropdown-content::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+
+}
+
+.dropdown-content::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+
+}
+
+
+.dropdown-content-container::-webkit-scrollbar
+  {
+        width: 20px;
+  }
+
+/* Track */
+.dropdown-content-container::-webkit-scrollbar-track {
+
+    border-radius: 15px;
+
+}
+
+.dropdown-content-container::-webkit-scrollbar-thumb {
+    background: #838080;
+
+}
+
+/* Handle on hover */
+.dropdown-content-container::-webkit-scrollbar-thumb:hover {
+    background: #00c29e;
+}
+.dropdown-content-container::-webkit-scrollbar-button {
+    width: 10px;
+}
+.dropdown-content-container::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 10px;
+}
+
+.dropdown-content-container::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 14px;
+}
+
+
+
 .dropdown-title
 {
     display: flex;
     flex-direction: row;
+    font-size: 18px;
+    width: 100%;
+    border:none;
+    color: #fff;
     align-items: center;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 15px;
+    cursor: pointer;
 }
-.List-item
+.dropdown-title img
 {
-    display: flex;
-    align-items: center;
-    gap:10px;
-    padding: 10px;
+    fill: white;
 }
 
-.dropdown ul
-{
-    color: #2a3447;
-    background-color: white;
+
+
+.dropdown ul li:hover {
+    background: #1d1f24;
 }
 
 .List-item:hover
 {
-    background-color: #384256;
+    background-color: rgba(56, 66, 86, 0.04);
 }
 
 .List-item span

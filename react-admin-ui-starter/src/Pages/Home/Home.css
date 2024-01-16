@@ -7,7 +7,7 @@
     gap: 20px;
     grid-auto-rows: minmax(70px,auto);
     grid-auto-flow: dense;
-
+    color: black;
 }
 .box
 {
@@ -18,23 +18,24 @@
 .box1, .box4
 {
  grid-column: span 1;
-    grid-row: span 3;
+    grid-row: span 1;
 }
-.box2 ,.box3,.box5,.box6,.box8,.box9
+.box2 ,.box3
 {
     grid-column: span 1;
     grid-row: span 1;
 }
-.box7
+.box5
 {
-    grid-column: span 2;
+    grid-column: span 3;
     grid-row: span 2;
 }
+
 
 @media only screen and (max-width: 1200px)
 {
     .home {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

@@ -34,6 +34,7 @@ a
 .container {
   display: flex;
   flex-direction: row-reverse;
+  height: 110vh;
 }
 
 
@@ -43,13 +44,13 @@ a
 {
   width: 100%;
   padding:10px;
+  background-color: white;
 }
 .menu-container
 {
   width: 250px;
   padding: 10px;
 }
-
 
 
 @media screen and(max-width: 600px)

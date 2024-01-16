@@ -19,14 +19,12 @@ function App()
                 <Navbar/>
                     <div className="container">
                         <div className="menu-container">
-                            <Menu />
+                            <Menu/>
                         </div>
                         <div className="Content-container">
                             <Outlet/>
                         </div>
                     </div>
-
-
                 <Footer/>
             </div>
         )
@@ -38,10 +36,11 @@ function App()
             <Route path="/" element={<Layout/>}>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/users" element={<Users/>}/>
-                <Route path="/site" element={<Site/>}/>
+                <Route path="/sites/:cellname" element={<Site />} />
                 <Route path="/Products" element={<Products/>}/>
             </Route>
             <Route>
+
                 <Route path="/login" element={<Login/>}/>
             </Route>
         </Routes>
