@@ -7,6 +7,7 @@ import Footer from "./Component/Footer/Footer";
 import Menu from "./Component/Menu/Menu"
 import Login from "./Pages/Login/Login";
 import './styles/global.css';
+import Site from "./Component/Site/Site.tsx";
 
 
 function App()
@@ -37,6 +38,7 @@ function App()
             <Route path="/" element={<Layout/>}>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/users" element={<Users/>}/>
+                <Route path="/site" element={<Site/>}/>
                 <Route path="/Products" element={<Products/>}/>
             </Route>
             <Route>

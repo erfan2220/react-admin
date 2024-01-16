@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import {useState} from "react";
 import './users.css'
 import DataTable from "../../Component/DataTable/DataTable";
-import { DataGrid, GridColDef,GridToolbar, GridValueGetterParams } from '@mui/x-data-grid';
+import {  GridColDef  } from '@mui/x-data-grid';
 import {userRows} from "../../data";
 import Add from "../../Component/Adduser/Add";
 import Filter from "../../Component/Filter/Filter";
-import {Label} from "recharts";
 
 
 const Users = () =>

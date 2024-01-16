@@ -2,10 +2,13 @@ import './Menu.css';
 import { menu } from '../../PersianMenu.ts';
 import { useState } from "react";
 
+
 const Menu = () => {
     const [activeButtonId, setActiveButtonId] = useState(null);
-    const [province,setProvince]=useState(null)
-    const [city,setCity]=useState(null)
+    const [province,setProvince]=useState("")
+    /**
+     * const [city,setCity]=useState("")
+     */
     const handleButton = (id:any) => {
         setActiveButtonId(id === activeButtonId ? null : id);
     };
@@ -21,7 +24,9 @@ const Menu = () => {
                              </div>
 
                             {items.title === "استان" ? (
-                                <select tabIndex={0} className="dropdown-content z-[1] menu p-2 w-54  shadow-lg  rounded-box w-52">
+                                <select tabIndex={0} className="dropdown-content z-[1] menu p-2 w-54  shadow-lg  rounded-box w-52"
+                                        onChange={(e) => {
+                                            setProvince(e.target.value)}}>
                                     <option selected disabled></option>
                                     {
                                         items.listItems.map((item) => (
@@ -34,19 +39,19 @@ const Menu = () => {
                             ):""
                             }
                             {items.title === "شهر" ? (
-                                <select tabIndex={0} className="dropdown-content z-[1] menu p-2 w-54  shadow-lg  rounded-box w-52">
+                                <select tabIndex={0} className="dropdown-content z-[1] menu p-2 w-54 shadow-lg rounded-box w-52">
                                     <option selected disabled></option>
-                                    {
-                                        items.listItems.map((item) => (
-                                            <option key={item.id} className="List-item">
-                                                {item.title}
-
-                                            </option>
-                                        ))
-                                    }
+                                    {items.listItems.map((item) => (
+                                        item.title === province ? (
+                                            (item.listItem || []).map((list) => (
+                                                <option key={list.id} className="List-item">
+                                                    {list.title}
+                                                </option>
+                                            ))
+                                        ) : null
+                                    ))}
                                 </select>
-                            ):""
-                            }
+                            ) : ""}
                             {items.title === "سایت" ? (
                                 <select tabIndex={0} className="dropdown-content z-[1] menu p-2 w-54  shadow-lg  rounded-box w-52">
                                     <option selected disabled></option>
@@ -54,7 +59,6 @@ const Menu = () => {
                                         items.listItems.map((item) => (
                                             <option key={item.id} className="List-item">
                                                 {item.title}
-
                                             </option>
                                         ))
                                     }

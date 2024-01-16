@@ -1,4 +1,19 @@
-export const menu =[
+
+interface MenuItem {
+    id: number;
+    title: string;
+    listItems: Array<{
+        id: number;
+        title: string;
+        url?: string; // Optional URL property, adjust as needed
+        listItem?: Array<{
+            id: number;
+            title: string;
+        }>;
+    }>;
+}
+
+export const menu:Array<MenuItem> =[
     {
         id: 1 ,
         title:"مدیریت دارایی",
@@ -9,7 +24,6 @@ export const menu =[
     {
         id: 2 ,
         title:"استان",
-        icon: "home.svg",
         listItems: [
             {
                 id: 1,
@@ -61,12 +75,11 @@ export const menu =[
     {
         id: 3 ,
         title:"شهر",
-        icon: "home.svg",
         listItems: [
             {
                 id: 1,
                 title: "تهران",
-                listItems:[
+                listItem:[
                     {
                         id: 1,
                         title: "تهران",
@@ -92,7 +105,7 @@ export const menu =[
             {
                 id: 2,
                 title: "کرمان",
-                listItems:[
+                listItem:[
                     {
                         id: 1,
                         title: "کرمان",
@@ -120,22 +133,21 @@ export const menu =[
     {
         id: 4 ,
         title:"سایت",
-        icon: "home.svg",
         listItems: [
             {
                 id: 1,
                 title: "سایت 1",
-                url: "/",
+                url: "/site/1",
             },
             {
                 id: 2,
                 title: "سایت 2",
-                url: "/users/1",
+                url: "/site/2",
             },
             {
                 id: 3,
                 title: "سایت 3",
-                url: "/users/1",
+                url: "/site/3",
             },
         ],
     },

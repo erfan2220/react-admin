@@ -3,7 +3,10 @@ import './Filter.css';
 import Rules from '../Rules/Rules.jsx';
 import { userRows } from '../../data';
 
-const Filter = (props) => {
+
+
+
+const Filter  = (props) => {
     const [ruleList, setRuleList] = useState([{ id: 1, field: '', operator: 'equal', value: '' }]);
 
     const applyFilter = (row, rule) => {

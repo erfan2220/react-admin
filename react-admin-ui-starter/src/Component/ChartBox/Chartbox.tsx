@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './Chartbox.css';
 import {LineChart, Line, ResponsiveContainer, Tooltip} from 'recharts';
 import {Link} from "react-router-dom";
@@ -45,7 +45,7 @@ return(
                 </ResponsiveContainer>
             </div>
             <div className="texts">
-                <div className="percentage" style={{color:props.percentage<0?"tomato":"limegreen"}}>{props.percentage}%</div>
+                <div className="percentage" style={{color:props.percentage <0 ?"tomato":"limegreen"}}>{props.percentage}%</div>
                 <div className="duration">
                     This month
                 </div>

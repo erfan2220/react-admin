@@ -1,6 +1,6 @@
-import React from 'react';
+
 import "./BigChartBox.css";
-import {Bar, ResponsiveContainer, AreaChart, Tooltip, CartesianGrid, YAxis, XAxis, Area} from "recharts";
+import {ResponsiveContainer, AreaChart, Tooltip, YAxis, XAxis, Area} from "recharts";
 
 const data=
     [

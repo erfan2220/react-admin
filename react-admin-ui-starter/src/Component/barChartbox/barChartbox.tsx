@@ -1,4 +1,4 @@
-import React from 'react';
+
 import "./barChartbox.css";
 import {Bar, ResponsiveContainer, BarChart, Tooltip} from "recharts";
 
