@@ -26,7 +26,7 @@ const Rules = (props) => {
     return (
 
                 <div className="rules" >
-                    <img src="close.svg" alt="Close" onClick={() => props.deleteRow(props.rule.id)} />
+                    <img src="/close.svg" alt="Close" onClick={() => props.deleteRow(props.rule.id)} />
                     <div className="item">
                         <label htmlFor={`filter-${props.rule.id}`}>Columns</label>
 
