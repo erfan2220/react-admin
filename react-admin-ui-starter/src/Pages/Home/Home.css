@@ -7,7 +7,6 @@
     gap: 20px;
     grid-auto-rows: minmax(70px,auto);
     grid-auto-flow: dense;
-
 }
 .box
 {

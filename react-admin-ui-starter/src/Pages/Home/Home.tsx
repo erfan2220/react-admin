@@ -13,6 +13,7 @@ import {
 import BarChartbox from "../../Component/barChartbox/barChartbox";
 import PieChartBox from "../../Component/pieChartbox/PieChartBox";
 import BigChartBox from "../../Component/bigChartBox/BigChartBox";
+import Database from "../../exel/database.tsx";
 
 
 const Home = () =>
@@ -37,6 +38,7 @@ const Home = () =>
             <div className="box box7"><BigChartBox/></div>
             <div className="box box8"><BarChartbox {...barChartBoxRevenue}/></div>
             <div className="box box9"> <BarChartbox {...barChartBoxVisit}/></div>
+
         </div>
 
 
