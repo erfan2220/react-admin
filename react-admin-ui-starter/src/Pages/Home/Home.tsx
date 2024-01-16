@@ -1,45 +1,50 @@
 
 import './Home.css'
-import TopBox from "../../Component/TopBox/TopBox";
-import Chartbox from "../../Component/ChartBox/Chartbox";
-import {
-    chartBoxConversion,
-    chartBoxProduct,
-    chartBoxRevenue,
-    chartBoxUser,
-    barChartBoxRevenue,
-    barChartBoxVisit
-} from "../../data";
-import BarChartbox from "../../Component/barChartbox/barChartbox";
-import PieChartBox from "../../Component/pieChartbox/PieChartBox";
-import BigChartBox from "../../Component/bigChartBox/BigChartBox";
+import IranMap from "../../Component/IranMap/iranMap.tsx";
+
+
+
+
+
+
+
+
+
+
+
 
 
 const Home = () =>
     (
         <div className="home">
             <div className="box box1">
-                <TopBox/>
+                <h2>تعداد سایت ها</h2>
+                <p>1,020</p>
             </div>
             <div className="box box2">
-                <Chartbox {...chartBoxUser}/>
+                <h2>تعداد سایت های   Huawei</h2>
+                <p>400</p>
             </div>
             <div className="box box3">
-                <Chartbox {...chartBoxProduct}/>
+                <h2>تعداد سایت های   Ericsson</h2>
+                <p>300</p>
             </div>
             <div className="box box4">
-                <PieChartBox/>
+                <h2> تعداد سایت های   Nokia</h2>
+                <p>320</p>
             </div>
             <div className="box box5">
-                <Chartbox {...chartBoxRevenue}/>
+                <div >
+                    <h2 id="maptitr"> نقشه استان ها</h2>
+                    <IranMap/>
+                </div>
             </div>
-            <div className="box box6"> <Chartbox {...chartBoxConversion}/></div>
-            <div className="box box7"><BigChartBox/></div>
-            <div className="box box8"><BarChartbox {...barChartBoxRevenue}/></div>
-            <div className="box box9"> <BarChartbox {...barChartBoxVisit}/></div>
+
+
+
         </div>
 
 
-);
+    );
 
 export default Home;

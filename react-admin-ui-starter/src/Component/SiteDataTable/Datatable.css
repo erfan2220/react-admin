@@ -3,7 +3,7 @@
 {
     background-color: white;
     padding: 10px;
-    border-radius: 0;
+    border-radius: 0px;
 }
 .MuiDataGrid-toolbarContainer
 {
@@ -15,17 +15,5 @@
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-.action
-{
-    display: flex;
-    gap:15px;
-}
-.actions img
-{
-    width: 20px;
-    height: 20px;
-    cursor:  pointer;
 }
 

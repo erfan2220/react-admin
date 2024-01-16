@@ -1,14 +1,14 @@
 .Navbar
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
     padding: 20px;
 }
 .logo
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
 

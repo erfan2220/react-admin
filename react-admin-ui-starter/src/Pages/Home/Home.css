@@ -7,7 +7,8 @@
     gap: 20px;
     grid-auto-rows: minmax(70px,auto);
     grid-auto-flow: dense;
-
+    color: black;
+    direction: rtl;
 }
 .box
 {
@@ -15,48 +16,81 @@
     border-radius: 10px;
     border: 2px solid var(--soft-bg) ;
 }
-.box1, .box4
-{
- grid-column: span 1;
-    grid-row: span 3;
-}
-.box2 ,.box3,.box5,.box6,.box8,.box9
+.box1,.box2 ,.box3, .box4
 {
     grid-column: span 1;
     grid-row: span 1;
+    height: 123px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-.box7
+
+.box5
 {
-    grid-column: span 2;
+    grid-column: span 4;
     grid-row: span 2;
+    padding: 15px 20px;
+
 }
+
+.box1 h2,.box2 h2,.box3 h2,.box4 h2,.box5 h2
+{
+    font-size: 14px;
+    color: #a4a4a4;
+}
+.box1 span,.box2 span,.box3 span,.box4 span,.box5  span
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+.box1 p,.box2 p,.box3 p,.box4 p
+{
+    font-size: 30px;
+    font-weight: 500;
+
+}
+
+
 
 @media only screen and (max-width: 1200px)
 {
     .home {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media only screen and (max-width: 1024px)
 {
     .home {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .box1 h2,.box2 h2,.box3 h2,.box4 h2,.box5 h2
+    {
+        font-size: 10px;
+
+    }
+    .box1 span,.box2 span,.box3 span,.box4 span,.box5  span
+    {
+        font-size: 14px;
+    }
+    .box1 p,.box2 p,.box3 p,.box4 p
+    {
+        font-size: 20px;
+        font-weight: 500;
     }
 }
 
 @media only screen and (max-width: 768px)
 {
     .home {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
-    .box7
+
+    .box1,.box2 ,.box3,.box4
     {
-        display: none;
-    }
-    .box1,.box2 ,.box3,.box4,.box5,.box6,.box8,.box9
-    {
-        width: 80%;
+            grid-column: span 2;
+            grid-row: span 2;
     }
 }
 
@@ -65,7 +99,19 @@
     .home
     {
     grid-template-rows:minmax(120px,auto) ;
-
+    }
+    .box1,.box2 ,.box3,.box4
+    {
+        grid-column: span 4;
+        grid-row: span 1;
+    }
+    .box1 h2, .box2 h2, .box3 h2, .box4 h2, .box5 h2
+    {
+       font-size: 15px;
+    }
+    .box1 p, .box2 p, .box3 p, .box4 p
+    {
+        font-size: 26px;
     }
 }
 
