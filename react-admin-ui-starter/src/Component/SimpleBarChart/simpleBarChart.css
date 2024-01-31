@@ -1,0 +1,75 @@
+.charts_container
+{
+    height: 100%;
+    max-width: 90%;
+    position: relative;
+    margin: auto;
+}
+.charts_container_header
+{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+.charts_container_header h1
+{
+    padding: 24px 0;
+}
+.charts_container_Link
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+.charts_container_Link a
+{
+    color: #007BFF;
+}
+
+.charts_container_data
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    direction: ltr;
+}
+
+.charts_container_data_left h6
+{
+    direction: ltr;
+}
+.rate_container
+{
+    display: flex;
+    border-radius: 16px;
+    direction: ltr;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FFD6D6;
+    justify-content: center;
+    width: 85px;
+    height: 32px;
+}
+.rate_container p{
+    color: #FB2424;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+.main_barChart_container {
+    height: 100%;
+    width: 100%;
+    max-width: 555px;
+    max-height: 242px;
+    position: absolute;
+    direction: ltr;
+    top: 43%;
+    left: -10%;
+}
