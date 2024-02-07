@@ -1,4 +1,4 @@
-.pieChartBox
+.pieChartBoxInventory
 {
     height: 100%;
     display: flex;
@@ -7,29 +7,39 @@
     justify-content: space-between;
 }
 
-
-
-.chart
+.title-container-inventorchart p
+{
+    direction: ltr;
+    color: black;
+    font-size: 32px;
+    font-weight: 700;
+}
+.title-container-inventorchart h2
+{
+    direction: ltr;
+    font-size: 16px;
+    color: #9E9E9E;
+    font-weight: 600;
+}
+.chart-inventory
 {
     display: flex;
     align-items: center;
-    position: absolute;
-    top: 37%;
-    left: 6%;
     justify-content: center;
-    width: 38%;
-    height: 46%;
+    margin-top: 42px;
+    margin-bottom: 32px;
+    width: 105px;
+    height: 105px;
 }
 
 .options
 {
     display: flex;
-    position: absolute;
-    top: 47%;
-    right: 7%;
     color: black;
     gap: 12px;
     flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 42px;
 }
 
 .option
@@ -60,7 +70,7 @@
 
 @media only screen and (max-width: 1200px)
 {
-    .pieChartBox h1
+    .pieChartBoxInventory h1
     {
         font-size: 24px;
     }

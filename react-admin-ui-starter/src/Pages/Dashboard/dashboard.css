@@ -1,7 +1,9 @@
 .dashboard
 {
     direction: ltr;
-    padding: 10px 0;
+    padding: 20px 10px;
+    width: 92%;
+    margin:auto;
 }
 
 .dashboard h1
@@ -28,8 +30,8 @@
     grid-column: span 1;
     background-color: white;
     position: relative;
-    height: 273px;
-    max-width: 360px;
+    height: 382px;
+    max-width: 100%;
     border-radius: 16px;
 }
 
@@ -49,8 +51,56 @@
     background-color: white;
     position: relative;
     height: 464px;
-    max-width: 555px;
+    max-width: 100%;
     border-radius: 16px;
+}
+@media screen and (max-width: 1280px)
+{
+    .box1_1,.box1_2 ,.box1_3
+    {
+      height: 273px;
+    }
+
+
+    .box1_1,.box1_2 ,.box1_3
+    {
+        max-width: 360px;
+    }
+    .box2_1,.box2_2
+    {
+        max-width: 555px;
+    }
 }
 
 
+
+
+@media screen and (max-width: 576px)
+{
+    .dashboard_content_container_top
+    {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        direction: ltr;
+        justify-items:center;
+        margin: 0 6% 16px 6%;
+    }
+    .box1_1,.box1_2,.box1_3
+    {
+        width: 100%;
+        margin: 0 0 16px 0;
+        max-width: 100%;
+    }
+    .dashboard_content_container_down
+    {
+        grid-template-columns: repeat(1,1fr);
+        justify-items: center;
+        margin: 0 6% 16px 6%;
+    }
+    .box2_1 ,.box2_2
+    {
+        width: 100%;
+    }
+
+
+}

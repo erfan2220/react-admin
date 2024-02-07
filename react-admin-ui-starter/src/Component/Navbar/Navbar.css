@@ -6,7 +6,8 @@
 }
 .Navbar_wrapper
 {
-    max-width: 1140px;
+    width: 91%;
+    max-width: 2000px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,9 +35,14 @@
     padding: 5px;
     flex-direction: row-reverse;
 }
-.search_box_container p
+.search_box_container input
 {
     direction: ltr;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 100%;
 }
 .logo_seacrh_container
 {
@@ -45,6 +51,12 @@
     direction: ltr;
     gap: 48px;
 }
+.hamberger_menu
+{
+    display: none;
+
+}
+
 .menu_navbar
 {
     display: flex;
@@ -52,10 +64,15 @@
     direction: ltr;
     gap: 3%;
 }
+.menu_navbar li a
+{
+    font-size: 20px;
+}
 .langauge_content_box {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap:8px;
     direction: ltr;
     height: 100%;
     border-radius: 16px;
@@ -72,4 +89,62 @@
     flex-shrink: 0;
 
     flex-direction: row-reverse;
+}
+
+@media screen and (max-width: 576px)
+{
+
+    .Navbar_container
+    {
+        position: fixed;
+    }
+    .hamberger_menu
+    {
+        display: flex;
+        flex-direction: row;
+        direction: ltr;
+        align-items: center;
+        gap: 2px;
+    }
+    .hamberger_menu_svg
+    {
+        width: 32px;
+        height: 32px;
+    }
+    .hamberger_config_svg
+    {
+        width: 70%;
+
+    }
+
+    .langauge_content_box
+    {
+        padding: 6px;
+    }
+    .langauge_content_box p
+    {
+        display: none;
+    }
+    .menu_navbar
+    {
+        display: none;
+    }
+    .profile_langauge_box
+    {
+        justify-content: flex-end;
+        gap: 24px;
+    }
+    .user_profile_part
+    {
+        display: none;
+    }
+   .logo_seacrh_container
+   {
+       display: none;
+   }
+    .Navbar_wrapper
+    {
+        max-width: 1140px;
+    }
+
 }

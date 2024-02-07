@@ -5,6 +5,8 @@ import { motion } from "framer-motion"
 import Database from "../../exel/database.tsx";
 import {abaali} from "../../database/SiteDAta/abaali.ts"
 import {Link} from "react-router-dom";
+import {React,useContext} from 'react';
+import MobileSettingContext from "../Navbar/Navbar.tsx"
 
 
 
@@ -16,6 +18,7 @@ const Menu = () => {
     const [cities,setCities]=useState("")
     const [id,setId]=useState(10)
     const [filteredCellnames, setFilteredCellnames] = useState<string[]>([]);
+    const settingsmobile = useContext(MobileSettingContext);
 
 
 
@@ -146,6 +149,7 @@ const Menu = () => {
 
     return (
         <>
+
             <div className="menu" dir="rtl">
                 <div tabIndex={0} role={"button"} className="dropdown-title" onClick={(e) => {
                     e.preventDefault()
@@ -176,9 +180,11 @@ const Menu = () => {
                               d="M1,0H14a1,1,0,0,1,0,2H1A1,1,0,0,1,1,0ZM1,7H14a1,1,0,0,1,0,2H1A1,1,0,0,1,1,7Zm0,7H14a1,1,0,0,1,0,2H1A1,1,0,0,1,1,14Z"/>
                     </svg>
                     <h2>انتخاب سایت</h2>
+
+
+
                 </div>
                 {
-
                     abaali.map((items, index) => (
                         <div className="item" key={index}>
                             <div className="dropdown">

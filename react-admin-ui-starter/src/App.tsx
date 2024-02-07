@@ -10,10 +10,10 @@ import './styles/global.css';
 import Site from './Component/Site/Site.tsx';
 import { AuthProvider, useAuth } from './Pages/Login/AuthContext.tsx';
 import Dashboard from './Pages/Dashboard/dashboard.tsx';
+import Inventory from "./Pages/Inventory/Inventory.tsx";
 
-const windows_hight = () => {
-    console.log(window.innerWidth, window.innerHeight);
-};
+
+
 
 const Layout = () => {
     const { login, setLogin } = useAuth();
@@ -43,20 +43,21 @@ const Layout = () => {
 
 function App() {
     return (
-        <AuthProvider>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Layout/>}>
-                        <Route index element={<Home/>}/>
-                        <Route path="/sites/:cellname" element={<Site/>}/>
-                        <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/asset" element={<Home />} />
-                    </Route>
-                    <Route path="/login" element={<Login />} />
-                </Routes>
-            </BrowserRouter>
-        </AuthProvider>
-    );
+                <AuthProvider>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Layout/>}>
+                                <Route index element={<Dashboard />}/>
+                                <Route path="/sites/:cellname" element={<Site/>}/>
+                                <Route path="/dashboard" element={<Dashboard />} />
+                                <Route path="/asset" element={<Home />} />
+                                <Route path="/Inventory" element={<Inventory />} />
+                            </Route>
+                            <Route path="/login" element={<Login />} />
+                        </Routes>
+                    </BrowserRouter>
+                 </AuthProvider>
+            );
 }
 
 export default App;

@@ -53,7 +53,7 @@ const RoundedBar = (props) => {
     const { x, y, height } = props;
     return (
         <g>
-            <rect x={x} y={y} width={10} height={height} rx={10} ry={10} fill={props.fill} />
+            <rect x={x} y={y} width={12} height={height} rx={10} ry={10} fill={props.fill} />
         </g>
     );
 };
@@ -67,6 +67,12 @@ function SimpleBarChart() {
         return tick > 999 ? `$${(tick / 1000).toFixed(1)}K` : `$${tick}`;
     };
 
+    const CustomTooltip =()=>
+    {
+        return(<>
+
+        </>)
+    }
     return (
         <div className="charts_container">
             <div className="charts_container_header">
@@ -91,8 +97,8 @@ function SimpleBarChart() {
                 </div>
             </div>
 
-            <div className="main_barChart_container">
-                <ResponsiveContainer width="100%" height="100%">
+            <div className="main_barChart_container" >
+                <ResponsiveContainer width="100%" height="100%" >
                     <BarChart
                         width={500}
                         height={300}
@@ -105,19 +111,21 @@ function SimpleBarChart() {
                         }}
                     >
                         <CartesianGrid horizontal={false} vertical={false} strokeDasharray="3 3" />
-                        <XAxis dataKey="name" ticks={customXAxisTicks} tickMargin={10} />
-                        <YAxis   ticks={customYAxisTicks} tickFormatter={formatYAxisTick} interval={0} tickMargin={50} />
-                        <Tooltip />
+                        <XAxis dataKey="name" ticks={customXAxisTicks} tickMargin={10} tickCount={7} padding={{left:40}} />
+                        <YAxis   ticks={customYAxisTicks} tickFormatter={formatYAxisTick}  interval={0}  tickMargin={50}  />
+                        <Tooltip cursor={false} content={<CustomTooltip />}/>
                         <Legend />
                         <Bar
                             dataKey="pv"
                             fill="#007BFF"
-                            shape={<RoundedBar radius={10} />}
+                            shape={<RoundedBar radius={10}/>}
+
                         />
                         <Bar
                             dataKey="uv"
                             fill="#18D3CC"
-                            shape={<RoundedBar radius={10} />}
+                            shape={<RoundedBar radius={10}/>}
+
                         />
                     </BarChart>
                 </ResponsiveContainer>

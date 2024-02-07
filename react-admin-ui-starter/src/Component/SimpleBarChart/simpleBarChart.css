@@ -42,6 +42,7 @@
 .charts_container_data_left h6
 {
     direction: ltr;
+    font-weight: 600;
 }
 .rate_container
 {
@@ -64,12 +65,38 @@
     text-transform: capitalize;
 }
 .main_barChart_container {
+
+
     height: 100%;
     width: 100%;
-    max-width: 555px;
+    max-width: 100%;
     max-height: 242px;
     position: absolute;
     direction: ltr;
     top: 43%;
-    left: -10%;
+    left: -6%;
+}
+
+.recharts-surface:hover {
+    fill: #FFF !important; /* Change the color to match your bar color */
+}
+
+
+@media screen and (max-width: 1280px)
+{
+    .main_barChart_container {
+
+        max-width: 555px;
+
+        left: -10%;
+    }
+
+}
+@media screen and (max-width: 576px)
+{
+
+    .main_barChart_container
+    {
+        left: 0;
+    }
 }

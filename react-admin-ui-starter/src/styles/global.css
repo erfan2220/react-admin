@@ -20,6 +20,7 @@
 
 * {
   font-family: Iransans;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -49,13 +50,10 @@ a
 }
 
 
-
-
 .Content-container
 {
   width: 100%;
-  padding:10px;
-  max-width: 1140px;
+  max-width: 2000px;
   margin: 0 auto;
 }
 .menu-container
@@ -64,6 +62,13 @@ a
   padding: 5px;
   display: none;
   position: relative;
+}
+@media screen and(max-width: 1280px)
+{
+  .Content-container
+  {
+    max-width: 1140px;
+  }
 }
 
 @media screen and(max-width: 1024px)
@@ -90,10 +95,10 @@ a
   }
 }
 
-@media (max-width: 480px)
+@media (max-width: 576px)
 {
   .container {
-    height: 137vh !important;
+    height: max-content;
   }
 }
 
