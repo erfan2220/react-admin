@@ -91,6 +91,11 @@
     flex-direction: row-reverse;
 }
 
+.active
+{
+    color:  #007BFF;
+}
+
 @media screen and (max-width: 576px)
 {
 

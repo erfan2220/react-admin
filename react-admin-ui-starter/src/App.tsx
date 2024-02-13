@@ -11,6 +11,7 @@ import Site from './Component/Site/Site.tsx';
 import { AuthProvider, useAuth } from './Pages/Login/AuthContext.tsx';
 import Dashboard from './Pages/Dashboard/dashboard.tsx';
 import Inventory from "./Pages/Inventory/Inventory.tsx";
+import Visualize from "./Pages/Visualize/visualize.tsx";
 
 
 
@@ -52,6 +53,7 @@ function App() {
                                 <Route path="/dashboard" element={<Dashboard />} />
                                 <Route path="/asset" element={<Home />} />
                                 <Route path="/Inventory" element={<Inventory />} />
+                                <Route path="/Visualize" element={<Visualize />} />
                             </Route>
                             <Route path="/login" element={<Login />} />
                         </Routes>

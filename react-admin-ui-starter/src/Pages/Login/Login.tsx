@@ -2,15 +2,32 @@
 
 import './Login.css'
 import {useAuth} from "./AuthContext.tsx";
+import {useState} from "react";
 const Login = () =>
 {
     const {login,setLogin}=useAuth()
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const defaultUsername = 'admin';
+    const defaultPassword = 'admin';
+
     const handleSignIn = () => {
-        // Toggle the login state using the setLogin function
-        setLogin(!login);
+        if (username === defaultUsername && password === defaultPassword) {
+            // Toggle the login state using the setLogin function
+            setLogin(!login);
+        } else {
+            // Provide feedback to the user that the credentials are incorrect
+            alert('Incorrect username or password');
+        }
     };
 
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    };
 
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
 
 return(
     <div className="Login">
@@ -23,23 +40,35 @@ return(
                 <div className="username_container">
                     <label htmlFor="">Username</label>
 
-                    <input type="text" placeholder="Type your username here"/>
+                    <input
+                        type="text"
+                        placeholder="Type your username here"
+                        value={username}
+                        onChange={handleUsernameChange}
+                    />
                     <img src="/UserCircle%20(1).svg" alt=""/>
 
                 </div>
                 <div className="password_container">
                     <label htmlFor="">Password</label>
 
-                    <input type="password" placeholder="Type your password here"/>
+                    <input
+                        type="password"
+                        placeholder="Type your password here"
+                        value={password}
+                        onChange={handlePasswordChange}
+                    />
                     <img src="/Lock.svg" alt=""/>
 
                 </div>
                 <button onClick={handleSignIn}>Sign in</button>
+                
+
             </div>
             <div className="line"></div>
             <div className="loremipsun_container">
                 <div className="loremipsun_container_part1">
-                    <img src="/Info.svg" alt=""/>
+                <img src="/Info.svg" alt=""/>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae
                         congue</p>

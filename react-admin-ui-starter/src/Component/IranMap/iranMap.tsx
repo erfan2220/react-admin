@@ -15,11 +15,6 @@ const useMouse = () => {
     useEffect(() => {
 
 
-
-
-
-
-
         setMousePositionRef.current = setMousePosition;
         function handle(e:MouseEvent) {
             setMousePositionRef.current({
@@ -58,23 +53,34 @@ const IranMap = () => {
 
     const [uvValues, setUvValues] = useState([Math.floor(Math.random() * 1000)]);
 
+    function randomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            const newUvValue = Math.floor(Math.random() * 1000);
-            setUvValues((prevValues) => [...prevValues, newUvValue]);
-        }, 400);
+            const newUvValue = Math.floor(randomNumber(300,500) * 3000);
+            setUvValues(prevValues => {
+                const updatedValues = [...prevValues, newUvValue];
+                if (updatedValues.length > 16) {
+                    // Remove the oldest value
+                    updatedValues.shift();
+                }
+                return updatedValues;
+            });
+        }, 1000);
 
         // Cleanup interval on component unmount
         return () => clearInterval(intervalId);
-    }, []);  //
+    }, []);
 
 
 
 
     let currentIndex = 0;
 
-    const data = uvValues.map((uv) => {
+    const data = uvValues.map((uv) =>
+    {
         if (currentIndex < 7) {
             const entry = {
                 name: `Page ${String.fromCharCode(65 + currentIndex)}`,
@@ -88,8 +94,6 @@ const IranMap = () => {
             return null;
         }
     }).filter(entry => entry !== null);
-
-
 
     /*
         const handleCheckboxChange = () => {

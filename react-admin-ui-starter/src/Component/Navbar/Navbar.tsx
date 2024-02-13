@@ -1,10 +1,12 @@
 import './Navbar.css';
 import {Link} from "react-router-dom";
-import {useState, useRef, useEffect,useContext, createContext} from "react";
+import {useState, useRef, useEffect} from "react";
 
 const Navbar = () => {
     const [hambegermenu,setHambergermenu]=useState(false)
     const [settingsmobile,setSettingsmobile]=useState(false)
+    const [tableIndex,setTableIndex]=useState(1)
+
 
     const newRef = useRef(null);
     const mobileRef = useRef(null);
@@ -128,11 +130,7 @@ return(
                          </div>
                         )
                     }
-
-
-
                 </div>
-
 
 
                 <div className="profile_langauge_box">
@@ -147,28 +145,28 @@ return(
             </div>
 
             <ul className="menu_navbar">
-                <li>
+                <li className={tableIndex === 1 ? "active" : ""} onClick={() => setTableIndex(1)}>
                     <Link to="/dashboard">
                         Dashboard
                     </Link>
                 </li>
-                <li>
+                <li className={tableIndex === 2 ? "active" : ""} onClick={() => setTableIndex(2)}>
                     <Link to="/Inventory">
                         Inventory
                     </Link>
                 </li>
-                <li>
+                <li className={tableIndex === 3 ? "active" : ""} onClick={() => setTableIndex(3)}>
                     <Link to="/dashboard">
                         Config Management
                     </Link>
                 </li>
-                <li>
+                <li className={tableIndex === 4 ? "active" : ""} onClick={() => setTableIndex(4)}>
                     <Link to="/asset">
                         Asset
                     </Link>
                 </li>
-                <li>
-                    <Link to="/dashboard">
+                <li className={tableIndex === 5 ? "active" : ""} onClick={() => setTableIndex(5)}>
+                    <Link to="/Visualize">
                         Visualize
                     </Link>
                 </li>
