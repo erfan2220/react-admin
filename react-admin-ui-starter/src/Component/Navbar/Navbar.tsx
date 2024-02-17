@@ -118,13 +118,16 @@ return(
                              </div>
                             </div>
 
-                             <div className="flex flex-row-reverse items-center gap-[28px]" onClick={()=>{
-                                 setSettingsmobile(true)
-                                 setHambergermenu(false)
-                             }}>
-                                 <img src="./Settings_svg.svg" alt="" />
-                                 <span>Settings</span>
-                             </div>
+
+
+                                 <div className="flex flex-row-reverse items-center gap-[28px]" onClick={()=>{
+                                     setSettingsmobile(true)
+                                     setHambergermenu(false)
+                                 }}>
+                                     <img src="./Settings_svg.svg" alt="" />
+                                     <span>Settings</span>
+                                 </div>
+
 
 
                          </div>
@@ -140,7 +143,9 @@ return(
                         <img src="/CaretDown.svg" alt=""/>
                     </div>
                     <img className="user_profile_part" src="/user_profile.svg" alt=""/>
+                    <Link to="/Settings">
                     <img src="/Gear.svg" alt=""/>
+                    </Link>
                 </div>
             </div>
 
@@ -156,7 +161,7 @@ return(
                     </Link>
                 </li>
                 <li className={tableIndex === 3 ? "active" : ""} onClick={() => setTableIndex(3)}>
-                    <Link to="/dashboard">
+                    <Link to="/ConfigM">
                         Config Management
                     </Link>
                 </li>

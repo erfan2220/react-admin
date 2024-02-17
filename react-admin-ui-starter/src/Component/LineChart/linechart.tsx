@@ -1,7 +1,6 @@
 import "./Linechart.css"
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-import { curveCardinal } from 'd3-shape';
 import {Link} from "react-router-dom";
 
 

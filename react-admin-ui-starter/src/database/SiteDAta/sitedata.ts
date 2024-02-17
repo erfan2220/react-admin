@@ -313,27 +313,27 @@ export const barChartBoxVisit = {
 export const siteTabs = [
     {
         id:1,
-        siteName:"اطلاعات سایت",
+        siteName:"Site Information",
 
     },
     {
         id:2,
-        siteName:"موقعیت سایت",
+        siteName:"Site location",
 
     },
     {
         id:3,
-        siteName:"تجهیزات رادیویی",
+        siteName:"Radio Equipments",
 
     },
     {
         id:4,
-        siteName:"تجهیزات یدکی",
+        siteName:"Spare Equipments",
 
     },
     {
         id:4,
-        siteName:"تعداد CR",
+        siteName:"CR Number",
 
     },
 

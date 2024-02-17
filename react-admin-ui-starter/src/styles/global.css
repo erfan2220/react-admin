@@ -45,8 +45,9 @@ a
 .container {
   display: flex;
   flex-direction: row;
-  height: 110vh;
+  height: fit-content;
   max-width: 100vw;
+  overflow: hidden;
 }
 
 

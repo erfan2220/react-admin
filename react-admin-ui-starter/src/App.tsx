@@ -1,7 +1,6 @@
 // App.js
-import React from 'react';
 import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
-import Home from './Pages/Home/Home';
+import Home from './Pages/Home/Assets.tsx';
 import Navbar from './Component/Navbar/Navbar';
 import Footer from './Component/Footer/Footer';
 import Menu from './Component/Menu/Menu';
@@ -12,6 +11,9 @@ import { AuthProvider, useAuth } from './Pages/Login/AuthContext.tsx';
 import Dashboard from './Pages/Dashboard/dashboard.tsx';
 import Inventory from "./Pages/Inventory/Inventory.tsx";
 import Visualize from "./Pages/Visualize/visualize.tsx";
+import ConfigM from "./Pages/Config Management/ConfigM.tsx";
+import Settings from "./Pages/Settings/Setting.tsx";
+import Assets from "./Pages/Home/Assets.tsx";
 
 
 
@@ -51,7 +53,9 @@ function App() {
                                 <Route index element={<Dashboard />}/>
                                 <Route path="/sites/:cellname" element={<Site/>}/>
                                 <Route path="/dashboard" element={<Dashboard />} />
-                                <Route path="/asset" element={<Home />} />
+                                <Route path="/ConfigM" element={<ConfigM />} />
+                                <Route path="/Settings" element={<Settings />} />
+                                <Route path="/asset" element={<Assets />} />
                                 <Route path="/Inventory" element={<Inventory />} />
                                 <Route path="/Visualize" element={<Visualize />} />
                             </Route>

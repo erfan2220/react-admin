@@ -120,3 +120,63 @@
     min-width: 184px;
     max-width: 203px;
 }
+.Site_header_button
+{
+    display: flex;
+    flex-direction: row;
+
+    gap: 16px;
+    padding-top: 32px;
+}
+.Site_header_button_items
+{
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 14px 22px 14px 12px;
+    background-color: #FFFFFF;
+    color: #007BFF;
+    direction: ltr;
+}
+.Site_header_button_items2
+{
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 14px 22px 14px 12px;
+    background-color: #FFFFFF;
+    direction: ltr;
+}
+
+.Site_header_button_items3
+{
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 14px 16px 14px 12px;
+    background-color: #007BFF;
+    direction: ltr;
+    color: #FFFFFF;
+}
+.css-heg063-MuiTabs-flexContainer
+{
+    direction: ltr;
+}
+.tabs-container
+{
+    background-color: #FFFFFF;
+    border-radius: 8px 8px 0 0;
+    justify-content: space-between;
+    margin-top: 14px;
+}
+.css-yrdy0g-MuiDataGrid-columnHeaderRow
+{
+    display: flex;
+}
+.css-gl260s-MuiDataGrid-columnHeadersInner
+{
+    width: 100%;
+}
