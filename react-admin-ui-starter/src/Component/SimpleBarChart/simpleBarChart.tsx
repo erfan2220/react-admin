@@ -53,7 +53,7 @@ const RoundedBar = (props) => {
     const { x, y, height } = props;
     return (
         <g>
-            <rect x={x} y={y} width={12} height={height} rx={10} ry={10} fill={props.fill} />
+            <rect x={x} y={y} width={8} height={height} rx={10} ry={10} fill={props.fill} />
         </g>
     );
 };
@@ -109,10 +109,12 @@ function SimpleBarChart() {
                             left: 20,
                             bottom: 5,
                         }}
+                        barCategoryGap={20}
+
                     >
                         <CartesianGrid horizontal={false} vertical={false} strokeDasharray="3 3" />
-                        <XAxis dataKey="name" ticks={customXAxisTicks} tickMargin={10} tickCount={7} padding={{left:40}} />
-                        <YAxis   ticks={customYAxisTicks} tickFormatter={formatYAxisTick}  interval={0}  tickMargin={50}  />
+                        <XAxis stroke="#757575" dataKey="name" ticks={customXAxisTicks} tickMargin={10} tickCount={7} padding={{left:40}} />
+                        <YAxis  stroke="#757575" ticks={customYAxisTicks} tickFormatter={formatYAxisTick}  interval={0}  tickMargin={50}  />
                         <Tooltip cursor={false} content={<CustomTooltip />}/>
                         <Legend />
                         <Bar

@@ -2,10 +2,11 @@ import './Navbar.css';
 import {Link} from "react-router-dom";
 import {useState, useRef, useEffect} from "react";
 
-const Navbar = () => {
+const Navbar = ({setLogin, setCount}) => {
     const [hambegermenu,setHambergermenu]=useState(false)
     const [settingsmobile,setSettingsmobile]=useState(false)
     const [tableIndex,setTableIndex]=useState(1)
+    const [userProfile,setUserProfile]=useState(false)
 
 
     const newRef = useRef(null);
@@ -142,9 +143,36 @@ return(
                         <p>English</p>
                         <img src="/CaretDown.svg" alt=""/>
                     </div>
-                    <img className="user_profile_part" src="/user_profile.svg" alt=""/>
+                    <img className="user_profile_part" src="/user_profile.svg" alt="" onClick={()=>
+                        setUserProfile(!userProfile)}/>
+                    {
+                        userProfile &&
+                        (
+                            <div className="User_Profile_Items">
+                                <div className="User_Profile_Item">
+                                    <img src="./Lock1.svg" alt=""/>
+                                    <span>Change Password</span>
+                                </div>
+
+                                <div className="User_Profile_Item">
+                                    <img src="./Info1.svg" alt=""/>
+                                    <span>About</span>
+                                </div>
+
+                                <div className="User_Profile_Item" onClick={()=>
+                                {
+                                    setLogin(false)
+                                    setCount(1)
+                                }}>
+                                    <img src="./SignOut1.svg" alt=""/>
+                                    <span>Log Out</span>
+                                </div>
+                            </div>
+                        )
+                    }
+
                     <Link to="/Settings">
-                    <img src="/Gear.svg" alt=""/>
+                        <img src="/Gear.svg" alt=""/>
                     </Link>
                 </div>
             </div>

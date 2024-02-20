@@ -13,13 +13,15 @@ type Props=
         slug:string,
     }
 
+
 const DataTable = (props:Props) =>
 {
+    {/*
+        const infoWithIds = info.map((row, index) => ({
+            ...row,
+            id: index + 1 // Adding 1 to index to start ids from 1
+        }));*/}
 
-    const handleDelete=(id:number)=>
-    {
-        //axios.delete(`/api/${slug}/id`)
-    }
 
     const actionColumn:GridColDef=
         {
@@ -29,10 +31,10 @@ const DataTable = (props:Props) =>
         renderCell:(params)=>{
             return(
                 <div className="action">
-                    <Link to={`/${props.slug}/${params.row.id}`}>
+                    <Link to={`/${props.slug}/${params.row.cellname}`}>
                         <img src="./view.svg" alt=""/>
                     </Link>
-                    <div className="delete" onClick={()=> handleDelete(params.row.id)} >
+                    <div className="delete"  >
                         <img src="/delete.svg" alt=""/>
                     </div>
                 </div>

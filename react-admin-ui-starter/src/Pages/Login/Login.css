@@ -5,6 +5,7 @@
     width: 100%;
     height: 100vh;
     direction: ltr;
+    overflow: hidden;
 }
 
 .image_Login_container {
@@ -14,27 +15,56 @@
     position: relative;
     top: 10%;
 }
+.logo_middle
+{
+    position: absolute;
+    top: 25%;
+    left:42%;
+
+}
+.logo_middle img
+{
+    width:343px;
+    height: 84px;
+}
 .image_Login_container img
 {
-    width: 31%;
-    height: 20%;
-    max-width: 458px;
-    max-height: 206px;
-}
+    width: 92%;
+    max-width: 1440px;
 
+}
+.Configx-form-container
+{
+    width: 92%;
+    margin: auto;
+    max-width: 1440px;
+}
+.loremipsun_container_logo
+{
+    display: flex;
+    justify-content: flex-start;
+    direction: ltr;
+    gap: 20px;
+}
+.loremipsun_container_logo img
+{
+    width: 147px;
+    height: 36px;
+}
 .form_Login_container {
+    position: absolute;
     height: 43%;
-    top: 20%;
+    width: 92%;
+    bottom: 7%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    position: relative;
     background-color: #2A2931;
     color: white;
     border-radius: 15px;
     font-size: 18px;
     margin: auto;
-    max-width: 1140px;
+    max-width: 1440px;
     max-height: 352px;
 }
 
@@ -53,7 +83,7 @@
     border-radius: 15px;
     font-size: 18px;
     text-align: end;
-    padding: 8px 7px 7px 7px;
+    padding: 8px 7px 7px 12px;
     color: black;
 }
 
@@ -61,7 +91,8 @@
     flex: 1;
     margin: 4%;
     display: flex;
-    gap: 27%;
+    direction: ltr;
+    gap: 30px;
     flex-direction: column;
 }
 
@@ -110,10 +141,12 @@
 
 .loremipsun_container_part1 {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    gap: 16px;
+    direction: ltr;
+    align-items: flex-start;
     line-height: 1;
     height: 22%;
-    align-items: baseline;
     text-justify: auto;
     text-align: justify;
 }
@@ -128,6 +161,7 @@
     text-align: justify;
     position: relative;
     top: 10px;
+    gap: 8px;
 }
 
 .loremipsun_container_part1 p, .loremipsun_container_part2 p {
@@ -138,6 +172,7 @@
     font-size: 17px;
     text-align: justify;
     direction: ltr;
+    opacity: 0.9;
 }
 
 .line {
@@ -149,7 +184,13 @@
     height: 79%;
 }
 
-
+@media only screen and (max-width: 1440px){
+    .form_Login_container
+    {
+        width: 92%;
+        max-width: 1328px;
+    }
+}
 
 @media only screen and (max-width: 1200px) {
     .Login {
@@ -165,13 +206,14 @@
         flex-direction: row-reverse;
         width: 100%;
         position: absolute;
-    }
+     }
+
 
 
     .form_Login_container {
-        width: 89%;
+        width: 92%;
         height: 42%;
-        position: relative;
+        position: absolute;
         display: flex;
         flex-direction: row-reverse;
         top: 49%;
@@ -203,8 +245,8 @@
     .loremipsun_container {
         flex: 1;
         margin: 5%;
+        gap: 42px;
         display: flex;
-        gap: 27%;
         flex-direction: column;
     }
 
@@ -255,7 +297,7 @@
 
     .loremipsun_container_part1 {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: column;
         line-height: 1;
         height: 22%;
         align-items: baseline;
@@ -295,3 +337,15 @@
     }
 }
 
+
+@media only screen and (max-width: 1024px){
+ .logo_middle
+ {
+  left: 20%;
+ }
+ .form_Login_container
+ {
+
+     flex-direction: column;
+ }
+}

@@ -6,15 +6,36 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
-.title-container-inventorchart p
+.rate_container_INVV
+{
+    display: flex;
+    direction: ltr;
+    flex-direction: row;
+    background-color: #E0FFFE;
+    border-radius: 16px;
+    height: fit-content;
+    padding: 6px 7px 6px 8px;
+    align-items: center;
+}
+.rate_container_INVV span
+{
+    color: #18D3CC;
+}
+.title-container-inventorchart_2
+{
+    display: flex;
+    direction: ltr;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.title-container-inventorchart_2 p
 {
     direction: ltr;
     color: black;
     font-size: 32px;
     font-weight: 700;
 }
-.title-container-inventorchart h2
+.title-container-inventorchart_2 h2
 {
     direction: ltr;
     font-size: 16px;

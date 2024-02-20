@@ -7,6 +7,11 @@
     background-color: #f5f5f5;
     color: black;
 }
+.site_container
+{
+    width: 92%;
+    margin: auto;
+}
 .users h2
 {
     font-size: 20px;
@@ -128,6 +133,20 @@
     gap: 16px;
     padding-top: 32px;
 }
+.Site_Location
+{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Site_Location img
+{
+    width: 100%;
+    padding: 20px;
+}
 .Site_header_button_items
 {
     border-radius: 8px;
@@ -138,6 +157,7 @@
     background-color: #FFFFFF;
     color: #007BFF;
     direction: ltr;
+    cursor: pointer;
 }
 .Site_header_button_items2
 {
@@ -148,6 +168,7 @@
     padding: 14px 22px 14px 12px;
     background-color: #FFFFFF;
     direction: ltr;
+    cursor: pointer;
 }
 
 .Site_header_button_items3
@@ -160,6 +181,12 @@
     background-color: #007BFF;
     direction: ltr;
     color: #FFFFFF;
+    cursor: pointer;
+}
+.dataTable
+{
+    margin-top: 16px;
+    margin-bottom: 76px;
 }
 .css-heg063-MuiTabs-flexContainer
 {
@@ -175,8 +202,27 @@
 .css-yrdy0g-MuiDataGrid-columnHeaderRow
 {
     display: flex;
+    flex-direction: row-reverse;
 }
 .css-gl260s-MuiDataGrid-columnHeadersInner
 {
     width: 100%;
+    direction: ltr;
+}
+ .MuiDataGrid-row
+{
+    flex-direction: row-reverse;
+}
+.css-128fb87-MuiDataGrid-toolbarContainer
+{
+    flex-direction: row;
+    display: none;
+}
+.css-1eed5fa-MuiInputBase-root-MuiInput-root
+{
+    flex-direction: row-reverse;
+}
+.css-3be3ve-MuiFormControl-root-MuiTextField-root-MuiDataGrid-toolbarQuickFilter input
+{
+    direction: ltr;
 }

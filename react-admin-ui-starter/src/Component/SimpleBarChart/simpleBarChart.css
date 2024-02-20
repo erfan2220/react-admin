@@ -15,6 +15,7 @@
 .charts_container_header h1
 {
     padding: 24px 0;
+    color: #212121;
 }
 .charts_container_Link
 {
@@ -43,6 +44,7 @@
 {
     direction: ltr;
     font-weight: 600;
+    color: #212121;
 }
 .rate_container
 {

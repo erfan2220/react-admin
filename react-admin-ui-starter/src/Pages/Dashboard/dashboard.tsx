@@ -14,13 +14,13 @@ const Dashboard = () => {
             <h1>Dashboard</h1>
             <div className="dashboard_content_container_top">
                 <div className="box1_1">
-                    <PieChartBox title={"Nokia Sites"}/>
+                    <PieChartBox twog={8961}  threeg={5121} fourg={7122} title={"Nokia Sites"}/>
                 </div>
                 <div className="box1_2">
-                    <PieChartBox title={"Huawei Sites"}/>
+                    <PieChartBox twog={13590}  threeg={11365} fourg={8961}  title={"Huawei Sites"}/>
                 </div>
                 <div className="box1_3">
-                    <PieChartBox title={"Ericsson Sites"}/>
+                    <PieChartBox  twog={5780}  threeg={4855} fourg={5324}  title={"Ericsson Sites"}/>
                 </div>
             </div>
             <div className="dashboard_content_container_down">

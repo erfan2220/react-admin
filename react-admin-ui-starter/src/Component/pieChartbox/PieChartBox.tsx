@@ -1,16 +1,17 @@
-import React from 'react';
+
 import "./PieChartBox.css";
 import {PieChart, ResponsiveContainer, BarChart, Tooltip, Pie, Cell} from "recharts";
 
-const data =
-    [
-        {name:"2G devices",value:400,color:"#007BFF"},
-        {name:"3G devices",value:300,color:"#99CAFF"},
-        {name:"4G devices",value:300,color:"#18D3CC"}
 
-    ]
 const PieChartBox =(props)=>
 {
+    const data =
+        [
+            {name:"2G Sites",value: props.twog,color:"#007BFF"},
+            {name:"3G Sites",value:props.threeg,color:"#99CAFF"},
+            {name:"4G Sites",value:props.fourg,color:"#18D3CC"}
+
+        ]
         return (
 
                 <div className="pieChartBox">

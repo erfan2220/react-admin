@@ -11,7 +11,7 @@
 }
 .Navbar_wrapper
 {
-    width: 91%;
+    width: 94%;
     max-width: 2000px;
     display: flex;
     flex-direction: column;
@@ -19,6 +19,25 @@
     padding: 24px 0;
     gap: 45px;
     margin: auto;
+}
+.User_Profile_Items
+{
+    position: absolute;
+    padding: 18px 16px 19px 18px;
+    top: 10%;
+    background-color: #272739;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.User_Profile_Item
+{
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    gap: 10px;
+    cursor: pointer;
 }
 .setting_navbar_container
 {
