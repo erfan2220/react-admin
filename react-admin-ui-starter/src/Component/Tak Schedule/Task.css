@@ -1,0 +1,170 @@
+.Task_Container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Item_task_left
+{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+}
+.Item_task_right
+{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    color: #FFFFFF;
+    background-color: #007BFF;
+    cursor: pointer;
+}
+.Task_Container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    direction: ltr;
+}
+
+.Task_Container_Schedule
+{
+    background-color: #FFFFFF;
+}
+.Item_task_left
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    direction: ltr;
+}
+.Item_task_right
+{
+    background-color: #007BFF;
+    border-radius: 8px;
+    padding: 12px 16px 12px 12px;
+    direction: ltr;
+    align-items: center;
+}
+.Task_Container_Schedule
+{
+    margin-top: 16px;
+    direction: ltr;
+    border-radius: 8px;
+}
+.Task_Container_header span
+{
+    direction: ltr;
+}
+.Task_Container_header
+{
+    width: 100%;
+    border-bottom: 1px solid #E0E0E0;
+    direction: ltr;
+    padding: 15px 24px;
+}
+
+.No_Task_Container
+{
+    padding: 124px 134px 238px 134px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 44px;
+}
+.No_Task_text
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    direction: ltr;
+    gap: 16px;
+}
+.No_Task_text h2
+{
+    direction: ltr;
+    font-weight: 600;
+    font-size: 20px;
+}
+.No_Task_text p
+{
+    font-size: 20px;
+    opacity: 0.9;
+    color: #616161;
+}
+
+.schedule_form_background
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #404040;
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+}
+
+.schedule_form_container
+{
+    position: absolute;
+    background-color: #FFFFFF;
+    display: flex;
+    width: 523px;
+    top: 20%;
+    left: 35%;
+    border-radius: 8px;
+    padding: 24px;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.schedule_first_row
+{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+.schedule_items label
+{
+    direction: ltr;
+}
+.schedule_items
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+.schedule_items input
+{
+    border: 1px solid #D9D9D9;
+    outline: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding: 12px;
+    direction: ltr;
+}
+
+.buttons_schedule
+{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+#Submit_schedule
+{
+    background-color: #007BFF;
+    padding: 14px 38px;
+    color: #FFFFFF;
+    border-radius: 8px;
+}
+#Cancel_schedule
+{
+    background-color: #FFFFFF;
+    padding: 14px 39px;
+    border: 1px solid #E0E0E0;
+    color: #007BFF;
+    border-radius: 8px;
+}

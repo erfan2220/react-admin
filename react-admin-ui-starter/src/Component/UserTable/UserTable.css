@@ -1,0 +1,241 @@
+.table_User_menegement
+{
+    width: 100%;
+    color: #212121;
+}
+
+.InventorySiteData_container
+{
+    direction: ltr;
+    width: 100%;
+}
+.table_header_Inventory
+{
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.show_pages_export
+{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 24px;
+}
+.export_button
+{
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #007BFF;
+    align-items: center;
+    padding: 12px 21px 14px 12px;
+    color: #FFFFFF;
+    border-radius: 8px;
+}
+.import_button
+{
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #FFF;
+    align-items: center;
+    padding: 12px 21px 14px 12px;
+    color: #212121;
+    border: 1px solid #BDBDBD;
+    gap: 4px;
+    border-radius: 8px;
+}
+.show_pages
+{
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    align-items: center;
+    gap: 8px;
+}
+
+.increase_decrease_pages
+{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap:8px;
+    padding: 14px 14px 14px 16px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+
+}
+
+.table_container_sites
+{
+    direction: ltr;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    height: 610px;
+}
+.table_class2
+{
+    direction: ltr;
+    letter-spacing: 1px;
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.up-text
+{
+    color: #0AB5AE;
+    background-color: #D9FFFE;
+    padding: 2px 18px;
+    border-radius: 18px;
+}
+.down-text
+{
+    color: #FF3B3B;
+    background-color: #FFE2E2;
+    padding: 2px 12px;
+    border-radius: 18px;
+}
+
+th,
+td {
+    padding: 8px 20px;
+    direction: ltr;
+    text-align: center;
+    color: #424242;
+}
+thead > th
+{
+    cursor: pointer;
+    color: #424242;
+    font-size: 16px;
+}
+thead
+{
+    border-bottom: 2px solid #E0E0E0;
+}
+tbody
+{
+    height: fit-content;
+}
+
+tbody > tr:nth-of-type(even) {
+    background-color: #FAFAFA;
+    border-radius: 8px;
+}
+.table_class2 thead th input
+{
+    width: 20px;
+    height: 20px;
+}
+.table_class2 tbody tr td {
+    padding: 20px 12px;
+    color: #212121;
+}
+.table_class2 tbody tr td input
+{
+    width: 20px;
+    height: 20px;
+
+}
+
+.pagination_inventory
+{
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    justify-content: space-between;
+
+    margin-top: 10px;
+}
+
+.prev_button
+{
+    display: flex;
+    direction: ltr;
+    flex-direction: row;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 10px 16px 10px 12px;
+    gap: 8px;
+    cursor: pointer;
+}
+.next_button
+{
+    display: flex;
+    direction: ltr;
+    flex-direction: row;
+    border: 1px solid #E0E0E0;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    padding: 10px 16px 10px 12px;
+    gap: 8px;
+    cursor: pointer;
+}
+
+
+
+.pagination_buttons
+{
+    direction: ltr;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFFFFF;
+    justify-content: center;
+    border-radius: 8px;
+}
+.pagination_buttons li:nth-child(1)
+{
+    border-radius: 8px 0 0 8px;
+}
+.pagination_buttons li:nth-last-child(1)
+{
+    border-radius: 0 8px 8px 0;
+}
+.pagination_buttons  li
+{
+    width: 100%;
+    height: 100%;
+    padding:10px 12px 10px 18px ;
+    border: 1px solid #E0E0E0;
+    color: #616161;
+    cursor: pointer;
+}
+.page-active
+{
+    color: #FFFFFF !important;
+    background-color: #007BFF;
+}
+
+.import_form
+{
+    position: absolute;
+    top: 30%;
+    display: grid;
+    grid-auto-columns: 2fr;
+}
+
+.user_icon_row
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    direction: ltr;
+}
+.Edit_User_section
+{
+    display: flex;
+    direction: ltr;
+    gap: 24px;
+    flex-direction: row;
+    justify-content: center;
+}
