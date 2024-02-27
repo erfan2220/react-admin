@@ -1,5 +1,5 @@
-import React from 'react';
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Link } from "react-router-dom";
 
 import "./simpleBarChart.css"
@@ -113,7 +113,9 @@ function SimpleBarChart() {
 
                     >
                         <CartesianGrid horizontal={false} vertical={false} strokeDasharray="3 3" />
-                        <XAxis stroke="#757575" dataKey="name" ticks={customXAxisTicks} tickMargin={10} tickCount={7} padding={{left:40}} />
+                        <XAxis stroke="#757575" dataKey="name"
+                               ticks={customXAxisTicks} tickMargin={10}
+                               tickCount={7} padding={{left:40}} />
                         <YAxis  stroke="#757575" ticks={customYAxisTicks} tickFormatter={formatYAxisTick}  interval={0}  tickMargin={50}  />
                         <Tooltip cursor={false} content={<CustomTooltip />}/>
                         <Legend />

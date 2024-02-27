@@ -22,6 +22,7 @@ const Layout = ({ repeatedLogin, setRepeatedLogin ,count , setCount}) => {
     if (!login && repeatedLogin) {
         return <Login />;
     }
+
     if (!login && count===1 )
     {
         setCount(2)
@@ -92,12 +93,14 @@ function App() {
                         <Route path="/Visualize" element={<Visualize />} />
                     </Route>
 
-                    <Route path="/sites/:cellname"
+                    <Route path="/sites/:cityName"
                            element={<ProtectedLayout
                                setRepeatedLogin={setRepeatedLogin} repeatedLogin={repeatedLogin} setCount={setCount}
                                count={count} />}>
                         <Route element={<Site />} />
                     </Route>
+
+
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

@@ -33,10 +33,92 @@
 
 
 
+
 .map {
     position: relative;
     display: block;
 }
+
+.data_per_province
+{
+    position: absolute;
+    right: 100px;
+}
+
+.data_per_province_header
+{
+
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    align-items: center;
+    gap: 8px;
+}
+.data_per_province_header span
+{
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.main_data_perProvince
+{
+
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+
+}
+
+.main_data_headerItem
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    direction: ltr;
+}
+.main_data_every_item
+{
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+padding-bottom: 24px;
+    border-bottom: 1px dashed #E0FFFE;
+}
+
+.main_data_rateItem
+{
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    align-items: center;
+    gap: 8px;
+}
+
+.main_data_headerItem p
+{
+    color: #212121;
+    font-weight: 200;
+}
+
+.main_data_rateItem span
+{
+    color: #757575;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .map .svg {
     position: relative;
@@ -72,7 +154,10 @@
     fill: #1bb97c;
     outline: 0;
 }
-
+.back_data
+{
+    cursor: pointer;
+}
 .zoom_btn {
     display: none;
     position: absolute;
@@ -123,7 +208,79 @@
     box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
     z-index: 999999;
 }
+.cities_wrapper
+{
+    background-color: #FFFFFF;
+    border-radius: 8px;
+}
 
+.cities_header
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    direction: ltr;
+    padding: 18px 0 16px 24px;
+    gap: 20px;
+    border-top: 1px solid rgb(5,0,0,0.1);
+    filter: drop-shadow(0px 4px 8px rgb(5,0,0,0.1));
+}
+
+
+.cities_header_row
+{
+    display: flex;
+    flex-direction: row;
+}
+.cities_header_right
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    direction: ltr;
+    gap: 4px;
+    font-size: 16px;
+    color: #424242;
+}
+.buttons_cities_select
+{
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+    gap: 16px;
+    margin: 24px;
+}
+.confrim_btt
+{
+    background-color: #1677FF;
+    padding: 14px 24px;
+    color: #FFFFFF;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cancel_btt
+{
+    background-color: #FFFFFF;
+    padding: 14px 24px;
+    color: #007BFF;
+    border: 1px solid #007BFF;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.cities_selection
+{
+    padding: 14px 24px 14px 24px;
+    cursor: pointer;
+    border-bottom: 1px solid #EEEEEE;
+    direction: ltr;
+}
+
+.cities_selection span
+{
+    color: #212121;
+    font-weight: 400;
+}
 .cities p {
     direction: rtl;
     font-weight: bold;

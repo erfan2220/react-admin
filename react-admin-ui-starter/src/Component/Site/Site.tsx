@@ -7,7 +7,9 @@ import Add from "../../Component/Adduser/Add";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
  import info from "../../database/Cities_info/Sites.ts"
-import Navbar from "../Navbar/Navbar.tsx";
+import { useParams } from 'react-router-dom';
+
+
 
 
 type Props = {
@@ -23,6 +25,7 @@ const Site = () => {
     const [open,setOpen]=useState(false)
     const [filter,setFilter]=useState(false)
 
+    const { cityName } = useParams();
 
     useEffect(() => {
         // Initial setup
@@ -116,7 +119,10 @@ const Site = () => {
     const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
         setSelectedTab(newValue);
         console.log(selectedTab)
+
     };
+
+
 
 
     return (
@@ -124,6 +130,7 @@ const Site = () => {
 
             <div className="site_container">
                 <div className="Site_header_button">
+
 
 
                     <div className="Site_header_button_items3">
@@ -159,9 +166,15 @@ const Site = () => {
                         <span>New Site</span>
                     </div>
 
+
+                    <div>
+
                 </div>
 
 
+
+
+                </div>
                 <div className="tabs-container">
                     <Tabs value={selectedTab} onChange={handleTabChange} >
                         {siteTabs.map((site) => (
@@ -201,7 +214,9 @@ const Site = () => {
                 {
                     (selectedTab === "Spare Equipments") &&
                     (
-                        <div></div>
+                        <div>
+
+                        </div>
                     )
                 }
 

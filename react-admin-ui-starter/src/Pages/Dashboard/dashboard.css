@@ -13,10 +13,10 @@
     font-size: 28px;
     padding: 22px 0 32px 0;
 }
-.dashboard_content_container_top
+.dashboard_content_container_top_2
 {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 20px;
     grid-auto-rows: minmax(70px,auto);
     direction: ltr;

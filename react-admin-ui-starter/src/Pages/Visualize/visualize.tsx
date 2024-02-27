@@ -1,8 +1,9 @@
 import "./visualize.css"
 import IranMap from "../../Component/IranMap/iranMap.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Citites_english from "../../dataMap/Cities_english.js"
 import {Link} from "react-router-dom";
+import {data} from "autoprefixer";
 
 const Visualize = () => {
     const [minimize,setMinimize]=useState(false)
@@ -23,6 +24,8 @@ const Visualize = () => {
     {
         setValuesTag(prevValuesTag => [...prevValuesTag, value]);
     }
+
+
 
     return (
         <div className="vis-container">
@@ -203,6 +206,7 @@ const Visualize = () => {
             }
             <div className="map-visualize-container">
                 <h2>Visualize</h2>
+
                 <div className="map-google-container">
                     <IranMap/>
                 </div>

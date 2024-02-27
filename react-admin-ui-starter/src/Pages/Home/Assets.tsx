@@ -38,7 +38,7 @@ const Assets = () => {
                     setActiveIndex(2)
                 }}>
                     <h2 className={activeIndex === 2 ? "active-site-selector" : "deactive-site-selector"}>
-                        Sites-information
+                        Network
                     </h2>
                     <img src="./" alt=""/>
                 </div>
@@ -58,7 +58,7 @@ const Assets = () => {
                                 </div>
 
                                 <div className="dashboard_asset">
-                                <div className="dashboard_content_container_top">
+                                <div className="dashboard_content_container_top_3">
                                         <div className="Assets_box1_1">
                                             <PieChartBox twog={8961} threeg={5121} fourg={7122} title={"Nokia Sites"}/>
                                         </div>
@@ -86,15 +86,15 @@ const Assets = () => {
                     {activeIndex === 2 && (
                         <div>
                         <div className="Assets_header">
-                            <h2>Assets/Sites-information</h2>
+                            <h2>Assets/Network</h2>
                         </div>
                         <div className="home">
 
                             <div className="box box1">
-                                <h2>Nokia Site Numbers</h2>
+                                <h2>Call Traffic</h2>
 
                                 <div className="Assets_sites_items">
-                                    <p>22,349</p>
+                                    <p>720M</p>
                                     <div className="rate_container_Assets">
                                         <img src="./rateup.svg" alt=""/>
                                         <span>12.5%</span>
@@ -104,11 +104,11 @@ const Assets = () => {
                             </div>
 
                             <div className="box box2">
-                                <h2>Ericsson Site Numbers</h2>
+                                <h2>Data Traffic</h2>
 
 
                                 <div className="Assets_sites_items">
-                                    <p>15,959</p>
+                                    <p>22M</p>
                                     <div className="rate_container_Assets_even">
                                         <img src="./ratedown.svg" alt=""/>
                                         <span>12.5%</span>
@@ -118,11 +118,11 @@ const Assets = () => {
                             </div>
 
                             <div className="box box3">
-                                <h2>Huawei Site Numbers</h2>
+                                <h2>Total Revenue</h2>
 
 
                                 <div className="Assets_sites_items">
-                                    <p>33,916</p>
+                                    <p>1,231,193M</p>
                                     <div className="rate_container_Assets">
                                         <img src="./rateup.svg" alt=""/>
                                         <span>12.5%</span>

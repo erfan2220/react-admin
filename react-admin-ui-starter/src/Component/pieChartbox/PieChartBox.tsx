@@ -1,6 +1,6 @@
 
 import "./PieChartBox.css";
-import {PieChart, ResponsiveContainer, BarChart, Tooltip, Pie, Cell} from "recharts";
+import {PieChart, ResponsiveContainer, Tooltip, Pie, Cell} from "recharts";
 
 
 const PieChartBox =(props)=>
