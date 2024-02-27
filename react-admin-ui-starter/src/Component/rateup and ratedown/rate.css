@@ -1,0 +1,44 @@
+.rate_number_container_positive
+{
+
+    background-color: #E0FFFE;
+    border-radius: 16px;
+
+}
+
+.rate_number_container_nagative
+{
+
+    background-color: #FFD6D6;
+    border-radius: 16px;
+
+}
+.rate_items_container_positive
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    direction: ltr;
+    gap: 8px;
+    padding: 4px 8px;
+}
+
+.rate_items_container_nagative
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    direction: ltr;
+    gap: 8px;
+    padding: 4px 8px;
+}
+.rate_items_container_positive span
+{
+    font-size: 14px;
+    color: #18D3CC;
+}
+.rate_items_container_nagative span
+{
+    font-size: 14px;
+    color: #FB2424;
+}
