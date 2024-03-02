@@ -22,9 +22,8 @@ const useMouse = () => {
 
 
 
-    useEffect(() => {
-
-
+    useEffect(() =>
+    {
         setMousePositionRef.current = setMousePosition;
         function handle(e:MouseEvent) {
             setMousePositionRef.current({
@@ -48,7 +47,7 @@ const useMouse = () => {
 
 
 
-const IranMap = () => {
+const IranMap = (props) => {
     const {x, y} = useMouse();
     const [provinces] = useState(() => iranProvinces);
     const [provinceName, setProvinceName] = useState("");
@@ -231,7 +230,7 @@ const IranMap = () => {
             });*/
 
 
-        const promise1 = fetchAndCacheData("sites_count_cache", "http://192.168.129.188:5001/api/assets/sites_count_per_province")
+        const promise1 = fetchAndCacheData("sites_count_cache", "http://192.168.198.201:5001/api/assets/sites_count_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Sites count per province data", data);
@@ -245,7 +244,7 @@ const IranMap = () => {
         promises.push(promise1);
 
         // Fetch cells count per province data
-        const promise2 = fetchAndCacheData("cells_count_cache", "http://192.168.129.188:5001/api/assets/cells_count_per_province")
+        const promise2 = fetchAndCacheData("cells_count_cache", "http://192.168.198.201:5001/api/assets/cells_count_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Cells count per province data:", data);
@@ -259,7 +258,7 @@ const IranMap = () => {
         promises.push(promise2);
 
         // Fetch cities per province data
-        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://192.168.129.188:5001/api/assets/cities")
+        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://192.168.198.201:5001/api/assets/cities")
             .then(data => {
                 // Handle the data as needed
                 console.log("Cities per province data:", data);
@@ -273,7 +272,7 @@ const IranMap = () => {
         promises.push(promise3);
 
         // Fetch traffic per province data
-        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://192.168.129.188:5001/api/assets/traffic_per_province")
+        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://192.168.198.201:5001/api/assets/traffic_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Traffic per province data:", data);
@@ -296,40 +295,100 @@ const IranMap = () => {
 
     }, []);
 
+    const numberFormatter = new Intl.NumberFormat('en-US', {
+        style: 'decimal',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 
+    const format = (number)=>
+    {
+            const formattedNumber = numberFormatter.format(number);
+            return formattedNumber;
+    }
+    const sum_PS = (listdata) => {
+        let total_PS = 0;
 
-    const sum = (listdata) => {
-        let total = 0;
-
+        let div=1024
         if (listdata.length > 0) {
             listdata.forEach(item => {
                 // Iterate over the properties of each item
                 Object.keys(item).forEach(key => {
-                    // Check if the value is a number
-                    if (typeof item[key] === 'number') {
-                        // Add the value to the total
-                        total += item[key];
+                    // Check if the key contains "PS"
+                    if (key.includes('PS') && typeof item[key] === 'number') {
+                        // Add the value to the total_PS
+                        total_PS += item[key];
                     }
                 });
             });
         }
+        div= (total_PS/1024)
 
-        return total.toFixed(2);
+        return div.toFixed(2);
     };
 
 
-    const filter_traffic= (province)=>
+    const sum_CS = (listdata) => {
+        let total_CS = 0;
+
+        let div=1024
+        if (listdata.length > 0) {
+            listdata.forEach(item => {
+                // Iterate over the properties of each item
+                Object.keys(item).forEach(key => {
+                    // Check if the key contains "CS"
+                    if (key.includes('CS') && typeof item[key] === 'number') {
+                        // Add the value to the total_CS
+                        total_CS += item[key];
+                    }
+                });
+            });
+        }
+        div= (total_CS/1024)
+
+        return div.toFixed(2);
+    };
+
+
+    const calculate_revenue = (province) => {
+        let total = 0;
+
+        const filterItems = totalTraffic.traffic.filter(item => item.province === province)
+
+        if (filterItems.length > 0) {
+            filterItems.forEach(item => {
+                // Add the revenue of each item to the total
+                total += item.revenue;
+            });
+        }
+
+        return total;
+    }
+
+
+    const filter_traffic_CS= (province)=>
     {
 
-        let filterItems = totalTraffic.traffic.filter(item => item.province === province)
 
-         const totalcount = sum(filterItems)
+        const filterItems = totalTraffic.traffic.filter(item => item.province === province)
+
+
+
+         const totalcount = sum_CS(filterItems)
 
 
 
         return totalcount;
     }
 
+    const filter_traffic_PS= (province)=>
+    {
+        const filterItems = totalTraffic.traffic.filter(item => item.province === province)
+
+        const totalcount = sum_PS(filterItems)
+
+        return totalcount;
+    }
 
     const filter_cells= (province)=>
     {
@@ -342,24 +401,42 @@ const IranMap = () => {
 
 
 
-    const filter_siteCounts = (province) => {
+    const filter_siteCounts_CS = (province) => {
         if (provinceName === "West Azerbaijan") {
-            return filter_traffic("West Azarbaijan");
+            return filter_traffic_CS("West Azarbaijan");
         } else if (provinceName === "Sistan va Baluchestan") {
-            return filter_traffic("Sistan Va Baluchestan");
+            return filter_traffic_CS("Sistan Va Baluchestan");
         } else if (provinceName === "Chaharmahal Bakhtiari") {
-            return filter_traffic("Chahar Mahal Va Bakhtiari");
+            return filter_traffic_CS("Chahar Mahal Va Bakhtiari");
         } else if (provinceName === "Kohgiluyeh and Boyer Ahmad") {
-            return filter_traffic("Kohgiluyeh Va Boyer Ahmad");
+            return filter_traffic_CS("Kohgiluyeh Va Boyer Ahmad");
         } else if (provinceName === "East Azerbaijan") {
-            return filter_traffic("East Azarbaijan");
+            return filter_traffic_CS("East Azarbaijan");
         } else if (provinceName === "Ardabil") {
-            return filter_traffic("Ardebil");
+            return filter_traffic_CS("Ardebil");
         } else {
-            return filter_traffic(provinceName);
+            return filter_traffic_CS(provinceName);
         }
     };
 
+
+    const filter_siteCounts_PS = (province) => {
+        if (provinceName === "West Azerbaijan") {
+            return filter_traffic_CS("West Azarbaijan");
+        } else if (provinceName === "Sistan va Baluchestan") {
+            return filter_traffic_CS("Sistan Va Baluchestan");
+        } else if (provinceName === "Chaharmahal Bakhtiari") {
+            return filter_traffic_CS("Chahar Mahal Va Bakhtiari");
+        } else if (provinceName === "Kohgiluyeh and Boyer Ahmad") {
+            return filter_traffic_CS("Kohgiluyeh Va Boyer Ahmad");
+        } else if (provinceName === "East Azerbaijan") {
+            return filter_traffic_CS("East Azarbaijan");
+        } else if (provinceName === "Ardabil") {
+            return filter_traffic_CS("Ardebil");
+        } else {
+            return filter_traffic_CS(provinceName);
+        }
+    };
     const filter_siteCount= (province)=>
     {
 
@@ -394,7 +471,7 @@ const IranMap = () => {
                             <div className="show_title_chartBar" style={{width: '165px', height: '52px'}}>
                                 <span>Site Count:
                                         {
-                                            filter_siteCount(provinceName)
+                                            format(filter_siteCount(provinceName))
                                         }
                                 </span>
                             </div>
@@ -410,7 +487,7 @@ const IranMap = () => {
                         <div className={styles.data_per_province}>
                             <div className={styles.data_per_province_header}>
                                 <img src="../../../public/info_provinces.svg" alt="" width={24} height={24}/>
-                                <span>{provinceName}</span>
+                                <span >{provinceName}</span>
                             </div>
 
                             <div className={styles.main_data_perProvince}>
@@ -418,13 +495,15 @@ const IranMap = () => {
                                     <div className={styles.main_data_headerItem}>
                                         <p>Site Count</p>
                                         <span>
-                                            {
-                                                provinceName === "Khuzestan" ? (
-                                            filter_siteCount("Khouzestan")
-                                                ) :(
-                                                filter_siteCount(provinceName)
-                                                )
 
+                                            {
+                                                format(
+                                                    provinceName === "Khuzestan" ? (
+                                                        filter_siteCount("Khouzestan")
+                                                    ) : (
+                                                        filter_siteCount(provinceName)
+                                                    )
+                                                )
                                             }
                                         </span>
                                     </div>
@@ -439,14 +518,44 @@ const IranMap = () => {
 
                                 <div className={styles.main_data_every_item}>
                                     <div className={styles.main_data_headerItem}>
-                                        <p>Total traffic</p>
+                                        <p>Total traffic CS</p>
+                                        <div>
                                         <span>
-                                           {filter_traffic(provinceName)}
+                                           {
+                                               format(filter_traffic_CS(provinceName))
+                                           }
                                         </span>
+                                            <span>
+                                            TB
+                                        </span>
+                                        </div>
                                     </div>
                                     <div className={styles.main_data_rateItem}>
                                         <div>
-                                            <Rate calculation={"negative"}/>
+                                            <Rate calculation={"positive"}/>
+                                        </div>
+                                        <span>since last month</span>
+                                    </div>
+
+                                </div>
+
+                                <div className={styles.main_data_every_item}>
+                                    <div className={styles.main_data_headerItem}>
+                                        <p>Total traffic PS</p>
+                                        <div>
+                                        <span>
+                                           {
+                                               format(filter_traffic_PS(provinceName))
+                                           }
+                                        </span>
+                                            <span>
+                                            TB
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div className={styles.main_data_rateItem}>
+                                        <div>
+                                            <Rate calculation={"positive"}/>
                                         </div>
                                         <span>since last month</span>
                                     </div>
@@ -457,15 +566,16 @@ const IranMap = () => {
                                     <div className={styles.main_data_headerItem}>
                                         <p>Cells Count</p>
                                         <span>{
-                                            provinceName === "Khuzestan" ?(filter_cells("Khouzestan")):
-                                            filter_cells(provinceName)
-
+                                            format(
+                                                provinceName === "Khuzestan" ? (filter_cells("Khouzestan")) :
+                                                    filter_cells(provinceName)
+                                            )
                                         }
                                         </span>
                                     </div>
                                     <div className={styles.main_data_rateItem}>
                                         <div>
-                                            <Rate calculation={"negative"}/>
+                                            <Rate calculation={"positive"}/>
                                         </div>
                                         <span>since last month</span>
                                     </div>
@@ -475,7 +585,15 @@ const IranMap = () => {
                                 <div className={styles.main_data_every_item}>
                                     <div className={styles.main_data_headerItem}>
                                         <p>Total Revenue</p>
-                                        <span>20</span>
+
+                                        <span>
+                                            {
+                                                format(calculate_revenue(provinceName))
+                                            }
+                                        </span>
+                                        <span>
+                                            Toman
+                                        </span>
                                     </div>
                                     <div className={styles.main_data_rateItem}>
                                         <div>
@@ -494,67 +612,67 @@ const IranMap = () => {
                 )}
 
 
-            {provinceSelected && (
-                <div>
-                    <div
-                        className={styles.backdrop}
-                        onClick={() => setProvinceSelected(false)}
-                    ></div>
-                    {
-                    /*
-                    <div className={styles.cities}>
-                        <div className="cities_header_row">
-                            <img src="./arrow_city.svg" alt=""/>
-                            <img src="./location_city.svg" alt=""/>
-                            <span className={styles.selected_province}> Choose city in {provinceNameOnClick}</span>
-                        </div>
-                        <form>
-                            {cities.map((city) => {
-                                return (
-                                    <>
-                                        <input type="checkbox" value={city} name={city} id="cities_class"
-                                               checked={selectedCities.includes(city)}
+                    {provinceSelected && (
+                        <div>
+                            <div
+                                className={styles.backdrop}
+                                onClick={() => setProvinceSelected(false)}
+                            ></div>
+                            {
+                                /*
+                                <div className={styles.cities}>
+                                    <div className="cities_header_row">
+                                        <img src="./arrow_city.svg" alt=""/>
+                                        <img src="./location_city.svg" alt=""/>
+                                        <span className={styles.selected_province}> Choose city in {provinceNameOnClick}</span>
+                                    </div>
+                                    <form>
+                                        {cities.map((city) => {
+                                            return (
+                                                <>
+                                                    <input type="checkbox" value={city} name={city} id="cities_class"
+                                                           checked={selectedCities.includes(city)}
 
-                                        onChange={() => {
-                                       if (selectedCities.includes(city)) {
-                                           setSelectedCities(selectedCities.filter(selectedCity => selectedCity !== city));
-                                       } else {
-                                           setSelectedCities([...selectedCities, city]);
-                                                       }
-                                                   }} />
-                                            <label htmlFor={city} className={styles.city_label} >
-                                                {city}
+                                                    onChange={() => {
+                                                   if (selectedCities.includes(city)) {
+                                                       setSelectedCities(selectedCities.filter(selectedCity => selectedCity !== city));
+                                                   } else {
+                                                       setSelectedCities([...selectedCities, city]);
+                                                                   }
+                                                               }} />
+                                                        <label htmlFor={city} className={styles.city_label} >
+                                                            {city}
 
-                                            </label>
-                                            <br />
-                                    </>
-                                );
-                            })}
-
-
+                                                        </label>
+                                                        <br />
+                                                </>
+                                            );
+                                        })}
 
 
-                            <div className={styles.select_cities_btns}>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setProvinceSelected(false)
-                                        setSelectedCities([])
-                                    }}
-                                >
-                                    بازگشت
-                                </button>
 
-                                <input type="submit" value="تایید" onClick={()=> {
-                                    setCItySelected(true)
-                                    setProvinceSelected(false)
-                                }
-                                }/>
-                            </div>
 
-                        </form>
-                    </div>
-                    */
+                                        <div className={styles.select_cities_btns}>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setProvinceSelected(false)
+                                                    setSelectedCities([])
+                                                }}
+                                            >
+                                                بازگشت
+                                            </button>
+
+                                            <input type="submit" value="تایید" onClick={()=> {
+                                                setCItySelected(true)
+                                                setProvinceSelected(false)
+                                            }
+                                            }/>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                */
                     }
 
                     <div className={styles.cities}>
@@ -683,13 +801,17 @@ const IranMap = () => {
                                     onMouseOver={() =>
                                     {
                                       setProvinceName(province.className)
+                                        props.setProvinceName(province.className)
 
                                       setPupop(true)
+                                        props.setPupop(true)
                                     }}
                                    /* onMouseOver={() => handleMouseMapOver(province.name)}*/
                                     onMouseLeave={() => {
                                         setProvinceName("")
+                                        props.setProvinceName("")
                                         setPupop(false)
+                                        props.setPupop(false)
                                     }}
 
                                     onClick={() => {

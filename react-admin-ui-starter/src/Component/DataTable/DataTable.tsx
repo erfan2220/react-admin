@@ -42,6 +42,7 @@ const DataTable = (props:Props) =>
         }
     }
 
+
     return(
 
             <div className="dataTable">

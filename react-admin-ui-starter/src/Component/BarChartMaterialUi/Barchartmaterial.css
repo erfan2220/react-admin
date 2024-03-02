@@ -29,6 +29,7 @@
 .View_report span
 {
     color: #007BFF;
+    cursor: pointer;
 }
 
 .Barchart_container_2
@@ -74,15 +75,18 @@
 {
     display: flex;
     flex-direction: column;
-    background-color: #FFFFFF;
+    background-color: #14141A;
     border-radius: 8px;
     padding: 8px;
-    color: #212121;
+    color: #fff;
+    opacity: 0.9;
 }
 .custom-tooltip h2
 {
-    text-align: center;
-    border-bottom: 1px solid #000000;
+    text-align: left;
+    margin: 4px 8px;
+    border-bottom: 1px solid #fff;
+    font-weight: bold;
 }
 
 .custom-tooltip_Item1,.custom-tooltip_Item2,.custom-tooltip_Item3
@@ -90,31 +94,38 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    direction: ltr;
+
     align-items: center;
+    gap: 27px;
+    margin: 4px 8px;
+
+}
+.label_border
+{
+    font-size: 14px;
 }
 
 .circle_uv
 {
-    background-color: #18D3CC;
+    background-color: #007BFF;
     border-radius: 50%;
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
 }
 
 .circle_pv
 {
     background-color: #18D3CC;
     border-radius: 50%;
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
 }
 
 .circle_cv
 {
     background-color: #99CAFF;
     border-radius: 50%;
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
     box-shadow: 1px 1px black;
 }

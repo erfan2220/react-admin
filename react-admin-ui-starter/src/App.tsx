@@ -12,10 +12,11 @@ import ConfigM from "./Pages/Config Management/ConfigM.tsx";
 import Settings from "./Pages/Settings/Setting.tsx";
 import Assets from "./Pages/Home/Assets.tsx";
 import {AuthProvider, useAuth} from "./Pages/Login/AuthContext.tsx";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 
-const Layout = ({ repeatedLogin, setRepeatedLogin ,count , setCount}) => {
+const Layout = ({ repeatedLogin, setRepeatedLogin ,count , setCount}) =>
+{
 
     const { login, setLogin } = useAuth() as { login: boolean, setLogin: (value: boolean) => void };
 
@@ -94,6 +95,13 @@ function App() {
                     </Route>
 
                     <Route path="/sites/:cityName"
+                           element={<ProtectedLayout
+                               setRepeatedLogin={setRepeatedLogin} repeatedLogin={repeatedLogin} setCount={setCount}
+                               count={count} />}>
+                        <Route element={<Site />} />
+                    </Route>
+
+                    <Route path="/sites/:siteLocation"
                            element={<ProtectedLayout
                                setRepeatedLogin={setRepeatedLogin} repeatedLogin={repeatedLogin} setCount={setCount}
                                count={count} />}>

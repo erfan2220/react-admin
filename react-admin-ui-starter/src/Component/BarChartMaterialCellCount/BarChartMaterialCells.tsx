@@ -13,7 +13,7 @@ const RoundedBar_2 = (props) => {
     const { x, y, height } = props;
     return (
         <g id="d2">
-            <rect x={x} y={y} width={10} height={height} rx={4} ry={4} fill={props.fill} />
+            <rect x={x} y={y} width={30} height={height} rx={4} ry={4} fill={props.fill} />
         </g>
     );
 };
@@ -110,8 +110,6 @@ const BarChartMaterialCells = ({dataPerProvince}) => {
                 <div className="View_report">
                     <span>View Report</span>
                     <img src="./CaretRight (1).svg" alt=""/>
-
-
                 </div>
             </div>
             <div className="Barchart_container_2">
@@ -161,7 +159,7 @@ const BarChartMaterialCells = ({dataPerProvince}) => {
 
 
 
-                <div className="data_symbols">
+                <div className="data_symbols_2">
                     <div className="data_symbols_items">
                         <img src="./Rectangle_2G.svg" alt=""/>
                         <span>2G Sites</span>

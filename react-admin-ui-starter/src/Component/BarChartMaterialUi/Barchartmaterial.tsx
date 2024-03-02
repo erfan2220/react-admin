@@ -8,7 +8,7 @@ const RoundedBar = (props) => {
     const { x, y, height } = props;
     return (
         <g>
-            <rect x={x} y={y} width={40} height={height} rx={4} ry={4} fill={props.fill} />
+            <rect x={x} y={y} width={30} height={height} rx={4} ry={4} fill={props.fill} />
         </g>
     );
 };
@@ -43,23 +43,26 @@ const BarChartMaterial = ({data}) => {
                 <div className="custom-tooltip">
                     <h2>{`${payload[0].payload.name}`}</h2>
                     <div className="custom-tooltip_Item1">
+                        <p>{`${payload[0].payload.uv}`}</p>
                         <div className="circle_uv">
                         </div>
-                        <p>{`${payload[0].payload.uv}`}</p>
+
 
                     </div>
 
                     <div className="custom-tooltip_Item2">
+                        <p>{`${payload[1].payload.pv}`}</p>
                         <div className="circle_pv">
                         </div>
-                        <p>{`${payload[1].payload.pv}`}</p>
+
 
                     </div>
 
                     <div className="custom-tooltip_Item3">
+                        <p>{`${payload[2].payload.cv}`}</p>
                         <div className="circle_cv">
                         </div>
-                        <p>{`${payload[2].payload.cv}`}</p>
+
                     </div>
 
 
@@ -94,6 +97,20 @@ const BarChartMaterial = ({data}) => {
         return tick > 999 ? `${(tick / 1000)}K` : `${tick}`;
     };
 
+    const CustomYAxisTick = ({ x, y, payload }) => (
+        <text
+            x={x}
+            y={y}
+            dy={7}
+            textAnchor="end"
+            fill="#666"
+           className="label_border"
+        >
+            {payload.value > 999 ? `${(payload.value / 1000)}K` : `${payload.value}`}
+
+        </text>
+    );
+
 
 
     return (
@@ -120,13 +137,23 @@ const BarChartMaterial = ({data}) => {
                             bottom: 5,
                         }}
                         barGap={0}
-                        barCategoryGap={20}
                     >
 
                         <CartesianGrid horizontal={false} vertical={false} strokeDasharray="3 3" />
                         <XAxis stroke="#757575" dataKey="name" ticks={customXAxisTicks}
-                               tickMargin={10} tickCount={7} padding={{left:40}} />
-                        <YAxis  stroke="#757575" ticks={customYAxisTicks} tickFormatter={formatYAxisTick}  interval={0}  tickMargin={50}  />
+                               tickMargin={10} tickCount={7} padding={{left:40}} fontWeight={600} />
+
+                        {/*<YAxis  stroke="#757575" ticks={customYAxisTicks} tickFormatter={formatYAxisTick}  interval={0}  tickMargin={30}    className="custom-y-axis" />
+                       */}
+
+                        <YAxis
+                            stroke="#757575"
+                            ticks={customYAxisTicks}
+                            tickFormatter={formatYAxisTick}
+                            interval={0}
+                            tickMargin={30}
+                            tick={<CustomYAxisTick />} // Custom YAxis Tick component
+                        />
                         <Tooltip cursor={false} content={<CustomTooltip  data={data}/>} />
 
                         <Bar

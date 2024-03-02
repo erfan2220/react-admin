@@ -30,7 +30,33 @@ const Site = () => {
     useEffect(() => {
         // Initial setup
         updateColumns();
+
+        // Fetch data every 24 hours
+        const fetchData = () => {
+            fetchSiteData();
+        };
+
+        fetchData(); // Fetch data immediately when component mounts
+
+        const interval = setInterval(fetchData, 24 * 60 * 60 * 1000); // Fetch data every 24 hours
+
+        // Clean-up function to clear the interval when the component unmounts
+        return () => clearInterval(interval);
     }, []);
+
+    const fetchSiteData = () => {
+        // Fetch data from the API
+        fetch(`http://192.168.129.188:5001/api/assets/sites_detail_per_city/${cityName}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update the state with fetched data
+                setFilteredRows(data.site_detail);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    };
+
+
+
 
     const updateColumns = () => {
         const screenSize = window.innerWidth;
@@ -59,41 +85,30 @@ const Site = () => {
         return [
 
             {
-                field: 'cellname',
-                headerName: 'Cells',
+                field: 'site_code',
+                headerName: 'site_code',
                 width: 100,
                 editable: true,
             },
             {
-                field: 'sector',
-                headerName: 'sector',
+                field: 'cell_count',
+                headerName: 'cell_count',
                 width: 120,
                 editable: true,
             },
             {
-                field: 'trx',
-                headerName: 'TRX',
+                field: 'node_name',
+                headerName: 'node_name',
                 width: 120,
                 editable: true,
             },
 
+
             {
-                field: "latitude",
-                headerName: "latitude",
+                field: "site_band",
+                headerName: "site_band",
                 width: 100,
                 type: "number",
-            },
-            {
-                field: "longitude",
-                headerName: "longitude",
-                width: 100,
-                type: "number",
-            },
-            {
-                field: "type",
-                headerName: "type",
-                width: 100,
-                type: "string",
             },
             {
                 field: "vendor",
@@ -101,17 +116,30 @@ const Site = () => {
                 width: 100,
                 type: "string",
             },
+
             {
-                field: "frequncy",
-                headerName: "frequency band",
+                field: "design_location_dependency",
+                headerName: "design_location_dependency",
                 width: 150,
                 type: "number",
             },
             {
-                field: 'address',
-                headerName: ' Site address',
+                field: 'latitude',
+                headerName: 'latitude',
                 type: 'string',
-                width: 400,
+                width:100,
+            },
+            {
+                field: 'longitude',
+                headerName: 'longitude',
+                type: 'string',
+                width: 100,
+            },
+            {
+                field: "address",
+                headerName: "address",
+                width: 100,
+                type: "string",
             },
         ];
     }
@@ -121,6 +149,7 @@ const Site = () => {
         console.log(selectedTab)
 
     };
+
 
 
 
@@ -199,7 +228,7 @@ const Site = () => {
                     (selectedTab === "Site location") &&
                     (
                     <div className="Site_Location">
-                        <img src="/site_location_22.svg" alt=""/>
+
                     </div>
                 )
                 }

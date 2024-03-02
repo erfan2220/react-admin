@@ -22,8 +22,8 @@ const Dashboard = () => {
                 const cachedData = JSON.parse(localStorage.getItem('cachedData')) || {};
                 const cachedData2 = JSON.parse(localStorage.getItem('cachedData2')) || {};
 
-                const fetchData1Promise = fetchAndCacheData('cachedData', 'http://192.168.129.188:5001/api/assets/sites_count');
-                const fetchData2Promise = fetchAndCacheData('cachedData2', 'http://192.168.129.188:5001/api/assets/cells_count');
+                const fetchData1Promise = fetchAndCacheData('cachedData', 'http://192.168.198.201:5001/api/assets/sites_count');
+                const fetchData2Promise = fetchAndCacheData('cachedData2', 'http://192.168.198.201:5001/api/assets/cells_count');
                 const [jsonData1, jsonData2] = await Promise.all([fetchData1Promise, fetchData2Promise]);
                 console.log("fetchData2Promise",jsonData2)
                 setData(jsonData1);
@@ -40,7 +40,8 @@ const Dashboard = () => {
 
     }, []);
 
-    async function fetchAndCacheData(cacheKey, apiUrl) {
+    async function fetchAndCacheData(cacheKey, apiUrl)
+    {
         const cachedData = JSON.parse(localStorage.getItem(cacheKey)) || {};
 
          if (cachedData.data && Date.now() - cachedData.timestamp < CACHE_EXPIRATION_TIME) {
@@ -67,7 +68,7 @@ const Dashboard = () => {
                 <BarChartMaterial data={data}/>
                 </div>
                 <div className="box1_2">
-                <Siteinformation/>
+                <Siteinformation  data={data}/>
                 </div>
 
             </div>
@@ -76,7 +77,6 @@ const Dashboard = () => {
                     <Linechart/>
                 </div>
                 <div className="box2_2">
-
                     <BarChartMaterialCells dataPerProvince={dataPerProvince}/>
                 </div>
 
