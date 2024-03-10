@@ -320,6 +320,20 @@ export const siteTabs = [
         id:2,
         siteName:"Site location",
 
+    }
+];
+
+
+export const cellTabs = [
+    {
+        id:1,
+        siteName:"Cell Information",
+
+    },
+    {
+        id:2,
+        siteName:"Site location",
+
     },
     {
         id:3,
@@ -332,15 +346,16 @@ export const siteTabs = [
 
     },
     {
-        id:4,
+        id:5,
         siteName:"CR Number",
 
     },
 
+    {
+        id:6,
+        siteName:"alarm report",
+    },
 ];
-
-
-
 
 
 

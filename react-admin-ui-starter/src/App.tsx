@@ -13,6 +13,7 @@ import Settings from "./Pages/Settings/Setting.tsx";
 import Assets from "./Pages/Home/Assets.tsx";
 import {AuthProvider, useAuth} from "./Pages/Login/AuthContext.tsx";
 import {useState} from "react";
+import CellsInfo from "./Component/CellsInfo/CellsInfo.tsx";
 
 
 const Layout = ({ repeatedLogin, setRepeatedLogin ,count , setCount}) =>
@@ -67,6 +68,25 @@ const ProtectedLayout = ({ repeatedLogin, setRepeatedLogin, children , setCount 
     );
 };
 
+const ProtectedLay = ({ repeatedLogin, setRepeatedLogin, children , setCount ,count}) =>
+{
+
+    const { login, setLogin } = useAuth() as { login: boolean, setLogin: (value: boolean) => void };
+    setRepeatedLogin (false);
+    setCount(count++)
+
+    return (
+        <div className="main">
+            <Navbar setLogin={setLogin} setCount={setCount} />
+            <div className="container">
+                <div className="Content-container">
+                    <CellsInfo/>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 function App() {
     const [repeatedLogin,setRepeatedLogin]=useState(true)
@@ -92,6 +112,7 @@ function App() {
                         <Route path="/asset" element={<Assets />} />
                         <Route path="/Inventory" element={<Inventory />} />
                         <Route path="/Visualize" element={<Visualize />} />
+
                     </Route>
 
                     <Route path="/sites/:cityName"
@@ -100,12 +121,20 @@ function App() {
                                count={count} />}>
                         <Route element={<Site />} />
                     </Route>
-
+                    {/*
                     <Route path="/sites/:siteLocation"
                            element={<ProtectedLayout
                                setRepeatedLogin={setRepeatedLogin} repeatedLogin={repeatedLogin} setCount={setCount}
                                count={count} />}>
                         <Route element={<Site />} />
+                    </Route>*/
+                    }
+
+                    <Route path="/cells/:siteName"
+                           element={<ProtectedLay
+                               setRepeatedLogin={setRepeatedLogin} repeatedLogin={repeatedLogin} setCount={setCount}
+                               count={count} />}>
+                        <Route element={<CellsInfo />} />
                     </Route>
 
 

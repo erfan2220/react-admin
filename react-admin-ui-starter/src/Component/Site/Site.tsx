@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './Site.css'
 import DataTable from "../../Component/SiteDataTable/Datatable.tsx";
 import { GridColDef } from '@mui/x-data-grid';
@@ -8,6 +8,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
  import info from "../../database/Cities_info/Sites.ts"
 import { useParams } from 'react-router-dom';
+import CustomTable from "../Custom Table/CustomTable.tsx";
+import Leaflet_online from "../Leaflet Map/Leaflet_online.tsx";
 
 
 
@@ -18,12 +20,19 @@ type Props = {
     slug: string,
 }
 
+
+
 const Site = () => {
     const [filteredRows, setFilteredRows] = useState(info);
     const [columns, setColumns] = useState<GridColDef[]>([]);
     const [selectedTab, setSelectedTab] = useState<string | null>("Site Information");  // Track the selected tab
     const [open,setOpen]=useState(false)
+    const [currentPage, setCurrentPage] = useState(1);
     const [filter,setFilter]=useState(false)
+
+    const [rowSelect,setRowSelect]=useState(null)
+    const [alarmData,setAlarmData]=useState(null)
+    const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000;
 
     const { cityName } = useParams();
 
@@ -53,7 +62,39 @@ const Site = () => {
                 setFilteredRows(data.site_detail);
             })
             .catch(error => console.error('Error fetching data:', error));
+
     };
+
+
+
+
+    async function fetchAndCacheData(cacheKey, apiUrl)
+    {
+
+        const cachedData = JSON.parse(localStorage.getItem(cacheKey)) || {};
+
+        if (cachedData.data && Date.now() - cachedData.timestamp < CACHE_EXPIRATION_TIME)
+        {
+            return cachedData.data;
+        }
+
+        else {
+            const response = await fetch(apiUrl);
+            const jsonData = await response.json();
+            localStorage.setItem(cacheKey, JSON.stringify({data: jsonData, timestamp: Date.now()}));
+            return jsonData;
+        }
+
+        /*
+                const response = await fetch(apiUrl);
+                const jsonData = await response.json();
+                localStorage.setItem(cacheKey, JSON.stringify({ data: jsonData, timestamp: Date.now() }));
+                return jsonData;
+                */
+
+
+    }
+
 
 
 
@@ -85,27 +126,24 @@ const Site = () => {
         return [
 
             {
-                field: 'site_code',
+                field: 'site code',
                 headerName: 'site_code',
                 width: 100,
-                editable: true,
             },
             {
-                field: 'cell_count',
+                field: 'cell count',
                 headerName: 'cell_count',
                 width: 120,
-                editable: true,
             },
             {
-                field: 'node_name',
+                field: 'node name',
                 headerName: 'node_name',
                 width: 120,
-                editable: true,
             },
 
 
             {
-                field: "site_band",
+                field: "site band",
                 headerName: "site_band",
                 width: 100,
                 type: "number",
@@ -118,7 +156,7 @@ const Site = () => {
             },
 
             {
-                field: "design_location_dependency",
+                field: "type",
                 headerName: "design_location_dependency",
                 width: 150,
                 type: "number",
@@ -136,6 +174,28 @@ const Site = () => {
                 width: 100,
             },
             {
+                field: 'installation type',
+                headerName: 'bts_installation_type',
+                type: 'string',
+                width: 100,
+            },
+            {
+                field: 'site type',
+                headerName: 'site_type',
+                type: 'string',
+                width: 100,
+            },
+            {
+                field: 'tower height',
+                headerName: 'tower_height',
+                type: 'string',
+                width: 100,
+            },
+
+
+
+
+            {
                 field: "address",
                 headerName: "address",
                 width: 100,
@@ -150,6 +210,16 @@ const Site = () => {
 
     };
 
+
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleSearch =()=>
+    {
+
+    }
 
 
 
@@ -183,7 +253,7 @@ const Site = () => {
                         <span>Filter & Sort</span>
                     </div>
 
-
+                    {/*
                     <div className="Site_header_button_items">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 5V19" stroke="#007BFF" stroke-width="2" stroke-linecap="round"
@@ -194,6 +264,7 @@ const Site = () => {
 
                         <span>New Site</span>
                     </div>
+                    */}
 
 
                     <div>
@@ -216,9 +287,28 @@ const Site = () => {
                 {(selectedTab === "Site Information") && (
                     <div>
                         <div className="tab-content">
+                            <div className="search_box_sites">
+                                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 15L21 21" stroke="black" stroke-width="2" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path
+                                        d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                        stroke="black" stroke-width="2"/>
+                                </svg>
+
+                                <input type="text" placeholder="Filter Data"
+                                       onChange={(e) =>
+                                           handleSearch(e)}/>
+                            </div>
+
                         </div>
 
-                        <DataTable slug="users" columns={columns} rows={filteredRows}/>
+                        <CustomTable columns={columns}
+                                     data={filteredRows}
+                                     currentPage={currentPage}
+                                     postsPerPage={15}
+                                     paginate={paginate}/>
                         {open && <Add slug="user" columns={columns} setOpen={setOpen}/>}
                     </div>
                 )}
@@ -227,34 +317,13 @@ const Site = () => {
                 {
                     (selectedTab === "Site location") &&
                     (
-                    <div className="Site_Location">
-
-                    </div>
-                )
-                }
-
-                {
-                    (selectedTab === "Radio Equipments") &&
-                    (
-                      <div></div>
-                    )
-                }
-
-                {
-                    (selectedTab === "Spare Equipments") &&
-                    (
-                        <div>
-
+                        <div className="Site_Location">
+                            <Leaflet_online Arrayposition={filteredRows}/>
                         </div>
                     )
                 }
 
-                {
-                    (selectedTab === "CR Number") &&
-                    (
-                        <div></div>
-                    )
-                }
+
             </div>
         </div>
     );

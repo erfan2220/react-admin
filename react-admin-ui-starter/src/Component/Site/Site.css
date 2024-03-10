@@ -7,6 +7,29 @@
     background-color: #f5f5f5;
     color: black;
 }
+.tab-content
+{
+    display: flex;
+    align-items: center;
+    direction: ltr;
+    margin-top: 10px;
+
+}
+.search_box_sites
+{
+    display: flex;
+    gap: 10px;
+    direction: ltr;
+    background-color: #FFFFFF;
+    padding: 16px;
+    border-radius: 16px;
+    align-items: center;
+}
+.search_box_sites input
+{
+    outline: none;
+    direction: ltr;
+}
 .site_container
 {
     width: 92%;
@@ -202,7 +225,6 @@
 .css-yrdy0g-MuiDataGrid-columnHeaderRow
 {
     display: flex;
-    flex-direction: row-reverse;
 }
 .css-gl260s-MuiDataGrid-columnHeadersInner
 {
@@ -211,7 +233,7 @@
 }
  .MuiDataGrid-row
 {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 .css-128fb87-MuiDataGrid-toolbarContainer
 {
@@ -226,3 +248,4 @@
 {
     direction: ltr;
 }
+

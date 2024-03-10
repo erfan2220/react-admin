@@ -113,7 +113,7 @@ const BarChartMaterialCells = ({dataPerProvince}) => {
                 </div>
             </div>
             <div className="Barchart_container_2">
-                <div className="test_barchart_container">
+                <div className="test_barchart_container_2">
                     <ResponsiveContainer width="80%" height="100%" >
                         <BarChart
                             width={500}

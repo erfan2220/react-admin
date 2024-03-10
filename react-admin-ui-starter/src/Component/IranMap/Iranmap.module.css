@@ -15,7 +15,30 @@
     height: 100%;
     width: 100%;
 }
+.search_city_in_map
+{
+    display: flex;
+    direction: ltr;
+    align-items: center;
+}
+.search_city_in_map_border
+{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    direction: ltr;
+    align-items: center;
+    margin-left: 24px;
+    padding: 10px;
+    border: 1px solid #212121;
+    border-radius: 8px;
 
+}
+.search_city_in_map input
+{
+    direction: ltr;
+    outline: none;
+}
 .show_title {
     display: block;
     position: absolute;
@@ -132,11 +155,12 @@
 
 .map .svg {
     position: relative;
-    height: 70vh;
+    height: 72vh;
     width: auto;
     transition: transform 2.5s ease;
     overflow: auto;
 }
+
 
 .map .border path {
     fill: #fff;
@@ -268,7 +292,12 @@
     border-radius: 8px;
     cursor: pointer;
 }
+.loading-position
+{
+   position: absolute;
+    left: 50%;
 
+}
 .cancel_btt
 {
     background-color: #FFFFFF;
@@ -332,7 +361,6 @@
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 0.7rem;
 }
-
 .cities input[type="submit"],
 .cities button {
     width: 50%;

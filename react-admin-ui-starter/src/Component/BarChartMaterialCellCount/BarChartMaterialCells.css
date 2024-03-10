@@ -40,12 +40,12 @@
     align-items: center;
     padding: 0 32px 32px 32px;
 }
-.test_barchart_container
+.test_barchart_container_2
 {
     width: 90%;
     height: 100%;
     max-width: 100%;
-    max-height: 273px;
+    max-height: 338px;
     position: absolute;
     direction: ltr;
     top: 95px;

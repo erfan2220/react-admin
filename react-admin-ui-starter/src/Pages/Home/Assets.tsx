@@ -6,6 +6,10 @@ import PieChartBox from "../../Component/pieChartbox/PieChartBox.tsx";
 import Linechart from "../../Component/LineChart/linechart.tsx";
 import SimpleBarChart from "../../Component/SimpleBarChart/simpleBarChart.tsx";
 import Rate from "../../Component/rateup and ratedown/rate.tsx";
+import BarChartMaterial from "../../Component/BarChartMaterialUi/Barchartmaterial.tsx";
+import Siteinformation from "../../Component/Siteinformations/Siteinformation.tsx";
+import BarChartMaterialCells from "../../Component/BarChartMaterialCellCount/BarChartMaterialCells.tsx";
+import FilterMap from "../../Component/Filter_Map_By_Category/Filter_Map.tsx";
 
 
 
@@ -13,7 +17,8 @@ import Rate from "../../Component/rateup and ratedown/rate.tsx";
 const Assets = () => {
     const [activeIndex,setActiveIndex]=useState(1)
 
-
+    const [data, setData] = useState(null);
+    const [dataPerProvince, setDataPerProvince] = useState(null);
     const [provinceName, setProvinceName] = useState("");
     const [provinceNameOnClick, setProvinceNameOnClick] = useState("");
 
@@ -40,7 +45,7 @@ const Assets = () => {
     const [cellsCount,setCellsCount]=useState(null)
     const [cityCount,setCityCount]=useState(null)
     const [cityCountSelected,setCityCountSelected]=useState(null)
-
+    const [totaldata,setTotaldata]=useState(null)
 
     const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000;
 
@@ -61,15 +66,12 @@ const Assets = () => {
             localStorage.setItem(cacheKey, JSON.stringify({data: jsonData, timestamp: Date.now()}));
             return jsonData;
         }
-
         /*
                 const response = await fetch(apiUrl);
                 const jsonData = await response.json();
                 localStorage.setItem(cacheKey, JSON.stringify({ data: jsonData, timestamp: Date.now() }));
                 return jsonData;
                 */
-
-
     }
 
 
@@ -126,7 +128,7 @@ const Assets = () => {
              });*/
 
 
-        const promise1 = fetchAndCacheData("sites_count_cache", "http://192.168.198.201:5001/api/assets/sites_count_per_province")
+        const promise1 = fetchAndCacheData("sites_count_cache", "http://192.168.129.188:5001/api/assets/sites_count_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Sites count per province data", data);
@@ -140,10 +142,10 @@ const Assets = () => {
         promises.push(promise1);
 
         // Fetch cells count per province data
-        const promise2 = fetchAndCacheData("cells_count_cache", "http://192.168.198.201:5001/api/assets/cells_count_per_province")
+        const promise2 = fetchAndCacheData("cells_count_cache_datatat", "http://192.168.129.188:5001/api/assets/cells_count_per_province")
             .then(data => {
                 // Handle the data as needed
-                console.log("Cells count per province data:", data);
+                console.log("kljdsldjfslk", data);
                 setCellsCount(data);
             })
             .catch(error => {
@@ -154,7 +156,7 @@ const Assets = () => {
         promises.push(promise2);
 
         // Fetch cities per province data
-        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://192.168.198.201:5001/api/assets/cities")
+        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://192.168.129.188:5001/api/assets/cities")
             .then(data => {
                 // Handle the data as needed
                 console.log("Cities per province data:", data);
@@ -168,7 +170,7 @@ const Assets = () => {
         promises.push(promise3);
 
         // Fetch traffic per province data
-        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://192.168.198.201:5001/api/assets/traffic_per_province")
+        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://192.168.129.188:5001/api/assets/traffic_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Traffic per province data:", data);
@@ -180,6 +182,49 @@ const Assets = () => {
             });
 
         promises.push(promise4);
+
+        // Fetch traffic per province data
+        const promise5 = fetchAndCacheData("traffic_per_all_country",
+            "http://192.168.129.188:5001/api/assets/traffic_total")
+            .then(data => {
+                // Handle the data as needed
+                setTotaldata(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error("Error fetching traffic per province data:", error);
+            });
+
+        promises.push(promise5);
+
+
+        const promise6 = fetchAndCacheData("sites_count_per_country",
+            "http://192.168.129.188:5001/api/assets/sites_count_per_tech")
+            .then(data2 => {
+                // Handle the data as needed
+                setData(data2);
+                console.log("kfjsjhklsdfjhksdfjhsdfjhl",data2)
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+
+        promises.push(promise6);
+
+        const promise7 = fetchAndCacheData("cell_counts_per_all_country",
+            "http://192.168.129.188:5001/api/assets/cells_count")
+            .then(data2 => {
+                // Handle the data as needed
+                setDataPerProvince(data2);
+
+            })
+            .catch(error => {
+                // Handle errors
+                console.log(error)
+            });
+
+        promises.push(promise7);
 
         // Wait for all promises to resolve
         Promise.all(promises)
@@ -193,8 +238,7 @@ const Assets = () => {
 
     const numberFormatter = new Intl.NumberFormat('en-US', {
         style: 'decimal',
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+
     });
 
     const format = (number)=>
@@ -251,10 +295,12 @@ const Assets = () => {
 
         const filterItems = totalTraffic.traffic.filter(item => item.province === province)
 
+        console.log("fksdjlfjsklfjkdlsjf",filterItems)
+
         if (filterItems.length > 0) {
             filterItems.forEach(item => {
                 // Add the revenue of each item to the total
-                total += item.revenue;
+                total += item.total_revenue;
             });
         }
 
@@ -350,20 +396,6 @@ const Assets = () => {
         setCityCountSelected(filterItems)
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return(
         loading ?
             (
@@ -378,7 +410,6 @@ const Assets = () => {
                         Report
                     </h2>
 
-                    <img src="./" alt=""/>
                 </div>
 
                 <div className="Assets-menu-item" onClick={() => {
@@ -387,7 +418,16 @@ const Assets = () => {
                     <h2 className={activeIndex === 2 ? "active-site-selector" : "deactive-site-selector"}>
                         Network
                     </h2>
-                    <img src="./" alt=""/>
+
+                </div>
+
+                <div className="Assets-menu-item" onClick={() => {
+                    setActiveIndex(3)
+                }}>
+                    <h2 className={activeIndex === 3 ? "active-site-selector" : "deactive-site-selector"}>
+                        Filter-By-Category
+                    </h2>
+
                 </div>
 
 
@@ -395,9 +435,9 @@ const Assets = () => {
 
             <div className="Assets-map-2">
 
-                <div >
+                <div>
                     {
-                        activeIndex ==1 &&(
+                        activeIndex == 1 && (
                             <div>
                                 <div className="Assets_header">
                                     <h2>Assets/Report</h2>
@@ -405,15 +445,14 @@ const Assets = () => {
                                 </div>
 
                                 <div className="dashboard_asset">
-                                <div className="dashboard_content_container_top_3">
-                                        <div className="Assets_box1_1">
-                                            <PieChartBox twog={8961} threeg={5121} fourg={7122} title={"Nokia Sites"}/>
+
+
+                                    <div className="dashboard_content_container_top_2">
+                                        <div className="box1_1">
+                                            <BarChartMaterial data={data}/>
                                         </div>
-                                        <div className="Assets_box1_2">
-                                            <PieChartBox twog={13590} threeg={11365} fourg={8961} title={"Huawei Sites"}/>
-                                        </div>
-                                        <div className="Assets_box1_3">
-                                            <PieChartBox twog={5780} threeg={4855} fourg={5324} title={"Ericsson Sites"}/>
+                                        <div className="box1_2">
+                                            <Siteinformation data={data}/>
                                         </div>
                                     </div>
                                     <div className="dashboard_content_container_down">
@@ -421,10 +460,11 @@ const Assets = () => {
                                             <Linechart/>
                                         </div>
                                         <div className="box2_2">
-                                            <SimpleBarChart/>
+                                            <BarChartMaterialCells dataPerProvince={dataPerProvince}/>
                                         </div>
-
                                     </div>
+
+
                                 </div>
                             </div>
 
@@ -432,17 +472,17 @@ const Assets = () => {
                     }
                     {activeIndex === 2 && (
                         <div>
-                        <div className="Assets_header">
-                            <h2>Assets/Network</h2>
-                        </div>
-                        <div className="home">
-
+                            <div className="Assets_header">
+                                <h2>Assets/Network</h2>
+                            </div>
+                            <div className="home">
+                                {/*
                             <div className="box box1">
-                                <h2>Call Traffic</h2>
+                                    <h2>Call Traffic</h2>
 
-                                <div className="Assets_sites_items">
-                                    <p>720M</p>
-                                    <div className="rate_container_Assets">
+                                    <div className="Assets_sites_items">
+                                        <p>720M</p>
+                                        <div className="rate_container_Assets">
                                         <img src="./rateup.svg" alt=""/>
                                         <span>2.1%</span>
                                     </div>
@@ -477,9 +517,9 @@ const Assets = () => {
                                 </div>
 
                             </div>
+                                */}
 
-
-                            <div className="box box5">
+                            <div className=" box5">
 
                                 <div className="Map_intilizer_container">
 
@@ -487,168 +527,286 @@ const Assets = () => {
                                     <div className="Total_information_map_details">
 
 
-
-                                        { pupop &&(
-                                             <div>
-                                                {/*Total data left direction of map */}
-                                                    <div className="total_map_data">
-                                                        <div className="header_total_map_data">
-                                                            <img src="./Province.svg" alt=""/>
-                                                            <h2>{provinceName} </h2>
-                                                        </div>
-
-                                                        <div className="total_map_data_item">
-                                                            <h3>Site Counts</h3>
-                                                            <p>
-                                                                {
-                                                                    format(
-                                                                        provinceName === "Khuzestan" ? (
-                                                                    filter_siteCount("Khouzestan")
-                                                                ) : (
-                                                                    filter_siteCount(provinceName)
-                                                                )
-                                                                )
-                                                            }
-                                                            </p>
-                                                        </div>
-
-                                                        <div className="total_map_data_item">
-                                                            <h3>Cell Counts</h3>
-                                                            <p>{
-                                                                format(
-                                                                    provinceName === "Khuzestan" ? (filter_cells("Khouzestan")) :
-                                                                        filter_cells(provinceName)
-                                                                )
-                                                            }</p>
-                                                        </div>
-
-
-                                                        <div className="total_map_data_item_for_quantity">
-                                                        <div className="total_map_data_item_2">
-                                                            <h3>Traffic PS</h3>
-                                                            <p> {
-                                                                format(filter_traffic_PS(provinceName))
-                                                            }</p>
-                                                        </div>
-
-                                                        <div className="total_map_data_item_3">
-                                                            <Rate calculation="positive"/>
-                                                            <h6>TB</h6>
-                                                        </div>
-                                                      </div>
-
-
-                                                        <div className="total_map_data_item_for_quantity">
-                                                            <div className="total_map_data_item_2">
-                                                                <h3>Traffic CS</h3>
-                                                                <p>{
-                                                                    format(filter_traffic_CS(provinceName))
-                                                                }</p>
-                                                            </div>
-
-                                                            <div className="total_map_data_item_3">
-                                                                <Rate calculation="positive"/>
-                                                                <h6>TB</h6>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="total_map_data_item_for_quantity">
-                                                            <div className="total_map_data_item_2">
-                                                                <h3>Total revenue</h3>
-                                                                <p>1,020</p>
-                                                            </div>
-
-                                                            <div className="total_map_data_item_3">
-                                                                <Rate calculation="positive"/>
-                                                                <h6>{
-                                                                    format(calculate_revenue(provinceName))
-                                                                }</h6>
-                                                            </div>
-
-                                                        </div>
-
-
-                                                        </div>
-                                             </div>
-                                        )
-                                        }
-
-
-
-
                                         <div className="map_fixed_positition">
                                             <IranMap setPupop={setPupop}
-                                            setProvinceName={setProvinceName}/>
+                                                     setProvinceName={setProvinceName}/>
                                         </div>
 
-                                        {/*Total data left direction of map */}
-                                        <div className="total_map_data">
-                                            <div className="header_total_map_data">
-                                                <img src="./Total_svg.svg" alt=""/>
-                                                <h2>Total statistics </h2>
+
+                                        <div className="data_box_asset">
+
+                                            <div>
+                                                {pupop && (
+                                                    <div>
+                                                        {/*Total data left direction of map */}
+                                                        <div className="total_map_data">
+                                                            <div className="header_total_map_data">
+                                                                <img src="./Province.svg" alt=""/>
+                                                                <h2>{provinceName} </h2>
+                                                            </div>
+
+
+                                                            <div className="total_map_data_item_group">
+                                                                <div className="total_map_data_item_spp1">
+                                                                    <h3>Site Counts</h3>
+                                                                    <p> {
+                                                                        format(
+                                                                            provinceName === "Khuzestan" ? (
+                                                                                filter_siteCount("Khouzestan")
+                                                                            ) : (
+                                                                                filter_siteCount(provinceName)
+                                                                            )
+                                                                        )
+                                                                    }</p>
+                                                                </div>
+
+                                                                <div className="total_map_data_item_spp2">
+                                                                    <h3>Cell Counts</h3>
+                                                                    <p>{
+                                                                        format(
+                                                                            provinceName === "Khuzestan" ? (filter_cells("Khouzestan")) :
+                                                                                filter_cells(provinceName)
+                                                                        )
+                                                                    }</p>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div className="data_row_box">
+                                                                <h2>Total traffic</h2>
+                                                                <div className="row_items_traffic">
+                                                                    <div className="total_map_data_item_for_quantity">
+                                                                        <div className="total_map_data_item_2">
+                                                                            <h3>Traffic PS</h3>
+                                                                            <p> {format(filter_traffic_PS(provinceName))}</p>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_3">
+                                                                            <Rate calculation="positive"/>
+                                                                            <h6>TB</h6>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div className="total_map_data_item_for_quantity">
+                                                                        <div className="total_map_data_item_2">
+                                                                            <h3>Traffic CS</h3>
+                                                                            <p>{
+                                                                                format(filter_traffic_CS(provinceName))
+                                                                            }</p>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_3">
+                                                                            <Rate calculation="positive"/>
+                                                                            <h6>TB</h6>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className="total_map_data_item_for_quantity">
+                                                                        <div className="total_map_data_item_2">
+                                                                            <h3>Total revenue</h3>
+                                                                            <p>{
+
+                                                                                format(calculate_revenue(provinceName))
+                                                                            }</p>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_3">
+                                                                            <Rate calculation="positive"/>
+                                                                            <h6>Toman</h6>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="data_row_box">
+                                                                <h2>Costs and revenue</h2>
+                                                                <div className="row_items_traffic">
+                                                                    <div className="total_map_data_item_for_quantity">
+                                                                        <div className="total_map_data_item_2">
+                                                                            <h3>Traffic PS</h3>
+                                                                            <p> {format(filter_traffic_PS(provinceName))}</p>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_3">
+                                                                            <Rate calculation="positive"/>
+                                                                            <h6>TB</h6>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div className="total_map_data_item_for_quantity">
+                                                                        <div className="total_map_data_item_2">
+                                                                            <h3>Traffic CS</h3>
+                                                                            <p>{
+                                                                                format(filter_traffic_CS(provinceName))
+                                                                            }</p>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_3">
+                                                                            <Rate calculation="positive"/>
+                                                                            <h6>TB</h6>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className="total_map_data_item_for_quantity">
+                                                                        <div className="total_map_data_item_2">
+                                                                            <h3>Total revenue</h3>
+                                                                            <p>{
+
+                                                                                format(calculate_revenue(provinceName))
+                                                                            }</p>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_3">
+                                                                            <Rate calculation="positive"/>
+                                                                            <h6>Toman</h6>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                )
+                                                }
                                             </div>
 
-                                            <div className="total_map_data_item">
-                                                <h3>Site Counts</h3>
-                                                <p>1,020</p>
-                                            </div>
+                                            {/*Total data left direction of map */}
 
-                                            <div className="total_map_data_item">
-                                                <h3>Cell Counts</h3>
-                                                <p>1,020</p>
-                                            </div>
+                                            {!pupop && (
+                                                <div className="total_map_data">
+
+                                                    <div className="header_total_map_data">
+                                                        <img src="./Total_svg.svg" alt=""/>
+                                                        <h2>Total statistics </h2>
+                                                    </div>
+
+                                                    <div className="total_map_data_item_group">
+                                                        <div className="total_map_data_item_spp1">
+                                                            <h3>Site Counts</h3>
+                                                            <p>87,847</p>
+                                                        </div>
+
+                                                        <div className="total_map_data_item_spp2">
+                                                            <h3>Cell Counts</h3>
+                                                            <p>464,085</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="data_row_box">
+                                                        <h2>Total traffic</h2>
+                                                        <div className="row_items_traffic">
+                                                            <div className="total_map_data_item_for_quantity">
+                                                                <div className="total_map_data_item_2">
+                                                                    <h3>Traffic PS</h3>
+                                                                    <p>{format(totaldata.traffic[0].ps_revenue)}</p>
+                                                                </div>
+
+                                                                <div className="total_map_data_item_3">
+                                                                    <Rate calculation="positive"/>
+                                                                    <h6>TB</h6>
+                                                                </div>
+                                                            </div>
 
 
-                                            <div className="total_map_data_item_for_quantity">
-                                                <div className="total_map_data_item_2">
-                                                    <h3>Traffic PS</h3>
-                                                    <p>1,020</p>
+                                                            <div className="total_map_data_item_for_quantity">
+                                                                <div className="total_map_data_item_2">
+                                                                    <h3>Traffic CS</h3>
+                                                                    <p>{format(totaldata.traffic[0].cs_revenue)}</p>
+                                                                </div>
+
+                                                                <div className="total_map_data_item_3">
+                                                                    <Rate calculation="positive"/>
+                                                                    <h6>TB</h6>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="total_map_data_item_for_quantity">
+                                                                <div className="total_map_data_item_2">
+                                                                    <h3>Total revenue</h3>
+                                                                    <p>{format(totaldata.traffic[0].total_revenue)}</p>
+                                                                </div>
+
+                                                                <div className="total_map_data_item_3">
+                                                                    <Rate calculation="positive"/>
+                                                                    <h6>Toman</h6>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div className="data_row_box">
+                                                        <h2>Costs and revenue</h2>
+                                                        <div className="row_items_traffic">
+                                                            <div className="total_map_data_item_for_quantity">
+                                                                <div className="total_map_data_item_2">
+                                                                    <h3>Traffic PS</h3>
+                                                                    <p>{format(totaldata.traffic[0].ps_revenue)}</p>
+                                                                </div>
+
+                                                                <div className="total_map_data_item_3">
+                                                                    <Rate calculation="positive"/>
+                                                                    <h6>TB</h6>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="total_map_data_item_for_quantity">
+                                                                <div className="total_map_data_item_2">
+                                                                    <h3>Traffic CS</h3>
+                                                                    <p>{format(totaldata.traffic[0].cs_revenue)}</p>
+                                                                </div>
+
+                                                                <div className="total_map_data_item_3">
+                                                                    <Rate calculation="positive"/>
+                                                                    <h6>TB</h6>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="total_map_data_item_for_quantity">
+                                                                <div className="total_map_data_item_2">
+                                                                    <h3>Total revenue</h3>
+                                                                    <p>{format(totaldata.traffic[0].total_revenue)}</p>
+                                                                </div>
+
+                                                                <div className="total_map_data_item_3">
+                                                                    <Rate calculation="positive"/>
+                                                                    <h6>Toman</h6>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
-
-                                                <div className="total_map_data_item_3">
-                                                    <Rate calculation="positive"/>
-                                                    <h6>TB</h6>
-                                                </div>
-                                            </div>
-
-
-                                            <div className="total_map_data_item_for_quantity">
-                                                <div className="total_map_data_item_2">
-                                                    <h3>Traffic CS</h3>
-                                                    <p>1,020</p>
-                                                </div>
-
-                                                <div className="total_map_data_item_3">
-                                                    <Rate calculation="positive"/>
-                                                    <h6>TB</h6>
-                                                </div>
-                                            </div>
-
-                                            <div className="total_map_data_item_for_quantity">
-                                                <div className="total_map_data_item_2">
-                                                    <h3>Total revenue</h3>
-                                                    <p>{
-                                                        format(calculate_revenue(provinceName))
-                                                    }</p>
-                                                </div>
-
-                                                <div className="total_map_data_item_3">
-                                                    <Rate calculation="positive"/>
-                                                    <h6>Toman</h6>
-                                                </div>
-
-                                            </div>
-
-
+                                            )}
                                         </div>
-
                                     </div>
 
                                 </div>
                             </div>
-                        </div>
+                            </div>
                         </div>
                     )
+                    }
+
+                    {
+                        activeIndex === 3 && (
+                            <div>
+                                <div className="Assets_header">
+                                    <h2>Assets/Filter</h2>
+                                </div>
+
+                                <FilterMap/>
+                            </div>
+                        )
+
                     }
 
                 </div>
@@ -656,7 +814,7 @@ const Assets = () => {
         </div>
 
             )
-            :(<div>
+            : (<div>
                 loading....
             </div>)
 

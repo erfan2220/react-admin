@@ -1,80 +1,59 @@
-
 import './DataTable.css';
-import {Link} from "react-router-dom";
-import { DataGrid, GridColDef,GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridCellParams } from '@mui/x-data-grid';
+import { Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import {useState} from "react";
+
+type Props = {
+    columns: GridColDef[],
+    rows: object[],
+    slug: string,
+}
+
+const DataTable = (props: Props) => {
+
+
+    const navigate = useNavigate();
+
+    const renderNonEditableCell = (params: GridCellParams) => {
+        return <Typography>{params.value}</Typography>;
+    };
+
+    const columnsWithRenderer: GridColDef[] = props.columns.map((column) => ({
+        ...column,
+        renderCell: renderNonEditableCell
+    }));
 
 
 
 
-type Props=
+    const handleRowClick = (params: any) =>
     {
-        columns:GridColDef[],
-        rows:object[],
-        slug:string,
-    }
+        // Extract site_code from the clicked row
+        const siteCode = params.row.site_code;
+        console.log("5454")
+        // Navigate to the desired link
+        navigate(`/cells/${siteCode}`);
+    };
 
 
-const DataTable = (props:Props) =>
-{
-    {/*
-        const infoWithIds = info.map((row, index) => ({
-            ...row,
-            id: index + 1 // Adding 1 to index to start ids from 1
-        }));*/}
 
-
-    const actionColumn:GridColDef=
-        {
-        field:"action",
-        headerName:"action",
-        width:200,
-        renderCell:(params)=>{
-            return(
-                <div className="action">
-                    <Link to={`/${props.slug}/${params.row.cellname}`}>
-                        <img src="./view.svg" alt=""/>
-                    </Link>
-                    <div className="delete"  >
-                        <img src="/delete.svg" alt=""/>
-                    </div>
-                </div>
-            )
-        }
-    }
-
-
-    return(
-
-            <div className="dataTable">
-
-                    <DataGrid
-                        className="dataGrid"
-                        rows={props.rows}
-                        columns={[...props.columns, actionColumn]}
-                        initialState={{
-                            pagination: {
-                                paginationModel: {
-                                    pageSize: 10,
-                                },
-                            },
-                        }}
-                        slots={{toolbar:GridToolbar}}
-                        slotProps={{
-                            toolbar:{
-                                showQuickFilter:true,
-                                quickFilterProps:{debounceMs:500},
-                            }
-                        }}
-                        pageSizeOptions={[5]}
-                        checkboxSelection
-                        disableRowSelectionOnClick
-                        disableDensitySelector
-                        disableColumnSelector
-                        disableColumnFilter
-                    />
-
-            </div>
-    )
+    return (
+        <div className="dataTable">
+            <DataGrid
+                className="dataGrid"
+                rows={props.rows}
+                columns={columnsWithRenderer}
+                pageSize={10}
+                checkboxSelection
+                disableRowSelectionOnClick
+                disableDensitySelector
+                disableColumnSelector
+                disableColumnFilter
+                disableSelectionOnClick
+            />
+        </div>
+    );
 };
 
 export default DataTable;

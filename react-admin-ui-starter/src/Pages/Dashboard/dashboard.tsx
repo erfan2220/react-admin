@@ -13,45 +13,95 @@ const Dashboard = () => {
     const [data, setData] = useState(null);
     const [dataPerProvince, setDataPerProvince] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [totalSitesCount,setTotalSitesCount]=useState(null)
     const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Check if data for each API call is cached and not expired
-                const cachedData = JSON.parse(localStorage.getItem('cachedData')) || {};
-                const cachedData2 = JSON.parse(localStorage.getItem('cachedData2')) || {};
 
-                const fetchData1Promise = fetchAndCacheData('cachedData', 'http://192.168.198.201:5001/api/assets/sites_count');
-                const fetchData2Promise = fetchAndCacheData('cachedData2', 'http://192.168.198.201:5001/api/assets/cells_count');
-                const [jsonData1, jsonData2] = await Promise.all([fetchData1Promise, fetchData2Promise]);
-                console.log("fetchData2Promise",jsonData2)
-                setData(jsonData1);
-                setDataPerProvince(jsonData2);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            }
-        };
+        const promises = [];
 
-        fetchData();
+
+        const promise1 = fetchAndCacheData("sites_count_sssdkkdkjsjk", "http://192.168.129.188:5001/api/assets/sites_count_per_tech")
+            .then(data => {
+                // Handle the data as needed
+                console.log("ofkiorfkjmfrmkjfk", data);
+                setData(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error("Error fetching sites count per province data:", error);
+            });
+
+        promises.push(promise1);
+
+
+
+        const promise2 = fetchAndCacheData("cells-ldfvsklfk", "http://192.168.129.188:5001/api/assets/cells_count")
+            .then(data => {
+                // Handle the data as needed
+                console.log("ofkiorfkjmfrmkjfk2", data);
+
+                setDataPerProvince(data)
+            })
+            .catch(error => {
+                // Handle errors
+                console.error("Error fetching sites count per province data:", error);
+            });
+
+        promises.push(promise2);
+
+        const promise3 = fetchAndCacheData("sites_total_count_cache", "http://192.168.129.188:5001/api/assets/sites_count_total")
+            .then(data => {
+                // Handle the data as needed
+                console.log("ofkiorfkjmfrmkjfk3", data);
+                setTotalSitesCount(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error("Error fetching sites count per province data:", error);
+            });
+
+        promises.push(promise3);
+
+
+        Promise.all(promises)
+            .then(() => {
+
+                setLoading(false); // Set loading to false once all data is fetched
+            });
 
 
     }, []);
 
+
+
+
     async function fetchAndCacheData(cacheKey, apiUrl)
     {
+
         const cachedData = JSON.parse(localStorage.getItem(cacheKey)) || {};
 
-         if (cachedData.data && Date.now() - cachedData.timestamp < CACHE_EXPIRATION_TIME) {
-           return cachedData.data;
-         } else {
+        if (cachedData.data && Date.now() - cachedData.timestamp < CACHE_EXPIRATION_TIME)
+        {
+            return cachedData.data;
+        }
+
+        else {
             const response = await fetch(apiUrl);
             const jsonData = await response.json();
-            localStorage.setItem(cacheKey, JSON.stringify({ data: jsonData, timestamp: Date.now() }));
+            localStorage.setItem(cacheKey, JSON.stringify({data: jsonData, timestamp: Date.now()}));
             return jsonData;
-         }
+        }
+
+        /*
+                const response = await fetch(apiUrl);
+                const jsonData = await response.json();
+                localStorage.setItem(cacheKey, JSON.stringify({ data: jsonData, timestamp: Date.now() }));
+                return jsonData;
+                */
+
+
     }
 
 
@@ -68,8 +118,9 @@ const Dashboard = () => {
                 <BarChartMaterial data={data}/>
                 </div>
                 <div className="box1_2">
-                <Siteinformation  data={data}/>
+                    <Siteinformation data={totalSitesCount}/>
                 </div>
+
 
             </div>
             <div className="dashboard_content_container_down">

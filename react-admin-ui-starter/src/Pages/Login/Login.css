@@ -57,7 +57,8 @@
     width: 92%;
     bottom: 7%;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    direction: ltr;
     justify-content: center;
     background-color: #2A2931;
     color: white;
@@ -82,7 +83,7 @@
     height: 43px;
     border-radius: 15px;
     font-size: 18px;
-    text-align: end;
+
     padding: 8px 7px 7px 12px;
     color: black;
 }
@@ -101,7 +102,6 @@
     flex-direction: column;
     position: relative;
     gap: 7px;
-    align-items: flex-end;
 
 }
 
@@ -110,7 +110,6 @@
     flex-direction: column;
     position: relative;
     gap: 7px;
-    align-items: flex-end;
 
 }
 
@@ -153,7 +152,7 @@
 
 .loremipsun_container_part2 {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     line-height: 1;
     height: 22%;
     align-items: baseline;

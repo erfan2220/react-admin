@@ -4,9 +4,8 @@ import {PieChart, ResponsiveContainer, Tooltip, Pie, Cell} from "recharts";
 
 const data =
     [
-        {name:"2G Sites",value:400,color:"#007BFF"},
-        {name:"3G Sites",value:300,color:"#99CAFF"},
-        {name:"4G Sites",value:300,color:"#18D3CC"}
+        {name:"Used capacity",value:800,color:"#007BFF"},
+        {name:"Empty capacity",value:300,color:"#99CAFF"},
 
     ]
 const PieChartBoxInventory =(props:any)=>
@@ -19,10 +18,7 @@ const PieChartBoxInventory =(props:any)=>
                         <p>{props.number}</p>
                         <h2>{props.title}</h2>
                     </div>
-                    <div className="rate_container_INVV">
-                        <img src="rateup.svg" alt=""/>
-                        <span>12.5%</span>
-                    </div>
+
                 </div>
                 <div className="chart-inventory">
                     <ResponsiveContainer width="99%" height={300}>

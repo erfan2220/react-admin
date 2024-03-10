@@ -7,6 +7,7 @@ import {abaali} from "../../database/SiteDAta/abaali.ts";
 import 'reactjs-popup/dist/index.css';
 import Rate from "../rateup and ratedown/rate.tsx";
 import {Link} from "react-router-dom";
+import {Circles, DNA, ProgressBar} from "react-loader-spinner";
 
 
 
@@ -79,6 +80,8 @@ const IranMap = (props) => {
     const [cityCountSelected,setCityCountSelected]=useState(null)
 
     const [totalRevenue,setTotalRevenue]=useState(0)
+
+    const [originalCityCountSelected, setOriginalCityCountSelected] = useState();
 
 
 
@@ -451,10 +454,19 @@ const IranMap = (props) => {
     {
         const filterItems= cityCount.sites_count.filter(item => item.province === province)
 
+        setOriginalCityCountSelected(filterItems)
         setCityCountSelected(filterItems)
     }
 
 
+
+    const handleSearch = (e) => {
+        const searchText = e.target.value.toLowerCase();
+        const items = cityCountSelected.filter((cityItem) => cityItem.city.toLowerCase().includes(searchText));
+        console.log("kjdnalkjsd",items)
+        setOriginalCityCountSelected(items);
+        console.log("setOriginalCityCountSelected",originalCityCountSelected)
+    }
 
 
 
@@ -463,7 +475,8 @@ const IranMap = (props) => {
              (
                 <>
 
-            {
+                    {/*
+                 {
                 pupop && (
                     <div>
                         <section className={styles.show_title}>
@@ -609,7 +622,8 @@ const IranMap = (props) => {
                         </div>
 
                     </div>
-                )}
+                )}*/
+                    }
 
 
                     {provinceSelected && (
@@ -687,11 +701,30 @@ const IranMap = (props) => {
                                 </div>
                             </div>
 
+                            <div className={styles.search_city_in_map} >
+
+                                <div className={styles.search_city_in_map_border}>
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 15L21 21" stroke="black" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                        <path
+                                            d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                            stroke="black" stroke-width="2"/>
+                                    </svg>
+
+                                    <input type="text" placeholder="Select city"
+                                           onChange={(e) =>
+                                               handleSearch(e)}/>
+                                </div>
+                            </div>
+
+
                             {
-                                cityCountSelected.map((item,index)=>
+                                originalCityCountSelected.map((item, index) =>
                                     (
-                                        <Link to={`/sites/${item.city}`} >
-                                            <div key={index} className={styles.cities_selection}>
+                                        <Link to={`/sites/${item.city}`}>
+                                        <div key={index} className={styles.cities_selection}>
                                                     <span>{item.city}</span>
                                             </div>
                                         </Link>
@@ -823,7 +856,8 @@ const IranMap = (props) => {
                                 />
                             ))}
                         </g>
-                        <g className={styles.sea}>
+                        {
+                        /*<g className={styles.sea}>
                             <path className={styles.caspian} d={caspianD} />
                             <path
                                 className={styles.persian_gulf}
@@ -831,7 +865,8 @@ const IranMap = (props) => {
                                 onMouseLeave={() => setProvinceName("")}
                                 d={persianGulfD}
                             />
-                        </g>
+                        </g>*/
+                        }
                         <g className={styles.lake}>
                             <path
                                 className={styles.jazmourian}
@@ -850,9 +885,21 @@ const IranMap = (props) => {
 
                 </div>
             </div>
-        </> )
-                :(<div>
-                    loading....
+        </> ):(<div style={{    width: '100%',
+                 height: '100%',
+                 position: 'absolute',
+                 left: '50%',
+                 top: '28%'}}>
+                 <ProgressBar
+                     visible={true}
+                     height="200"
+                     width="200"
+                     color="#000000"
+                     ariaLabel="progress-bar-loading"
+                     borderColor="none"
+                     wrapperStyle={{}}
+                     wrapperClass=""
+                 />
                 </div>)
     );
 };

@@ -6,85 +6,98 @@ import {Link} from "react-router-dom";
 
 const data = [
     {
-        name: '18th',
-        uv: 60,
+        name: '0',
+        uv: 4069253847.625,
         pv: 2400,
         amt: 2400,
     },
     {
-        name: '20th',
-        uv: 35,
+        name: '4h',
+        uv: 3505720061.625,
         pv: 1398,
         amt: 2210,
     },
     {
-        name: '22th',
+        name: '8h',
         nameY: '4000',
-        uv: 50,
+        uv: 848010137.59375,
         pv: 9800,
         amt: 2290,
     },
     {
-        name: '24th',
-        uv: 40,
-        pv: 3908,
+        name: '12h',
+        uv: 398010137.625,
+        pv: 1571703996.9375,
         amt: 2000,
     },
     {
-        name: '26th',
-        uv: 65,
-        pv: 4800,
+        name: '16h',
+        uv: 3769253847.625,
+        pv: 1040330248.59375,
         amt: 2181,
     },
     {
-        name: '28th',
-        uv: 40,
-        pv: 3800,
+        name: '20h',
+        uv: 2505720061.5,
+        pv: 2505720061.5,
         amt: 2500,
     },
     {
-        name: '30th',
-        uv: 30,
-        pv: 4300,
+        name: '24h',
+        uv: 6132740174.375,
+        pv: 6132740174.375,
         amt: 2100,
     },
 ];
 
+const numberFormatter = new Intl.NumberFormat('en-US', {
+    style: 'decimal',
+
+});
+
+const format = (number)=>
+{
+    const formattedNumber = numberFormatter.format(number);
+    return formattedNumber;
+}
+
+const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="custom-tooltip">
+                <p>{`${payload[0].payload.uv}`}</p>
+            </div>
+        );
+    }
+    return null;
+};
 
 function lineChart()
 {
 
-    const customYAxisTicks = [0, 10, 20, 30, 40,50,60,70,80,90,100]; // Customize this array with your desired Y-axis tick values
+    const customYAxisTicks = [0,1000000000, 2000000000, 3000000000, 4000000000,5000000000]; // Customize this array with your desired Y-axis tick values
 
-    const formatYAxisTick = (tick:any) => {
-        // Customize the tick labels as needed
-        return `${tick}`;
+    const formatYAxisTick = (tick:any) =>
+    {
+        return (tick > 999999) ? `${(tick / 1000000)}M` : `${tick}`;
     };
 
     return (
         <div className="charts_container">
             <div className="charts_container_header">
-                <h1>Cells</h1>
+                <h1>Traffic PS</h1>
                 <div className="charts_container_Link">
                     <Link to={"/dashboard"}>View report</Link>
                     <img src="/CaretRight.svg" alt=""/>
                 </div>
 
             </div>
-
+            {/*
             <div className="charts_container_data">
-                <div className="charts_container_data_left">
-                    <h2>820</h2>
-                    <span>Active over nodes</span>
-                </div>
-                <div className="charts_container_data_icons">
-                    <div className="rate_container_2">
-                        <img src="/rateup.svg" alt="rate"/>
-                        <p>12.5%</p>
-                    </div>
-                    <span>Since last month</span>
-                </div>
+
+
             </div>
+            */}
 
             <div className="main_barChart_container">
                 <ResponsiveContainer width="100%" height="100%">
@@ -109,9 +122,14 @@ function lineChart()
 
                         <CartesianGrid horizontal={false} strokeDasharray="0"/>
                         <XAxis dataKey="name" tickMargin={20} />
-                        <YAxis ticks={customYAxisTicks} tickFormatter={formatYAxisTick} tickMargin={30} />
-                        <Tooltip/>
-                        <Area type="linear" dataKey="uv" stroke="#66B0FF" fill="url(#colorUv)"  strokeWidth={4} />
+                        <YAxis ticks={customYAxisTicks} tickFormatter={formatYAxisTick} tickMargin={50} />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Area type="linear"
+                              dataKey="uv"
+                              stroke="#66B0FF"
+                              fill="url(#colorUv)"
+                              strokeWidth={4} />
+
                     </AreaChart>
                 </ResponsiveContainer>
             </div>

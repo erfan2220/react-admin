@@ -60,6 +60,8 @@ const UserTable = () =>
     const [selectAll, setSelectAll] = useState(false);
     const [selectedRows, setSelectedRows] = useState(new Array(currentPosts.length).fill(false));
 
+
+
     const handleSelectAll = () => {
         setSelectAll(!selectAll);
         const newSelectedRows = selectedRows.map(() => !selectAll);
@@ -98,9 +100,9 @@ const UserTable = () =>
                 <table className="table_class2">
 
                     <thead>
-                        <th>
-                            <input type="checkbox" onChange={handleSelectAll} checked={selectAll} />
-                        </th>
+                    <th>
+                        <input type="checkbox" onChange={handleSelectAll} checked={selectAll}/>
+                    </th>
                     {columns.map(column => (
                         <th key={column.key}>{column.header}</th>
                     ))}
@@ -131,12 +133,12 @@ const UserTable = () =>
                                             </span>
 
                                             </div>
-                                        ) :  column.header === "Edit" ? (
+                                        ) : column.header === "Edit" ? (
                                             <div className="Edit_User_section">
                                                 <img src="./edit_2.svg" alt=""/>
                                                 <img src="./delete_2.svg" alt=""/>
                                             </div>
-                                        ) :(
+                                        ) : (
                                             <span
                                                 className={row[column.header] === "Up" ? "up-text" : row[column.header] === "down" ? "down-text" : ""}>
                                          {row[column.header]}
