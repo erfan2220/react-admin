@@ -16,7 +16,9 @@ import {useState} from "react";
 import CellsInfo from "./Component/CellsInfo/CellsInfo.tsx";
 
 
-const Layout = ({ repeatedLogin, setRepeatedLogin ,count , setCount}) =>
+
+
+const Layout = ({ repeatedLogin  , setRepeatedLogin ,count , setCount}) =>
 {
 
     const { login, setLogin } = useAuth() as { login: boolean, setLogin: (value: boolean) => void };

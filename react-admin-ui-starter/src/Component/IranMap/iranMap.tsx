@@ -888,13 +888,13 @@ const IranMap = (props) => {
         </> ):(<div style={{    width: '100%',
                  height: '100%',
                  position: 'absolute',
-                 left: '50%',
+                 left: '15%',
                  top: '28%'}}>
                  <ProgressBar
                      visible={true}
                      height="200"
                      width="200"
-                     color="#000000"
+                     barColor="#000"
                      ariaLabel="progress-bar-loading"
                      borderColor="none"
                      wrapperStyle={{}}

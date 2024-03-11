@@ -212,11 +212,13 @@
     padding:30px;
     background-image: url("./map_bg.svg");
     background-size: cover;
+    flex: 1;
 }
 .data_box_asset
 {
     background-color: #FFFFFF;
     border-radius: 8px;
+    flex: 1;
 }
 .row_items_traffic
 {
@@ -267,8 +269,8 @@ display: flex;
 }
 .Total_information_map_details
 {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     direction: ltr;
     width: 100%;
     gap: 23px;
