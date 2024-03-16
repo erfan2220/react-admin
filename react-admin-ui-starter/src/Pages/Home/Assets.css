@@ -1,6 +1,5 @@
 @import "../../styles/variable.css";
 
-
 .dashboard_content_container_top_3
 {
     display: grid;
@@ -210,7 +209,7 @@
     left: 0;
     top: 14%;
     padding:30px;
-    background-image: url("./map_bg.svg");
+    background-image: url("../../../public/mapbg.svg");
     background-size: cover;
     flex: 1;
 }

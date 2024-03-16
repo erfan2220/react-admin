@@ -1,4 +1,4 @@
-const Citites_english = [
+const CitiesEnglish = [
     {
         region:"1",
         provinces:"East Azerbaijan",
@@ -872,4 +872,4 @@ const Citites_english = [
     }
 ]
 
-export default Citites_english;
+export default CitiesEnglish;

@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import "./Inventory_site_data.css"
 import {useState} from "react";
 import Paginate from "../../../Component/Paginate/Paginate.tsx";

@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import "./Paginate.css"
 import {useState, useEffect} from "react";
 

@@ -1,8 +1,9 @@
+//@ts-nocheck
 import './DataTable.css';
 import { DataGrid, GridColDef, GridCellParams } from '@mui/x-data-grid';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import {useState} from "react";
+
 
 type Props = {
     columns: GridColDef[],

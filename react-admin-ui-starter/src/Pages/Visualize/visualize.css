@@ -30,8 +30,8 @@
 .vis-menu
 {
     background-color: #1E1E31;
-
     max-width: 350px;
+    min-width: 280px;
     width: 30%;
     height: 100%;
     display: flex;
@@ -84,6 +84,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 24px;
+    margin-right: 225px;
 }
 .minimize_container
 {

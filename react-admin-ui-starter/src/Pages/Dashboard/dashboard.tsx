@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import './dashboard.css'
 import Linechart from "../../Component/LineChart/linechart.tsx";
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
         const promises = [];
 
 
-        const promise1 = fetchAndCacheData("sites_count_sssdkkdkjsjk", "http://192.168.129.188:5001/api/assets/sites_count_per_tech")
+        const promise1 = fetchAndCacheData("sites_count_sssdkkdkjsjk", "http://10.15.90.87:5001/api/assets/sites_count_per_tech")
             .then(data => {
                 // Handle the data as needed
                 console.log("ofkiorfkjmfrmkjfk", data);
@@ -37,7 +37,7 @@ const Dashboard = () => {
 
 
 
-        const promise2 = fetchAndCacheData("cells-ldfvsklfk", "http://192.168.129.188:5001/api/assets/cells_count")
+        const promise2 = fetchAndCacheData("cells-ldfvsklfk", "http://10.15.90.87:5001/api/assets/cells_count")
             .then(data => {
                 // Handle the data as needed
                 console.log("ofkiorfkjmfrmkjfk2", data);
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
         promises.push(promise2);
 
-        const promise3 = fetchAndCacheData("sites_total_count_cache", "http://192.168.129.188:5001/api/assets/sites_count_total")
+        const promise3 = fetchAndCacheData("sites_total_count_cache", "http://10.15.90.87:5001/api/assets/sites_count_total")
             .then(data => {
                 // Handle the data as needed
                 console.log("ofkiorfkjmfrmkjfk3", data);

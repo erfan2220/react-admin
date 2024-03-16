@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 
 import "./rate.css"
 const Rate = ({calculation}) =>

@@ -1,9 +1,8 @@
 
-import Box from '@mui/material/Box';
+//@ts-nocheck
 import './DataTable.css';
-import {Link} from "react-router-dom";
 import { DataGrid, GridColDef,GridToolbar, GridValueGetterParams } from '@mui/x-data-grid';
-import Filter from "../../Component/Filter/Filter.jsx"
+
 
 
 

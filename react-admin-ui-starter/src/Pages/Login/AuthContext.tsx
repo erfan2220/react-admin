@@ -1,8 +1,16 @@
-import  { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext();
+// Define the type for the context value
+type AuthContextType = {
+    login: boolean;
+    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-export const AuthProvider = ({ children }) => {
+// Create the context with the defined type
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+// Define the AuthProvider component with children prop
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [login, setLogin] = useState(false);
 
     return (
@@ -12,6 +20,11 @@ export const AuthProvider = ({ children }) => {
     );
 };
 
-export const useAuth = () => {
-    return useContext(AuthContext);
+// Define the useAuth hook with the defined type
+export const useAuth = (): AuthContextType => {
+    const context = useContext(AuthContext);
+    if (context === undefined) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
 };

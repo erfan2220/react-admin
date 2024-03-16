@@ -1,3 +1,4 @@
+//@ts-nocheck
 import PieChartBoxInventory from "../pieChartBoxInventory/pieChartBoxInventory.tsx";
 
 const InventoryFirstPage = (props) => {

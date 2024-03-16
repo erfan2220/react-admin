@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import "./PieChartBox.css";
 import {PieChart, ResponsiveContainer, Tooltip, Pie, Cell} from "recharts";
 

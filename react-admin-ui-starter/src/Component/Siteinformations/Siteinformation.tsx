@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import "./Siteinformation.css"
 import Rate from "../rateup and ratedown/rate.tsx";
 

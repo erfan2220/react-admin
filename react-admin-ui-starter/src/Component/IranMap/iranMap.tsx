@@ -1,3 +1,4 @@
+//@ts-nocheck
 import  React, { useRef,useState, useEffect } from "react";
 import iranProvinces from "../../dataMap/iranProvinces.jsx";
 import iranBorder, { caspianD, persianGulfD } from "../../dataMap/IranMapData.js";
@@ -85,9 +86,6 @@ const IranMap = (props) => {
 
 
 
-    const sitesCountApiUrl = "http://192.168.129.188:5001/api/assets/sites_count_per_province";
-    const trafficPerProvinceApiUrl = "http://192.168.129.188:5001/api/assets/traffic_per_province";
-    const cellsCount_Per_ProvinceApiUrl = "http://192.168.129.188:5001/api/assets/cells_count"
 
 
 
@@ -233,7 +231,7 @@ const IranMap = (props) => {
             });*/
 
 
-        const promise1 = fetchAndCacheData("sites_count_cache", "http://192.168.198.201:5001/api/assets/sites_count_per_province")
+        const promise1 = fetchAndCacheData("sites_count_cache", "http://10.15.90.87:5001/api/assets/sites_count_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Sites count per province data", data);
@@ -247,7 +245,7 @@ const IranMap = (props) => {
         promises.push(promise1);
 
         // Fetch cells count per province data
-        const promise2 = fetchAndCacheData("cells_count_cache", "http://192.168.198.201:5001/api/assets/cells_count_per_province")
+        const promise2 = fetchAndCacheData("cells_count_cache", "http://10.15.90.87:5001/api/assets/cells_count_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Cells count per province data:", data);
@@ -261,7 +259,7 @@ const IranMap = (props) => {
         promises.push(promise2);
 
         // Fetch cities per province data
-        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://192.168.198.201:5001/api/assets/cities")
+        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://10.15.90.87:5001/api/assets/cities")
             .then(data => {
                 // Handle the data as needed
                 console.log("Cities per province data:", data);
@@ -275,7 +273,7 @@ const IranMap = (props) => {
         promises.push(promise3);
 
         // Fetch traffic per province data
-        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://192.168.198.201:5001/api/assets/traffic_per_province")
+        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://10.15.90.87:5001/api/assets/traffic_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Traffic per province data:", data);

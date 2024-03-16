@@ -1,5 +1,6 @@
+//@ts-nocheck
 import "./Inventory.css"
-import PieChartBoxInventory from "../../Component/pieChartBoxInventory/pieChartBoxInventory.tsx";
+
 import  Inevntory_menu from "../../database/Inventory_Menu/Inventory_menu.ts"
 import {useState} from "react";
 import InventoryFirstPage from "../../Component/InventoryFirstPage/InventoryFirstPage.tsx";

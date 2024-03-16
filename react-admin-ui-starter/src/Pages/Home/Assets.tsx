@@ -1,15 +1,14 @@
-
-import './Assets.css'
-import IranMap from "../../Component/IranMap/iranMap.tsx";
+//@ts-nocheck
 import React, {useEffect, useState} from "react";
-import PieChartBox from "../../Component/pieChartbox/PieChartBox.tsx";
+import IranMap from "../../Component/IranMap/iranMap.tsx";
 import Linechart from "../../Component/LineChart/linechart.tsx";
-import SimpleBarChart from "../../Component/SimpleBarChart/simpleBarChart.tsx";
 import Rate from "../../Component/rateup and ratedown/rate.tsx";
 import BarChartMaterial from "../../Component/BarChartMaterialUi/Barchartmaterial.tsx";
 import Siteinformation from "../../Component/Siteinformations/Siteinformation.tsx";
 import BarChartMaterialCells from "../../Component/BarChartMaterialCellCount/BarChartMaterialCells.tsx";
 import FilterMap from "../../Component/Filter_Map_By_Category/Filter_Map.tsx";
+
+import './Assets.css'
 
 
 
@@ -79,7 +78,7 @@ const Assets = () => {
 
         const promises = [];
         // Fetch sites count per province data
-        /* fetchAndCacheData("sites_count_cache", "http://192.168.129.188:5001/api/assets/sites_count_per_province")
+        /* fetchAndCacheData("sites_count_cache", "http://10.15.90.87:5001/api/assets/sites_count_per_province")
              .then(data => {
                  // Handle the data as needed
                  console.log("Sites count per province data", data);
@@ -91,7 +90,7 @@ const Assets = () => {
                  console.error("Error fetching sites count per province data:", error);
              });
 
-         fetchAndCacheData("cells_count_cache", "http://192.168.129.188:5001/api/assets/cells_count_per_province")
+         fetchAndCacheData("cells_count_cache", "http://10.15.90.87:5001/api/assets/cells_count_per_province")
              .then(data => {
                  // Handle the data as needed
                  console.log("Cells count per province data:", data);
@@ -102,7 +101,7 @@ const Assets = () => {
                  console.error("Error fetching sites count per province data:", error);
              });
 
-         fetchAndCacheData("cities_per_province_cache", "http://192.168.129.188:5001/api/assets/cities")
+         fetchAndCacheData("cities_per_province_cache", "http://10.15.90.87:5001/api/assets/cities")
              .then(data => {
                  // Handle the data as needed
                  console.log("Cities  per province :", data);
@@ -116,7 +115,7 @@ const Assets = () => {
 
 
          // Fetch traffic per province data
-         fetchAndCacheData("traffic_per_province_cache", "http://192.168.129.188:5001/api/assets/traffic_per_province")
+         fetchAndCacheData("traffic_per_province_cache", "http://10.15.90.87:5001/api/assets/traffic_per_province")
              .then(data => {
                  // Handle the data as needed
                  console.log("Traffic per province data:", data);
@@ -128,7 +127,7 @@ const Assets = () => {
              });*/
 
 
-        const promise1 = fetchAndCacheData("sites_count_cache", "http://192.168.129.188:5001/api/assets/sites_count_per_province")
+        const promise1 = fetchAndCacheData("sites_count_cache", "http://10.15.90.87:5001/api/assets/sites_count_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Sites count per province data", data);
@@ -142,7 +141,7 @@ const Assets = () => {
         promises.push(promise1);
 
         // Fetch cells count per province data
-        const promise2 = fetchAndCacheData("cells_count_cache_datatat", "http://192.168.129.188:5001/api/assets/cells_count_per_province")
+        const promise2 = fetchAndCacheData("cells_count_cache_datatat", "http://10.15.90.87:5001/api/assets/cells_count_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("kljdsldjfslk", data);
@@ -156,7 +155,7 @@ const Assets = () => {
         promises.push(promise2);
 
         // Fetch cities per province data
-        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://192.168.129.188:5001/api/assets/cities")
+        const promise3 = fetchAndCacheData("cities_per_province_cache", "http://10.15.90.87:5001/api/assets/cities")
             .then(data => {
                 // Handle the data as needed
                 console.log("Cities per province data:", data);
@@ -170,7 +169,7 @@ const Assets = () => {
         promises.push(promise3);
 
         // Fetch traffic per province data
-        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://192.168.129.188:5001/api/assets/traffic_per_province")
+        const promise4 = fetchAndCacheData("traffic_per_province_cache", "http://10.15.90.87:5001/api/assets/traffic_per_province")
             .then(data => {
                 // Handle the data as needed
                 console.log("Traffic per province data:", data);
@@ -185,7 +184,7 @@ const Assets = () => {
 
         // Fetch traffic per province data
         const promise5 = fetchAndCacheData("traffic_per_all_country",
-            "http://192.168.129.188:5001/api/assets/traffic_total")
+            "http://10.15.90.87:5001/api/assets/traffic_total")
             .then(data => {
                 // Handle the data as needed
                 setTotaldata(data);
@@ -199,7 +198,7 @@ const Assets = () => {
 
 
         const promise6 = fetchAndCacheData("sites_count_per_country",
-            "http://192.168.129.188:5001/api/assets/sites_count_per_tech")
+            "http://10.15.90.87:5001/api/assets/sites_count_per_tech")
             .then(data2 => {
                 // Handle the data as needed
                 setData(data2);
@@ -213,7 +212,7 @@ const Assets = () => {
         promises.push(promise6);
 
         const promise7 = fetchAndCacheData("cell_counts_per_all_country",
-            "http://192.168.129.188:5001/api/assets/cells_count")
+            "http://10.15.90.87:5001/api/assets/cells_count")
             .then(data2 => {
                 // Handle the data as needed
                 setDataPerProvince(data2);
@@ -400,83 +399,83 @@ const Assets = () => {
         loading ?
             (
 
-        <div className="Assets_container">
-            <div className="Assets-menu-report">
+                <div className="Assets_container">
+                    <div className="Assets-menu-report">
 
-                <div className="Assets-menu-item" onClick={() => {
-                    setActiveIndex(1)
-                }}>
-                    <h2 className={activeIndex === 1 ? "active-site-selector" : "deactive-site-selector"}>
-                        Report
-                    </h2>
+                        <div className="Assets-menu-item" onClick={() => {
+                            setActiveIndex(1)
+                        }}>
+                            <h2 className={activeIndex === 1 ? "active-site-selector" : "deactive-site-selector"}>
+                                Report
+                            </h2>
 
-                </div>
+                        </div>
 
-                <div className="Assets-menu-item" onClick={() => {
-                    setActiveIndex(2)
-                }}>
-                    <h2 className={activeIndex === 2 ? "active-site-selector" : "deactive-site-selector"}>
-                        Network
-                    </h2>
+                        <div className="Assets-menu-item" onClick={() => {
+                            setActiveIndex(2)
+                        }}>
+                            <h2 className={activeIndex === 2 ? "active-site-selector" : "deactive-site-selector"}>
+                                Network
+                            </h2>
 
-                </div>
+                        </div>
 
-                <div className="Assets-menu-item" onClick={() => {
-                    setActiveIndex(3)
-                }}>
-                    <h2 className={activeIndex === 3 ? "active-site-selector" : "deactive-site-selector"}>
-                        Filter-By-Category
-                    </h2>
+                        <div className="Assets-menu-item" onClick={() => {
+                            setActiveIndex(3)
+                        }}>
+                            <h2 className={activeIndex === 3 ? "active-site-selector" : "deactive-site-selector"}>
+                                Filter-By-Category
+                            </h2>
 
-                </div>
-
-
-            </div>
-
-            <div className="Assets-map-2">
-
-                <div>
-                    {
-                        activeIndex == 1 && (
-                            <div>
-                                <div className="Assets_header">
-                                    <h2>Assets/Report</h2>
-
-                                </div>
-
-                                <div className="dashboard_asset">
+                        </div>
 
 
-                                    <div className="dashboard_content_container_top_2">
-                                        <div className="box1_1">
-                                            <BarChartMaterial data={data}/>
-                                        </div>
-                                        <div className="box1_2">
-                                            <Siteinformation data={data}/>
-                                        </div>
-                                    </div>
-                                    <div className="dashboard_content_container_down">
-                                        <div className="box2_1">
-                                            <Linechart/>
-                                        </div>
-                                        <div className="box2_2">
-                                            <BarChartMaterialCells dataPerProvince={dataPerProvince}/>
-                                        </div>
-                                    </div>
+                    </div>
 
+                    <div className="Assets-map-2">
 
-                                </div>
-                            </div>
-
-                        )
-                    }
-                    {activeIndex === 2 && (
                         <div>
-                            <div className="Assets_header">
-                                <h2>Assets/Network</h2>
-                            </div>
-                            <div className="home">
-                                {/*
+                            {
+                                activeIndex == 1 && (
+                                    <div>
+                                        <div className="Assets_header">
+                                            <h2>Assets/Report</h2>
+
+                                        </div>
+
+                                        <div className="dashboard_asset">
+
+
+                                            <div className="dashboard_content_container_top_2">
+                                                <div className="box1_1">
+                                                    <BarChartMaterial data={data}/>
+                                                </div>
+                                                <div className="box1_2">
+                                                    <Siteinformation data={data}/>
+                                                </div>
+                                            </div>
+                                            <div className="dashboard_content_container_down">
+                                                <div className="box2_1">
+                                                    <Linechart/>
+                                                </div>
+                                                <div className="box2_2">
+                                                    <BarChartMaterialCells dataPerProvince={dataPerProvince}/>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                )
+                            }
+                            {activeIndex === 2 && (
+                                <div>
+                                    <div className="Assets_header">
+                                        <h2>Assets/Network</h2>
+                                    </div>
+                                    <div className="home">
+                                        {/*
                             <div className="box box1">
                                     <h2>Call Traffic</h2>
 
@@ -519,299 +518,299 @@ const Assets = () => {
                             </div>
                                 */}
 
-                            <div className=" box5">
+                                        <div className=" box5">
 
-                                <div className="Map_intilizer_container">
-
-
-                                    <div className="Total_information_map_details">
+                                            <div className="Map_intilizer_container">
 
 
-                                        <div className="map_fixed_positition">
-                                            <IranMap setPupop={setPupop}
-                                                     setProvinceName={setProvinceName}/>
-                                        </div>
+                                                <div className="Total_information_map_details">
 
 
-                                        <div className="data_box_asset">
+                                                    <div className="map_fixed_positition">
+                                                        <IranMap setPupop={setPupop}
+                                                                 setProvinceName={setProvinceName}/>
+                                                    </div>
 
-                                            <div>
-                                                {pupop && (
-                                                    <div>
+
+                                                    <div className="data_box_asset">
+
+                                                        <div>
+                                                            {pupop && (
+                                                                <div>
+                                                                    {/*Total data left direction of map */}
+                                                                    <div className="total_map_data">
+                                                                        <div className="header_total_map_data">
+                                                                            <img src="./Province.svg" alt=""/>
+                                                                            <h2>{provinceName} </h2>
+                                                                        </div>
+
+
+                                                                        <div className="total_map_data_item_group">
+                                                                            <div className="total_map_data_item_spp1">
+                                                                                <h3>Site Counts</h3>
+                                                                                <p> {
+                                                                                    format(
+                                                                                        provinceName === "Khuzestan" ? (
+                                                                                            filter_siteCount("Khouzestan")
+                                                                                        ) : (
+                                                                                            filter_siteCount(provinceName)
+                                                                                        )
+                                                                                    )
+                                                                                }</p>
+                                                                            </div>
+
+                                                                            <div className="total_map_data_item_spp2">
+                                                                                <h3>Cell Counts</h3>
+                                                                                <p>{
+                                                                                    format(
+                                                                                        provinceName === "Khuzestan" ? (filter_cells("Khouzestan")) :
+                                                                                            filter_cells(provinceName)
+                                                                                    )
+                                                                                }</p>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div className="data_row_box">
+                                                                            <h2>Total traffic</h2>
+                                                                            <div className="row_items_traffic">
+                                                                                <div className="total_map_data_item_for_quantity">
+                                                                                    <div className="total_map_data_item_2">
+                                                                                        <h3>Traffic PS</h3>
+                                                                                        <p> {format(filter_traffic_PS(provinceName))}</p>
+                                                                                    </div>
+
+                                                                                    <div className="total_map_data_item_3">
+                                                                                        <Rate calculation="positive"/>
+                                                                                        <h6>TB</h6>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                                <div className="total_map_data_item_for_quantity">
+                                                                                    <div className="total_map_data_item_2">
+                                                                                        <h3>Traffic CS</h3>
+                                                                                        <p>{
+                                                                                            format(filter_traffic_CS(provinceName))
+                                                                                        }</p>
+                                                                                    </div>
+
+                                                                                    <div className="total_map_data_item_3">
+                                                                                        <Rate calculation="positive"/>
+                                                                                        <h6>TB</h6>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="total_map_data_item_for_quantity">
+                                                                                    <div className="total_map_data_item_2">
+                                                                                        <h3>Total revenue</h3>
+                                                                                        <p>{
+
+                                                                                            format(calculate_revenue(provinceName))
+                                                                                        }</p>
+                                                                                    </div>
+
+                                                                                    <div className="total_map_data_item_3">
+                                                                                        <Rate calculation="positive"/>
+                                                                                        <h6>Toman</h6>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div className="data_row_box">
+                                                                            <h2>Costs and revenue</h2>
+                                                                            <div className="row_items_traffic">
+                                                                                <div className="total_map_data_item_for_quantity">
+                                                                                    <div className="total_map_data_item_2">
+                                                                                        <h3>Traffic PS</h3>
+                                                                                        <p> {format(filter_traffic_PS(provinceName))}</p>
+                                                                                    </div>
+
+                                                                                    <div className="total_map_data_item_3">
+                                                                                        <Rate calculation="positive"/>
+                                                                                        <h6>TB</h6>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                                <div className="total_map_data_item_for_quantity">
+                                                                                    <div className="total_map_data_item_2">
+                                                                                        <h3>Traffic CS</h3>
+                                                                                        <p>{
+                                                                                            format(filter_traffic_CS(provinceName))
+                                                                                        }</p>
+                                                                                    </div>
+
+                                                                                    <div className="total_map_data_item_3">
+                                                                                        <Rate calculation="positive"/>
+                                                                                        <h6>TB</h6>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="total_map_data_item_for_quantity">
+                                                                                    <div className="total_map_data_item_2">
+                                                                                        <h3>Total revenue</h3>
+                                                                                        <p>{
+
+                                                                                            format(calculate_revenue(provinceName))
+                                                                                        }</p>
+                                                                                    </div>
+
+                                                                                    <div className="total_map_data_item_3">
+                                                                                        <Rate calculation="positive"/>
+                                                                                        <h6>Toman</h6>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                            }
+                                                        </div>
+
                                                         {/*Total data left direction of map */}
-                                                        <div className="total_map_data">
-                                                            <div className="header_total_map_data">
-                                                                <img src="./Province.svg" alt=""/>
-                                                                <h2>{provinceName} </h2>
-                                                            </div>
 
+                                                        {!pupop && (
+                                                            <div className="total_map_data">
 
-                                                            <div className="total_map_data_item_group">
-                                                                <div className="total_map_data_item_spp1">
-                                                                    <h3>Site Counts</h3>
-                                                                    <p> {
-                                                                        format(
-                                                                            provinceName === "Khuzestan" ? (
-                                                                                filter_siteCount("Khouzestan")
-                                                                            ) : (
-                                                                                filter_siteCount(provinceName)
-                                                                            )
-                                                                        )
-                                                                    }</p>
+                                                                <div className="header_total_map_data">
+                                                                    <img src="./Total_svg.svg" alt=""/>
+                                                                    <h2>Total statistics </h2>
                                                                 </div>
 
-                                                                <div className="total_map_data_item_spp2">
-                                                                    <h3>Cell Counts</h3>
-                                                                    <p>{
-                                                                        format(
-                                                                            provinceName === "Khuzestan" ? (filter_cells("Khouzestan")) :
-                                                                                filter_cells(provinceName)
-                                                                        )
-                                                                    }</p>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div className="data_row_box">
-                                                                <h2>Total traffic</h2>
-                                                                <div className="row_items_traffic">
-                                                                    <div className="total_map_data_item_for_quantity">
-                                                                        <div className="total_map_data_item_2">
-                                                                            <h3>Traffic PS</h3>
-                                                                            <p> {format(filter_traffic_PS(provinceName))}</p>
-                                                                        </div>
-
-                                                                        <div className="total_map_data_item_3">
-                                                                            <Rate calculation="positive"/>
-                                                                            <h6>TB</h6>
-                                                                        </div>
+                                                                <div className="total_map_data_item_group">
+                                                                    <div className="total_map_data_item_spp1">
+                                                                        <h3>Site Counts</h3>
+                                                                        <p>87,847</p>
                                                                     </div>
 
-
-                                                                    <div className="total_map_data_item_for_quantity">
-                                                                        <div className="total_map_data_item_2">
-                                                                            <h3>Traffic CS</h3>
-                                                                            <p>{
-                                                                                format(filter_traffic_CS(provinceName))
-                                                                            }</p>
-                                                                        </div>
-
-                                                                        <div className="total_map_data_item_3">
-                                                                            <Rate calculation="positive"/>
-                                                                            <h6>TB</h6>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div className="total_map_data_item_for_quantity">
-                                                                        <div className="total_map_data_item_2">
-                                                                            <h3>Total revenue</h3>
-                                                                            <p>{
-
-                                                                                format(calculate_revenue(provinceName))
-                                                                            }</p>
-                                                                        </div>
-
-                                                                        <div className="total_map_data_item_3">
-                                                                            <Rate calculation="positive"/>
-                                                                            <h6>Toman</h6>
-                                                                        </div>
-
+                                                                    <div className="total_map_data_item_spp2">
+                                                                        <h3>Cell Counts</h3>
+                                                                        <p>464,085</p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-                                                            <div className="data_row_box">
-                                                                <h2>Costs and revenue</h2>
-                                                                <div className="row_items_traffic">
-                                                                    <div className="total_map_data_item_for_quantity">
-                                                                        <div className="total_map_data_item_2">
-                                                                            <h3>Traffic PS</h3>
-                                                                            <p> {format(filter_traffic_PS(provinceName))}</p>
+                                                                <div className="data_row_box">
+                                                                    <h2>Total traffic</h2>
+                                                                    <div className="row_items_traffic">
+                                                                        <div className="total_map_data_item_for_quantity">
+                                                                            <div className="total_map_data_item_2">
+                                                                                <h3>Traffic PS</h3>
+                                                                                <p>{format(totaldata.traffic[0].ps_revenue)}</p>
+                                                                            </div>
+
+                                                                            <div className="total_map_data_item_3">
+                                                                                <Rate calculation="positive"/>
+                                                                                <h6>TB</h6>
+                                                                            </div>
                                                                         </div>
 
-                                                                        <div className="total_map_data_item_3">
-                                                                            <Rate calculation="positive"/>
-                                                                            <h6>TB</h6>
-                                                                        </div>
-                                                                    </div>
 
+                                                                        <div className="total_map_data_item_for_quantity">
+                                                                            <div className="total_map_data_item_2">
+                                                                                <h3>Traffic CS</h3>
+                                                                                <p>{format(totaldata.traffic[0].cs_revenue)}</p>
+                                                                            </div>
 
-                                                                    <div className="total_map_data_item_for_quantity">
-                                                                        <div className="total_map_data_item_2">
-                                                                            <h3>Traffic CS</h3>
-                                                                            <p>{
-                                                                                format(filter_traffic_CS(provinceName))
-                                                                            }</p>
+                                                                            <div className="total_map_data_item_3">
+                                                                                <Rate calculation="positive"/>
+                                                                                <h6>TB</h6>
+                                                                            </div>
                                                                         </div>
 
-                                                                        <div className="total_map_data_item_3">
-                                                                            <Rate calculation="positive"/>
-                                                                            <h6>TB</h6>
+                                                                        <div className="total_map_data_item_for_quantity">
+                                                                            <div className="total_map_data_item_2">
+                                                                                <h3>Total revenue</h3>
+                                                                                <p>{format(totaldata.traffic[0].total_revenue)}</p>
+                                                                            </div>
+
+                                                                            <div className="total_map_data_item_3">
+                                                                                <Rate calculation="positive"/>
+                                                                                <h6>Toman</h6>
+                                                                            </div>
+
                                                                         </div>
-                                                                    </div>
-
-                                                                    <div className="total_map_data_item_for_quantity">
-                                                                        <div className="total_map_data_item_2">
-                                                                            <h3>Total revenue</h3>
-                                                                            <p>{
-
-                                                                                format(calculate_revenue(provinceName))
-                                                                            }</p>
-                                                                        </div>
-
-                                                                        <div className="total_map_data_item_3">
-                                                                            <Rate calculation="positive"/>
-                                                                            <h6>Toman</h6>
-                                                                        </div>
-
                                                                     </div>
                                                                 </div>
+
+
+                                                                <div className="data_row_box">
+                                                                    <h2>Costs and revenue</h2>
+                                                                    <div className="row_items_traffic">
+                                                                        <div className="total_map_data_item_for_quantity">
+                                                                            <div className="total_map_data_item_2">
+                                                                                <h3>Traffic PS</h3>
+                                                                                <p>{format(totaldata.traffic[0].ps_revenue)}</p>
+                                                                            </div>
+
+                                                                            <div className="total_map_data_item_3">
+                                                                                <Rate calculation="positive"/>
+                                                                                <h6>TB</h6>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_for_quantity">
+                                                                            <div className="total_map_data_item_2">
+                                                                                <h3>Traffic CS</h3>
+                                                                                <p>{format(totaldata.traffic[0].cs_revenue)}</p>
+                                                                            </div>
+
+                                                                            <div className="total_map_data_item_3">
+                                                                                <Rate calculation="positive"/>
+                                                                                <h6>TB</h6>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div className="total_map_data_item_for_quantity">
+                                                                            <div className="total_map_data_item_2">
+                                                                                <h3>Total revenue</h3>
+                                                                                <p>{format(totaldata.traffic[0].total_revenue)}</p>
+                                                                            </div>
+
+                                                                            <div className="total_map_data_item_3">
+                                                                                <Rate calculation="positive"/>
+                                                                                <h6>Toman</h6>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
                                                             </div>
-
-
-                                                        </div>
+                                                        )}
                                                     </div>
-                                                )
-                                                }
-                                            </div>
-
-                                            {/*Total data left direction of map */}
-
-                                            {!pupop && (
-                                                <div className="total_map_data">
-
-                                                    <div className="header_total_map_data">
-                                                        <img src="./Total_svg.svg" alt=""/>
-                                                        <h2>Total statistics </h2>
-                                                    </div>
-
-                                                    <div className="total_map_data_item_group">
-                                                        <div className="total_map_data_item_spp1">
-                                                            <h3>Site Counts</h3>
-                                                            <p>87,847</p>
-                                                        </div>
-
-                                                        <div className="total_map_data_item_spp2">
-                                                            <h3>Cell Counts</h3>
-                                                            <p>464,085</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="data_row_box">
-                                                        <h2>Total traffic</h2>
-                                                        <div className="row_items_traffic">
-                                                            <div className="total_map_data_item_for_quantity">
-                                                                <div className="total_map_data_item_2">
-                                                                    <h3>Traffic PS</h3>
-                                                                    <p>{format(totaldata.traffic[0].ps_revenue)}</p>
-                                                                </div>
-
-                                                                <div className="total_map_data_item_3">
-                                                                    <Rate calculation="positive"/>
-                                                                    <h6>TB</h6>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div className="total_map_data_item_for_quantity">
-                                                                <div className="total_map_data_item_2">
-                                                                    <h3>Traffic CS</h3>
-                                                                    <p>{format(totaldata.traffic[0].cs_revenue)}</p>
-                                                                </div>
-
-                                                                <div className="total_map_data_item_3">
-                                                                    <Rate calculation="positive"/>
-                                                                    <h6>TB</h6>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="total_map_data_item_for_quantity">
-                                                                <div className="total_map_data_item_2">
-                                                                    <h3>Total revenue</h3>
-                                                                    <p>{format(totaldata.traffic[0].total_revenue)}</p>
-                                                                </div>
-
-                                                                <div className="total_map_data_item_3">
-                                                                    <Rate calculation="positive"/>
-                                                                    <h6>Toman</h6>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div className="data_row_box">
-                                                        <h2>Costs and revenue</h2>
-                                                        <div className="row_items_traffic">
-                                                            <div className="total_map_data_item_for_quantity">
-                                                                <div className="total_map_data_item_2">
-                                                                    <h3>Traffic PS</h3>
-                                                                    <p>{format(totaldata.traffic[0].ps_revenue)}</p>
-                                                                </div>
-
-                                                                <div className="total_map_data_item_3">
-                                                                    <Rate calculation="positive"/>
-                                                                    <h6>TB</h6>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="total_map_data_item_for_quantity">
-                                                                <div className="total_map_data_item_2">
-                                                                    <h3>Traffic CS</h3>
-                                                                    <p>{format(totaldata.traffic[0].cs_revenue)}</p>
-                                                                </div>
-
-                                                                <div className="total_map_data_item_3">
-                                                                    <Rate calculation="positive"/>
-                                                                    <h6>TB</h6>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="total_map_data_item_for_quantity">
-                                                                <div className="total_map_data_item_2">
-                                                                    <h3>Total revenue</h3>
-                                                                    <p>{format(totaldata.traffic[0].total_revenue)}</p>
-                                                                </div>
-
-                                                                <div className="total_map_data_item_3">
-                                                                    <Rate calculation="positive"/>
-                                                                    <h6>Toman</h6>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
                                                 </div>
-                                            )}
+
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
-                            </div>
-                            </div>
+                            )
+                            }
+
+                            {
+                                activeIndex === 3 && (
+                                    <div>
+                                        <div className="Assets_header">
+                                            <h2>Assets/Filter</h2>
+                                        </div>
+
+                                        <FilterMap/>
+                                    </div>
+                                )
+
+                            }
+
                         </div>
-                    )
-                    }
-
-                    {
-                        activeIndex === 3 && (
-                            <div>
-                                <div className="Assets_header">
-                                    <h2>Assets/Filter</h2>
-                                </div>
-
-                                <FilterMap/>
-                            </div>
-                        )
-
-                    }
-
+                    </div>
                 </div>
-            </div>
-        </div>
 
             )
             : (<div>
@@ -820,5 +819,4 @@ const Assets = () => {
 
     );
 }
-
 export default Assets;

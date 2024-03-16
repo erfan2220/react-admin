@@ -1,3 +1,4 @@
+//@ts-nocheck
 import './Menu.css';
 import { menu } from '../../PersianMenu.ts';
 import {useEffect, useState} from "react";

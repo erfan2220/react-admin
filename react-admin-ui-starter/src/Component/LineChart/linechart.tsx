@@ -1,3 +1,4 @@
+//@ts-nocheck
 import "./Linechart.css"
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 

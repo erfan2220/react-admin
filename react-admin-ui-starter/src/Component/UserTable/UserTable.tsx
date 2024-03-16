@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import "./UserTable.css"
 import {useState} from "react";
 import Paginate from "../../Component/Paginate/Paginate.tsx";

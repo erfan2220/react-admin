@@ -1,28 +1,40 @@
-import "./visualize.css"
-import IranMap from "../../Component/IranMap/iranMap.tsx";
-import {useEffect, useState} from "react";
-import Citites_english from "../../dataMap/Cities_english.js"
-import {Link} from "react-router-dom";
-import {data} from "autoprefixer";
+import "./visualize.css";
+import { useState } from "react";
+import CitiesEnglish from '../../dataMap/CitiesEnglish.ts';
+import LeafletOffline2 from "../../Component/Leaflet_offline_way2/Leaflet_offline2.tsx";
+
+
+type Item = {
+    region: string;
+    provinces: string;
+    Cities: string[];
+};
+
+type ValueType = string; // Define the type for the value parameter
+
+// Assuming prevValuesTag is an array of strings
+/*type PrevValuesTagType = ValueType[]; // Define the type for prevValuesTag*/
+
 
 const Visualize = () => {
     const [minimize,setMinimize]=useState(false)
     const [hoverIndex,setHoverIndex]=useState(1)
-    const uniqueRegions = [...new Set(Citites_english.map(item => item.region))];
+    const uniqueRegions = [...new Set(CitiesEnglish.map((item:Item)  => item.region))];
 
-    const uniqueProvinces = [...new Set(Citites_english.map(item => item.provinces))];
+   /* const uniqueProvinces = [...new Set(Citites_english.map((item:Item) => item.provinces))];*/
+
     const [openTag,setOpenTag]=useState(0)
-    const [valuesTag,setValuesTag]=useState([])
+    const [valuesTag,setValuesTag]=useState<ValueType[]>([]);
 
     const uniqueProvinces2 = [...new Set(
-        Citites_english
-            .filter(item => item.region === valuesTag[0]) // Filter based on region
-            .flatMap(item => Object.values(item)) // Flatten the array of arrays
+        CitiesEnglish
+            .filter((item:Item)  => item.region === valuesTag[0]) // Filter based on region
+            .flatMap((item:Item) => Object.values(item)) // Flatten the array of arrays
     )];
 
-    const handle_values =(value)=>
+    const handle_values =(value :string)=>
     {
-        setValuesTag(prevValuesTag => [...prevValuesTag, value]);
+        setValuesTag(prevValuesTag  => [...prevValuesTag, value]);
     }
 
 
@@ -100,7 +112,7 @@ const Visualize = () => {
                                         setHoverIndex(index)
                                     )}
                                         onClick={()=>{
-                                            handle_values(item)
+                                            handle_values(String(item))
                                             setOpenTag(0)
                                         }}>
                                         {
@@ -144,9 +156,7 @@ const Visualize = () => {
                                             handle_values(region)
                                             setOpenTag(3)
                                         }}>
-                                        {
-                                            region
-                                        }
+                                        {region}
 
                                     </li>
                                 ))
@@ -208,7 +218,7 @@ const Visualize = () => {
                 <h2>Visualize</h2>
 
                 <div className="map-google-container">
-                    <IranMap/>
+                    <LeafletOffline2 />
                 </div>
             </div>
         </div>

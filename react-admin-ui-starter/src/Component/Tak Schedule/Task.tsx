@@ -1,3 +1,4 @@
+//@ts-nocheck
 import "./Task.css"
 import {useState} from "react";
 

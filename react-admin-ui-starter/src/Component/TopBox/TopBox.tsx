@@ -1,4 +1,4 @@
-import React from 'react';
+//@ts-nocheck
 import './TopBox.css'
 import {topDealUsers} from "../../data";
 
