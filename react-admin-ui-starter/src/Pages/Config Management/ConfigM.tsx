@@ -52,13 +52,12 @@ const ConfigM = () => {
                     newTag = [...prevTag, siteName];
                 }
 
-                console.log(tag)
                 return newTag;
             })
         }
         else {
             setTag([siteName])
-            console.log(tag)
+
         }
 
     };
@@ -263,7 +262,7 @@ const ConfigM = () => {
             <div className="inventory_container">
                 <h1>Config Management</h1>
                 {sitedata ?
-                    (<InventorySiteData/>) :
+                    (<InventorySiteData SelectedOption={(tag[2] != null ? tag[2]: tag[1])}/>) :
                     <InventoryFirstPage cLoseReports={cLoseReports} setCLoseReports={setCLoseReports}/>
 
                 }

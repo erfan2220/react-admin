@@ -44,7 +44,7 @@ const columns =[
 
 
 
-const UserTable = () =>
+const UserTable = (props) =>
 {
     const [currentPage, setCurrentPage] = useState(1);
     const [importOpen,setImportOpen]=useState(false)

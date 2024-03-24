@@ -132,7 +132,7 @@ const Settings = () =>
                 </div>
 
                 { ( activeIndex ===1 ) && (
-                <UserTable/>
+                <UserTable />
                 )}
             </div>
 

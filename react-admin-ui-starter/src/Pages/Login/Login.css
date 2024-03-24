@@ -8,6 +8,15 @@
     overflow: hidden;
 }
 
+.image_Login_container img,
+.logo_middle img,
+.loremipsun_container_logo img{
+    width: 100%;
+    height: auto;
+    max-width: 100%; /* Ensure the image does not exceed its container width */
+    max-height: 100%; /* Ensure the image does not exceed its container height */
+}
+
 .image_Login_container {
     display: flex;
     flex-direction: row-reverse;
@@ -117,12 +126,17 @@
     top: 54%;
     position: absolute;
     left: 93%;
+    width: 24px;
+    height: 24px;
 }
 
-.password_container img {
+.password_container img
+{
     top: 56%;
     position: absolute;
     left: 93%;
+    width: 24px;
+    height: 24px;
 }
 
 .password_container label {

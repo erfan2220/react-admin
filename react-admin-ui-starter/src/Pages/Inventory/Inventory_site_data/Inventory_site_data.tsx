@@ -1,8 +1,9 @@
 //@ts-nocheck
 import "./Inventory_site_data.css"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Paginate from "../../../Component/Paginate/Paginate.tsx";
 import { CSVLink } from "react-csv";
+import {GridColDef} from "@mui/x-data-grid";
 
 
 
@@ -10,7 +11,8 @@ import { CSVLink } from "react-csv";
 
 
 
-
+const [dataTable,setDataTable]=useState([])
+const [columnsTable,setColumnsTable]=useState([])
 
 /*data and columns from inventory*/
 const columns =[
@@ -141,7 +143,7 @@ const data =[
 
 
 
-const InventorySiteData = () =>
+const InventorySiteData = ({SelectedOption}) =>
 {
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -150,6 +152,10 @@ const InventorySiteData = () =>
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+
+
+
+
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -166,7 +172,101 @@ const InventorySiteData = () =>
         row.map((col, colIndex) => (rowIndex === 0 ? col : `"${col}"`)).join(",") // Enclose non-header rows in quotes
     ).join("\n");
 
-    return (
+
+    const generateColumnsFromData = (dataObject: object[]):[] => {
+        if (!dataObject.length) return [];
+
+        const firstData = dataObject[0];
+
+        const columns = Object.keys(firstData)
+            .filter(key => key !== "id")
+            .map((key) =>
+                ({
+                    field: key,
+                    headerName: key.replace(/_/g, ' '),
+                    width: 200,
+                }));
+        return columns;
+    };
+
+
+
+    useEffect(() => {
+
+        const promises = [];
+
+
+        const promise1 = fetchAndCacheData("sites_count_dgf_sssdkkdkjsjk", `http://10.15.90.87:5001/api/sqm/${SelectedOption}`)
+            .then(data =>
+            {
+                setDataTable(data.data)
+
+                generateColumnsFromData(data.data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error("Error  province data:", error);
+            });
+
+        promises.push(promise1);
+
+        Promise.all(promises)
+            .then(() => {
+
+                setLoading(false); // Set loading to false once all data is fetched
+            });
+
+
+    }, []);
+
+    async function fetchAndCacheData(cacheKey, apiUrl)
+    {
+
+        const cachedData = JSON.parse(localStorage.getItem(cacheKey)) || {};
+
+        if (cachedData.data && Date.now() - cachedData.timestamp < CACHE_EXPIRATION_TIME)
+        {
+            return cachedData.data;
+        }
+
+        else {
+            const response = await fetch(apiUrl);
+            const jsonData = await response.json();
+            localStorage.setItem(cacheKey, JSON.stringify({data: jsonData, timestamp: Date.now()}));
+            return jsonData;
+        }
+        /*
+                const response = await fetch(apiUrl);
+                const jsonData = await response.json();
+                localStorage.setItem(cacheKey, JSON.stringify({ data: jsonData, timestamp: Date.now() }));
+                return jsonData;
+                */
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return (loading ?
+                (<div>
+                    loading...
+                </div>):
+                (
         <div className="InventorySiteData_container">
 
             <div className="table_header_Inventory">
@@ -232,7 +332,9 @@ const InventorySiteData = () =>
                 )}
 
         </div>
-    );
+                )
+        )
+
 };
 
 export default InventorySiteData

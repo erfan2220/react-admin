@@ -50,7 +50,7 @@ const Layout: React.FC<LayoutProps> = ({ repeatedLogin, count, setCount }) => {
     useEffect(() => {
         // If the user is logged in, redirect to the dashboard
         if (login) {
-            navigate('/dashboard');
+            navigate('/Dashboard');
         }
     }, [login]);
 

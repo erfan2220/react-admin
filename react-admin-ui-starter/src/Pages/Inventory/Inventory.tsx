@@ -215,13 +215,20 @@ const Inventory = () => {
                                                 ) : (
                                                     <span>{province.title}</span>
                                                 )}
-                                                {tag[0] === item.title && tag[1] === province.title && open ? (
-                                                    <img src="./arrow-up.svg" alt="" />
+
+
+                                                {province.Sites.length>0 &&(
+
+                                                    tag[0] === item.title && tag[1] === province.title   && open ? (
+                                                        <img src="./arrow-up.svg" alt="" />
                                                 ) : (
                                                     <img src="./arrow-down.svg" alt="" />
-                                                )}
+                                                ))}
+
+
+
                                             </div>
-                                            {open && tag[1] === province.title && tag[0] === item.title && (
+                                            {open && tag[1] === province.title && tag[0] === item.title  && (
                                                 <div className={`sites_Name_containers ${open ? "open" : ""}`}>
                                                     {province.Sites.map((site: any, index: any) => (
                                                         <div key={index}>

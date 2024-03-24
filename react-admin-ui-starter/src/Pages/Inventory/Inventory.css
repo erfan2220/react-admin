@@ -51,6 +51,7 @@
 {
     color: #FFFFFF;
     margin-top: 14px;
+    cursor: pointer;
 }
 .menu_Inventory span
 {
@@ -87,6 +88,7 @@
 .province_menu_sites_open span
 {
     color: #007BFF;
+    cursor: pointer;
 }
 .row_title_inventory_2
 {
